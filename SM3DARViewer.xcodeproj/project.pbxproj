@@ -19,6 +19,7 @@
 		289233A70DB2D0840083E9F9 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* MainView.m */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		4DBDE06710AA120B005041C0 /* SM3DARLibary_device_3_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE06610AA120B005041C0 /* SM3DARLibary_device_3_1.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SM3DARViewer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARViewer_Prefix.pch; sourceTree = "<group>"; };
+		4DBDE06610AA120B005041C0 /* SM3DARLibary_device_3_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = SM3DARLibary_device_3_1.a; path = ../SM3DAR/SM3DARLibary_device_3_1.a; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* SM3DARViewer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SM3DARViewer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +54,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
+				4DBDE06710AA120B005041C0 /* SM3DARLibary_device_3_1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +104,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4DBDE06610AA120B005041C0 /* SM3DARLibary_device_3_1.a */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
@@ -226,6 +230,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SM3DARViewer_Prefix.pch;
 				INFOPLIST_FILE = "SM3DARViewer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SM3DAR\"",
+				);
 				PRODUCT_NAME = SM3DARViewer;
 			};
 			name = Debug;
@@ -238,6 +246,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SM3DARViewer_Prefix.pch;
 				INFOPLIST_FILE = "SM3DARViewer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SM3DAR\"",
+				);
 				PRODUCT_NAME = SM3DARViewer;
 			};
 			name = Release;
@@ -251,7 +263,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.1;
 			};
 			name = Debug;
 		};
@@ -264,7 +276,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.1;
 			};
 			name = Release;
 		};
