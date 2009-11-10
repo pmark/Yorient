@@ -12,6 +12,7 @@
 
 @implementation MainViewController
 
+@synthesize arController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -55,16 +56,6 @@
 	[controller release];
 }
 
-
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -77,10 +68,22 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
 - (void)dealloc {
-    [super dealloc];
+	[arController release];
+	[super dealloc];
 }
+
+#pragma mark -
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	ThreeDARController *ar = [[ThreeDARController alloc] init];
+	[self.view addSubview:ar.view];
+	self.arController = ar;	
+	[ar release];	
+}
+
 
 
 @end
