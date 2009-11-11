@@ -14,19 +14,18 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
  
-@protocol ThreeDARDelegate
-- (UIView *)viewForCoordinate:(ThreeDARPointOfInterest*)poi;
-
+@protocol SM3DARDelegate
+-(void)loadPointsOfInterest;
 @end
 
 
-@interface ThreeDARController : UIViewController <UIAccelerometerDelegate, CLLocationManagerDelegate> {
+@interface ThreeDARController : UIViewController <UIAccelerometerDelegate, CLLocationManagerDelegate, MKMapViewDelegate> {
 	CLLocationManager *locationManager; 
 	CLLocationDirection trueHeading;
 	CLLocationDirection magneticHeading;
 	CLLocationManager *locationDelegate;
 	UIAccelerometer *accelerometerDelegate;
-//	NSObject<ThreeDARDelegate> *delegate;
+	NSObject<SM3DARDelegate> *delegate;
 	
 	//ARCoordinate *centerCoordinate;
 	
@@ -52,7 +51,7 @@
 @property (nonatomic, retain) UIImagePickerController *camera;
 @property (nonatomic, retain) UILabel *statusLabel;
 @property (nonatomic, retain) NSMutableArray *pointsOfInterest;
-//@property (nonatomic, assign) NSObject<ThreeDARDelegate> delegate;
+@property (nonatomic, assign) NSObject<SM3DARDelegate> *delegate;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, assign) CLLocationDirection trueHeading;
 @property (nonatomic, assign) CLLocationDirection magneticHeading;
@@ -71,9 +70,12 @@
 - (void)displayPoint:(ThreeDARPointOfInterest*)poi;
 - (void)startCamera;
 - (CLLocation*)currentLocation;
+- (void)initMap;
 - (void)toggleMap;
 - (void)showMap;
 - (void)hideMap;
-- (void)setCurrentMapLocation:(CLLocation*)location;
+- (void)zoomMapToFit;
+- (void)setCurrentMapLocation:(CLLocation *)location;
+- (void)annotateMap;
 
 @end

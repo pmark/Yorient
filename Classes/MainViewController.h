@@ -10,7 +10,7 @@
 #import "ThreeDARController.h"
 #import "FlipsideViewController.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DARDelegate> {
 	ThreeDARController *arController;
 	IBOutlet UIButton *infoButton;
 }
@@ -19,5 +19,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
 
 - (IBAction)showInfo;
+- (void)loadPointsOfInterest;
 
 @end

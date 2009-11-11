@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import "MainView.h"
 #import <MapKit/MapKit.h>
+//#import "BSJSONEncoder.h"
+#import "NSArray+BSJSONAdditions.h"
 
 #define INFO_BUTTON_TAG 99877
 
@@ -18,7 +20,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
+			// Custom initialization
     }
     return self;
 }
@@ -87,7 +89,8 @@
 	
 	ThreeDARController *ar = [[ThreeDARController alloc] init];
 	[self.view addSubview:ar.view];
-	self.arController = ar;	
+	self.arController = ar;
+	ar.delegate = self;
 	[ar release];	
 	
 	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:4];
@@ -95,6 +98,46 @@
 
 - (void)showInfoButton {
 	[self.view bringSubviewToFront:[self.view viewWithTag:INFO_BUTTON_TAG]];
+}
+
+
+#pragma mark Data loading
+-(NSString*)loadJSONFromFile:(NSString*)fileName {
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"json"];
+	NSString *json = nil;
+	if (filePath) {
+		json = [NSString stringWithContentsOfFile:filePath usedEncoding:NULL error:NULL];
+	} else {
+		NSLog(@"JSON file does not exist: %@", fileName);
+	}
+	return json;
+}
+
+-(NSArray*)loadData {
+	NSString *jsonString = [self loadJSONFromFile:@"markers"];
+	NSLog(@"JSON: %@", jsonString);
+	return [NSArray arrayWithJSONString:jsonString];
+}
+
+-(void)loadPointsOfInterest {
+	ThreeDARPointOfInterest *poi;
+	NSArray *markers = [self loadData];
+	CLLocation *loc;
+	NSDate *now = [NSDate date];
+	CLLocationCoordinate2D coord;
+	double alt;
+	NSString *title;
+	
+	for (NSDictionary *row in markers) {	
+		coord.latitude = [((NSDecimalNumber*)[row objectForKey:@"latitude"]) floatValue];
+		coord.longitude = [((NSDecimalNumber*)[row objectForKey:@"longitude"]) floatValue];
+		alt = [((NSDecimalNumber*)[row objectForKey:@"altitude"]) floatValue];
+		title = [row objectForKey:@"title"];
+		loc = [[CLLocation alloc] initWithCoordinate:coord altitude:alt horizontalAccuracy:1 verticalAccuracy:1 timestamp:now];
+		poi = [[ThreeDARPointOfInterest alloc] initWithLocation:loc title:title subtitle:nil url:nil];
+		[self.arController addPointOfInterest:poi];
+		[poi release];
+	}
 }
 
 

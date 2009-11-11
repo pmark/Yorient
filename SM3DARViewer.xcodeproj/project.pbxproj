@@ -23,6 +23,12 @@
 		4DBDE0A010AA2349005041C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE09F10AA2349005041C0 /* QuartzCore.framework */; };
 		4DBDE0A410AA235C005041C0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE0A310AA235C005041C0 /* MapKit.framework */; };
 		4DBDE26410AA44F2005041C0 /* SM3DARLibary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE26310AA44F2005041C0 /* SM3DARLibary.a */; };
+		4DBDE40F10AAE4B4005041C0 /* BSJSONEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE40610AAE4B4005041C0 /* BSJSONEncoder.m */; };
+		4DBDE41010AAE4B4005041C0 /* NSArray+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE40810AAE4B4005041C0 /* NSArray+BSJSONAdditions.m */; };
+		4DBDE41110AAE4B4005041C0 /* NSDictionary+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE40A10AAE4B4005041C0 /* NSDictionary+BSJSONAdditions.m */; };
+		4DBDE41210AAE4B4005041C0 /* NSScanner+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE40C10AAE4B4005041C0 /* NSScanner+BSJSONAdditions.m */; };
+		4DBDE41310AAE4B4005041C0 /* NSString+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE40E10AAE4B4005041C0 /* NSString+BSJSONAdditions.m */; };
+		4DBDE47B10AAED23005041C0 /* markers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE45210AAEC49005041C0 /* markers.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +60,17 @@
 		4DBDE09F10AA2349005041C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4DBDE0A310AA235C005041C0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4DBDE26310AA44F2005041C0 /* SM3DARLibary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = SM3DARLibary.a; path = "../SM3DAR/SM3DARLibary/build/Release-iphoneos/SM3DARLibary.a"; sourceTree = SOURCE_ROOT; };
+		4DBDE40510AAE4B4005041C0 /* BSJSONEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSJSONEncoder.h; sourceTree = "<group>"; };
+		4DBDE40610AAE4B4005041C0 /* BSJSONEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSJSONEncoder.m; sourceTree = "<group>"; };
+		4DBDE40710AAE4B4005041C0 /* NSArray+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BSJSONAdditions.h"; sourceTree = "<group>"; };
+		4DBDE40810AAE4B4005041C0 /* NSArray+BSJSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BSJSONAdditions.m"; sourceTree = "<group>"; };
+		4DBDE40910AAE4B4005041C0 /* NSDictionary+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BSJSONAdditions.h"; sourceTree = "<group>"; };
+		4DBDE40A10AAE4B4005041C0 /* NSDictionary+BSJSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BSJSONAdditions.m"; sourceTree = "<group>"; };
+		4DBDE40B10AAE4B4005041C0 /* NSScanner+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+BSJSONAdditions.h"; sourceTree = "<group>"; };
+		4DBDE40C10AAE4B4005041C0 /* NSScanner+BSJSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+BSJSONAdditions.m"; sourceTree = "<group>"; };
+		4DBDE40D10AAE4B4005041C0 /* NSString+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BSJSONAdditions.h"; sourceTree = "<group>"; };
+		4DBDE40E10AAE4B4005041C0 /* NSString+BSJSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BSJSONAdditions.m"; sourceTree = "<group>"; };
+		4DBDE45210AAEC49005041C0 /* markers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markers.json; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SM3DARViewer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SM3DARViewer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +153,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4DBDE40410AAE4B4005041C0 /* BSJSONAdditions */,
 				4DBDE09810AA2309005041C0 /* StdMath.h */,
 				4DBDE09310AA22F2005041C0 /* ThreeDARController.h */,
 				4DBDE09410AA22F2005041C0 /* ThreeDARPointOfInterest.h */,
@@ -154,6 +172,7 @@
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* SM3DARViewer-Info.plist */,
+				4DBDE45210AAEC49005041C0 /* markers.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -166,6 +185,23 @@
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DBDE40410AAE4B4005041C0 /* BSJSONAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE40510AAE4B4005041C0 /* BSJSONEncoder.h */,
+				4DBDE40610AAE4B4005041C0 /* BSJSONEncoder.m */,
+				4DBDE40710AAE4B4005041C0 /* NSArray+BSJSONAdditions.h */,
+				4DBDE40810AAE4B4005041C0 /* NSArray+BSJSONAdditions.m */,
+				4DBDE40910AAE4B4005041C0 /* NSDictionary+BSJSONAdditions.h */,
+				4DBDE40A10AAE4B4005041C0 /* NSDictionary+BSJSONAdditions.m */,
+				4DBDE40B10AAE4B4005041C0 /* NSScanner+BSJSONAdditions.h */,
+				4DBDE40C10AAE4B4005041C0 /* NSScanner+BSJSONAdditions.m */,
+				4DBDE40D10AAE4B4005041C0 /* NSString+BSJSONAdditions.h */,
+				4DBDE40E10AAE4B4005041C0 /* NSString+BSJSONAdditions.m */,
+			);
+			path = BSJSONAdditions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +256,7 @@
 				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
+				4DBDE47B10AAED23005041C0 /* markers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +273,11 @@
 				289233A70DB2D0840083E9F9 /* MainView.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
+				4DBDE40F10AAE4B4005041C0 /* BSJSONEncoder.m in Sources */,
+				4DBDE41010AAE4B4005041C0 /* NSArray+BSJSONAdditions.m in Sources */,
+				4DBDE41110AAE4B4005041C0 /* NSDictionary+BSJSONAdditions.m in Sources */,
+				4DBDE41210AAE4B4005041C0 /* NSScanner+BSJSONAdditions.m in Sources */,
+				4DBDE41310AAE4B4005041C0 /* NSString+BSJSONAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
