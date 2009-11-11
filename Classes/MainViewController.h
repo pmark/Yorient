@@ -12,10 +12,11 @@
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
 	ThreeDARController *arController;
-
+	IBOutlet UIButton *infoButton;
 }
 
 @property (nonatomic, retain) ThreeDARController *arController;
+@property (nonatomic, retain) IBOutlet UIButton *infoButton;
 
 - (IBAction)showInfo;
 

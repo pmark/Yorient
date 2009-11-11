@@ -8,11 +8,13 @@
 
 #import "MainViewController.h"
 #import "MainView.h"
+#import <MapKit/MapKit.h>
 
+#define INFO_BUTTON_TAG 99877
 
 @implementation MainViewController
 
-@synthesize arController;
+@synthesize arController, infoButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -46,13 +48,17 @@
 
 
 - (IBAction)showInfo {    
-	
+
+	[self.arController toggleMap];
+	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:2];
+
+}
+
+- (void)showFlipside {
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
-	controller.delegate = self;
-	
+	controller.delegate = self;	
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentModalViewController:controller animated:YES];
-	
+	[self presentModalViewController:controller animated:YES];	
 	[controller release];
 }
 
@@ -70,6 +76,7 @@
 
 - (void)dealloc {
 	[arController release];
+	[infoButton release];
 	[super dealloc];
 }
 
@@ -82,6 +89,12 @@
 	[self.view addSubview:ar.view];
 	self.arController = ar;	
 	[ar release];	
+	
+	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:4];
+}
+
+- (void)showInfoButton {
+	[self.view bringSubviewToFront:[self.view viewWithTag:INFO_BUTTON_TAG]];
 }
 
 
