@@ -19,6 +19,7 @@
 		289233A70DB2D0840083E9F9 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* MainView.m */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		4D1EF21110ACB7AE00BC2081 /* markers_cc.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF21010ACB7AE00BC2081 /* markers_cc.json */; };
 		4DBDE09C10AA2318005041C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE09B10AA2318005041C0 /* CoreLocation.framework */; };
 		4DBDE0A010AA2349005041C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE09F10AA2349005041C0 /* QuartzCore.framework */; };
 		4DBDE0A410AA235C005041C0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE0A310AA235C005041C0 /* MapKit.framework */; };
@@ -51,6 +52,7 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SM3DARViewer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARViewer_Prefix.pch; sourceTree = "<group>"; };
+		4D1EF21010ACB7AE00BC2081 /* markers_cc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markers_cc.json; sourceTree = "<group>"; };
 		4DBDE09010AA224D005041C0 /* AR3D_API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR3D_API.h; sourceTree = "<group>"; };
 		4DBDE09310AA22F2005041C0 /* ThreeDARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDARController.h; sourceTree = "<group>"; };
 		4DBDE09410AA22F2005041C0 /* ThreeDARPointOfInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDARPointOfInterest.h; sourceTree = "<group>"; };
@@ -168,11 +170,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4DBDE45210AAEC49005041C0 /* markers.json */,
+				4D1EF21010ACB7AE00BC2081 /* markers_cc.json */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* SM3DARViewer-Info.plist */,
-				4DBDE45210AAEC49005041C0 /* markers.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				4DBDE47B10AAED23005041C0 /* markers.json in Resources */,
+				4D1EF21110ACB7AE00BC2081 /* markers_cc.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
