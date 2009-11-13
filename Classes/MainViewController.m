@@ -9,8 +9,9 @@
 #import "MainViewController.h"
 #import "MainView.h"
 #import <MapKit/MapKit.h>
-//#import "BSJSONEncoder.h"
 #import "NSArray+BSJSONAdditions.h"
+#import "SM3DARSession.h"
+#import "SM3DARBtlUtilities.h"
 
 #define INFO_BUTTON_TAG 99877
 
@@ -126,12 +127,14 @@
 	NSDate *now = [NSDate date];
 	CLLocationCoordinate2D coord;
 	double alt;
+	double currentAlt = [SM3DARSession sharedSM3DARSession].currentLocation.altitude;
 	NSString *title;
 	
 	for (NSDictionary *row in markers) {	
 		coord.latitude = [((NSDecimalNumber*)[row objectForKey:@"latitude"]) floatValue];
 		coord.longitude = [((NSDecimalNumber*)[row objectForKey:@"longitude"]) floatValue];
-		alt = [((NSDecimalNumber*)[row objectForKey:@"altitude"]) floatValue];
+		//alt = [((NSDecimalNumber*)[row objectForKey:@"altitude"]) floatValue];
+		alt = currentAlt - 400;  //- [SM3DARBtlUtilities randomNumber:3]; // * [SM3DARBtlUtilities randomPolarity];
 		title = [row objectForKey:@"title"];
 		loc = [[CLLocation alloc] initWithCoordinate:coord altitude:alt horizontalAccuracy:1 verticalAccuracy:1 timestamp:now];
 		poi = [[ThreeDARPointOfInterest alloc] initWithLocation:loc title:title subtitle:nil url:nil];

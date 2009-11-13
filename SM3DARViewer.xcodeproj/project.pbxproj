@@ -20,6 +20,12 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		4D1EF21110ACB7AE00BC2081 /* markers_cc.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF21010ACB7AE00BC2081 /* markers_cc.json */; };
+		4D1EF23110ACBE9800BC2081 /* sm3dar_marker_icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF22B10ACBE9700BC2081 /* sm3dar_marker_icon5.png */; };
+		4D1EF23210ACBE9800BC2081 /* sm3dar_marker_icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF22C10ACBE9700BC2081 /* sm3dar_marker_icon4.png */; };
+		4D1EF23310ACBE9800BC2081 /* sm3dar_marker_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF22D10ACBE9700BC2081 /* sm3dar_marker_icon2.png */; };
+		4D1EF23410ACBE9800BC2081 /* sm3dar_marker_icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF22E10ACBE9800BC2081 /* sm3dar_marker_icon6.png */; };
+		4D1EF23510ACBE9800BC2081 /* sm3dar_marker_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF22F10ACBE9800BC2081 /* sm3dar_marker_icon1.png */; };
+		4D1EF23610ACBE9800BC2081 /* sm3dar_marker_icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF23010ACBE9800BC2081 /* sm3dar_marker_icon3.png */; };
 		4DBDE09C10AA2318005041C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE09B10AA2318005041C0 /* CoreLocation.framework */; };
 		4DBDE0A010AA2349005041C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE09F10AA2349005041C0 /* QuartzCore.framework */; };
 		4DBDE0A410AA235C005041C0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE0A310AA235C005041C0 /* MapKit.framework */; };
@@ -53,6 +59,14 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SM3DARViewer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARViewer_Prefix.pch; sourceTree = "<group>"; };
 		4D1EF21010ACB7AE00BC2081 /* markers_cc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markers_cc.json; sourceTree = "<group>"; };
+		4D1EF22B10ACBE9700BC2081 /* sm3dar_marker_icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon5.png; sourceTree = "<group>"; };
+		4D1EF22C10ACBE9700BC2081 /* sm3dar_marker_icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon4.png; sourceTree = "<group>"; };
+		4D1EF22D10ACBE9700BC2081 /* sm3dar_marker_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon2.png; sourceTree = "<group>"; };
+		4D1EF22E10ACBE9800BC2081 /* sm3dar_marker_icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon6.png; sourceTree = "<group>"; };
+		4D1EF22F10ACBE9800BC2081 /* sm3dar_marker_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon1.png; sourceTree = "<group>"; };
+		4D1EF23010ACBE9800BC2081 /* sm3dar_marker_icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon3.png; sourceTree = "<group>"; };
+		4D1EF2E810ACE09100BC2081 /* SM3DARSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARSession.h; sourceTree = "<group>"; };
+		4D1EF2FD10ACE2FC00BC2081 /* SM3DARBtlUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARBtlUtilities.h; sourceTree = "<group>"; };
 		4DBDE09010AA224D005041C0 /* AR3D_API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR3D_API.h; sourceTree = "<group>"; };
 		4DBDE09310AA22F2005041C0 /* ThreeDARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDARController.h; sourceTree = "<group>"; };
 		4DBDE09410AA22F2005041C0 /* ThreeDARPointOfInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDARPointOfInterest.h; sourceTree = "<group>"; };
@@ -155,6 +169,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4D1EF2FD10ACE2FC00BC2081 /* SM3DARBtlUtilities.h */,
+				4D1EF2E810ACE09100BC2081 /* SM3DARSession.h */,
 				4DBDE40410AAE4B4005041C0 /* BSJSONAdditions */,
 				4DBDE09810AA2309005041C0 /* StdMath.h */,
 				4DBDE09310AA22F2005041C0 /* ThreeDARController.h */,
@@ -170,6 +186,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D1EF22A10ACBE9700BC2081 /* SM3DAR_icons */,
 				4DBDE45210AAEC49005041C0 /* markers.json */,
 				4D1EF21010ACB7AE00BC2081 /* markers_cc.json */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
@@ -188,6 +205,19 @@
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D1EF22A10ACBE9700BC2081 /* SM3DAR_icons */ = {
+			isa = PBXGroup;
+			children = (
+				4D1EF22F10ACBE9800BC2081 /* sm3dar_marker_icon1.png */,
+				4D1EF22D10ACBE9700BC2081 /* sm3dar_marker_icon2.png */,
+				4D1EF23010ACBE9800BC2081 /* sm3dar_marker_icon3.png */,
+				4D1EF22C10ACBE9700BC2081 /* sm3dar_marker_icon4.png */,
+				4D1EF22B10ACBE9700BC2081 /* sm3dar_marker_icon5.png */,
+				4D1EF22E10ACBE9800BC2081 /* sm3dar_marker_icon6.png */,
+			);
+			path = SM3DAR_icons;
 			sourceTree = "<group>";
 		};
 		4DBDE40410AAE4B4005041C0 /* BSJSONAdditions */ = {
@@ -261,6 +291,12 @@
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				4DBDE47B10AAED23005041C0 /* markers.json in Resources */,
 				4D1EF21110ACB7AE00BC2081 /* markers_cc.json in Resources */,
+				4D1EF23110ACBE9800BC2081 /* sm3dar_marker_icon5.png in Resources */,
+				4D1EF23210ACBE9800BC2081 /* sm3dar_marker_icon4.png in Resources */,
+				4D1EF23310ACBE9800BC2081 /* sm3dar_marker_icon2.png in Resources */,
+				4D1EF23410ACBE9800BC2081 /* sm3dar_marker_icon6.png in Resources */,
+				4D1EF23510ACBE9800BC2081 /* sm3dar_marker_icon1.png in Resources */,
+				4D1EF23610ACBE9800BC2081 /* sm3dar_marker_icon3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
