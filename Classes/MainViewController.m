@@ -134,7 +134,7 @@
 		coord.latitude = [((NSDecimalNumber*)[row objectForKey:@"latitude"]) floatValue];
 		coord.longitude = [((NSDecimalNumber*)[row objectForKey:@"longitude"]) floatValue];
 		//alt = [((NSDecimalNumber*)[row objectForKey:@"altitude"]) floatValue];
-		alt = currentAlt - 400;  //- [SM3DARBtlUtilities randomNumber:3]; // * [SM3DARBtlUtilities randomPolarity];
+		alt = currentAlt - 200;  //- [SM3DARBtlUtilities randomNumber:3]; // * [SM3DARBtlUtilities randomPolarity];
 		title = [row objectForKey:@"title"];
 		loc = [[CLLocation alloc] initWithCoordinate:coord altitude:alt horizontalAccuracy:1 verticalAccuracy:1 timestamp:now];
 		poi = [[ThreeDARPointOfInterest alloc] initWithLocation:loc title:title subtitle:nil url:nil];
