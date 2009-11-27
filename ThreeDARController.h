@@ -16,6 +16,8 @@
  
 @protocol SM3DARDelegate
 -(void)loadPointsOfInterest;
+-(void)didChangeFocusToPOI:(ThreeDARPointOfInterest*)newPOI fromPOI:(ThreeDARPointOfInterest*)oldPOI;
+-(void)didChangeSelectionToPOI:(ThreeDARPointOfInterest*)newPOI fromPOI:(ThreeDARPointOfInterest*)oldPOI;
 @end
 
 

@@ -21,11 +21,21 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-			// Custom initialization
+			[self initSound];
     }
     return self;
 }
 
+- (void)initSound {
+	NSLog(@"Initializing sounds");
+	CFBundleRef mainBundle = CFBundleGetMainBundle ();
+	CFURLRef soundFileURLRef = CFBundleCopyResourceURL (mainBundle, CFSTR ("focus"), CFSTR ("aif"), NULL) ;
+	AudioServicesCreateSystemSoundID (soundFileURLRef, &focusSound);
+}
+
+- (void)playFocusSound {
+	AudioServicesPlaySystemSound(focusSound);
+} 
 
 /*
  // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -141,6 +151,15 @@
 		[self.arController addPointOfInterest:poi];
 		[poi release];
 	}
+}
+
+-(void)didChangeFocusToPOI:(ThreeDARPointOfInterest*)newPOI fromPOI:(ThreeDARPointOfInterest*)oldPOI {
+	NSLog(@"POI acquired focus: %@", newPOI.title);
+	[self playFocusSound];
+}
+
+-(void)didChangeSelectionToPOI:(ThreeDARPointOfInterest*)newPOI fromPOI:(ThreeDARPointOfInterest*)oldPOI {
+	NSLog(@"POI was selected: %@", newPOI.title);
 }
 
 
