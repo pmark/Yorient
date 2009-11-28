@@ -10,8 +10,6 @@
 #import "MainView.h"
 #import <MapKit/MapKit.h>
 #import "NSArray+BSJSONAdditions.h"
-#import "SM3DARSession.h"
-#import "SM3DARBtlUtilities.h"
 
 #define INFO_BUTTON_TAG 99877
 
@@ -144,7 +142,7 @@
 		coord.latitude = [((NSDecimalNumber*)[row objectForKey:@"latitude"]) floatValue];
 		coord.longitude = [((NSDecimalNumber*)[row objectForKey:@"longitude"]) floatValue];
 		//alt = [((NSDecimalNumber*)[row objectForKey:@"altitude"]) floatValue];
-		alt = currentAlt - 50;  //- [SM3DARBtlUtilities randomNumber:3]; // * [SM3DARBtlUtilities randomPolarity];
+		alt = currentAlt - 50;
 		title = [row objectForKey:@"title"];
 		loc = [[CLLocation alloc] initWithCoordinate:coord altitude:alt horizontalAccuracy:1 verticalAccuracy:1 timestamp:now];
 		poi = [[ThreeDARPointOfInterest alloc] initWithLocation:loc title:title subtitle:nil url:nil];

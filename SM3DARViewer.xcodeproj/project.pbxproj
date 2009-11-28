@@ -70,19 +70,13 @@
 		4D1EF22E10ACBE9800BC2081 /* sm3dar_marker_icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon6.png; sourceTree = "<group>"; };
 		4D1EF22F10ACBE9800BC2081 /* sm3dar_marker_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon1.png; sourceTree = "<group>"; };
 		4D1EF23010ACBE9800BC2081 /* sm3dar_marker_icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sm3dar_marker_icon3.png; sourceTree = "<group>"; };
-		4D1EF2E810ACE09100BC2081 /* SM3DARSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARSession.h; sourceTree = "<group>"; };
-		4D1EF2FD10ACE2FC00BC2081 /* SM3DARBtlUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARBtlUtilities.h; sourceTree = "<group>"; };
 		4D1EF38410ACF39C00BC2081 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4D1EF38510ACF39C00BC2081 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4D44A2B310C086E300A39FF4 /* SM3DARLibary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = SM3DARLibary.a; path = "../SM3DAR/SM3DARLibary/build/Release-iphoneos/SM3DARLibary.a"; sourceTree = SOURCE_ROOT; };
 		4D44A2CE10C0893D00A39FF4 /* tap.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tap.aif; sourceTree = "<group>"; };
 		4D44A2DD10C08A6700A39FF4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4D44A37F10C09DD500A39FF4 /* SM3DAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SM3DAR.h; path = ../SM3DAR/SM3DARLibary/SM3DAR.h; sourceTree = SOURCE_ROOT; };
 		4D8B38FB10B1E3D8008F49F3 /* markers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markers.json; sourceTree = "<group>"; };
-		4DBDE09010AA224D005041C0 /* AR3D_API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR3D_API.h; sourceTree = "<group>"; };
-		4DBDE09310AA22F2005041C0 /* ThreeDARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDARController.h; sourceTree = "<group>"; };
-		4DBDE09410AA22F2005041C0 /* ThreeDARPointOfInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDARPointOfInterest.h; sourceTree = "<group>"; };
-		4DBDE09510AA22F2005041C0 /* ThreeDARPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDARPointView.h; sourceTree = "<group>"; };
-		4DBDE09810AA2309005041C0 /* StdMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdMath.h; sourceTree = "<group>"; };
 		4DBDE09B10AA2318005041C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4DBDE09F10AA2349005041C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4DBDE0A310AA235C005041C0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -162,6 +156,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4D44A37F10C09DD500A39FF4 /* SM3DAR.h */,
 				4D44A2B310C086E300A39FF4 /* SM3DARLibary.a */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
@@ -181,14 +176,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4D1EF2FD10ACE2FC00BC2081 /* SM3DARBtlUtilities.h */,
-				4D1EF2E810ACE09100BC2081 /* SM3DARSession.h */,
 				4DBDE40410AAE4B4005041C0 /* BSJSONAdditions */,
-				4DBDE09810AA2309005041C0 /* StdMath.h */,
-				4DBDE09310AA22F2005041C0 /* ThreeDARController.h */,
-				4DBDE09410AA22F2005041C0 /* ThreeDARPointOfInterest.h */,
-				4DBDE09510AA22F2005041C0 /* ThreeDARPointView.h */,
-				4DBDE09010AA224D005041C0 /* AR3D_API.h */,
 				32CA4F630368D1EE00C91783 /* SM3DARViewer_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);

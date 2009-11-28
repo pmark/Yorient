@@ -6,12 +6,12 @@
 //  Copyright Bordertown Labs, LLC 2009. All rights reserved.
 //
 
-#import "AR3D_API.h" 
-#import "ThreeDARController.h"
+#import "SM3DAR.h" 
+//#import "AR3D_API.h" 
 #import "FlipsideViewController.h"
 #import "AudioToolbox/AudioServices.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DARDelegate> {
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DAR_Delegate> {
 	ThreeDARController *arController;
 	IBOutlet UIButton *infoButton;
 	SystemSoundID focusSound;
