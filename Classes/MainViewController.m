@@ -95,14 +95,19 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
-	SM3DAR_Controller *ar = [[SM3DAR_Controller alloc] init];
-	[self.view addSubview:ar.view];
-	self.arController = ar;
-	ar.delegate = self;
-	[ar release];	
-	
+
+	[self init3DAR];
+
 	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:4];
+}
+
+- (void)init3DAR {
+	// TODO: consider an initWithController:overlay
+	SM3DAR_Controller *controller = [[[SM3DAR_Controller alloc] init] autorelease];
+	[self.view addSubview:controller.view];
+	self.arController = controller;	
+	controller.delegate = self;
+	//[ar.camera setCameraOverlayView:myOverlay];
 }
 
 - (void)showInfoButton {

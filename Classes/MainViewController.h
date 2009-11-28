@@ -19,6 +19,7 @@
 @property (nonatomic, retain) SM3DAR_Controller *arController;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
 
+- (void)init3DAR;
 - (IBAction)showInfo;
 - (void)loadPointsOfInterest;
 - (void)initSound;

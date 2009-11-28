@@ -9,6 +9,7 @@
  */
 
 #import <MapKit/MapKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 @class SM3DAR_PointOfInterest;		
@@ -47,6 +48,7 @@
 - (BOOL)displayPoint:(SM3DAR_PointOfInterest*)poi;
 - (CLLocation*)currentLocation;
 - (void)startCamera;
+- (CATransform3D)cameraTransform;
 
 // map
 - (void)initMap;
@@ -87,6 +89,7 @@
 - (CGFloat)distanceInMilesFrom:(CLLocation*)otherPoint;
 - (CGFloat)distanceInMilesFromCurrentLocation;
 - (BOOL)isInView:(CGPoint*)point;
+- (CATransform3D)objectTransform;
 @end
 
 @interface SM3DAR_Session : NSObject {
