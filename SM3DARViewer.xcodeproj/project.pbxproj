@@ -165,10 +165,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				4DBDE09B10AA2318005041C0 /* CoreLocation.framework */,
-				4DBDE09F10AA2349005041C0 /* QuartzCore.framework */,
-				4DBDE0A310AA235C005041C0 /* MapKit.framework */,
-				4D44A2DD10C08A6700A39FF4 /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -204,9 +200,13 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				4D44A2DD10C08A6700A39FF4 /* AudioToolbox.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
+				4DBDE09B10AA2318005041C0 /* CoreLocation.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				4DBDE0A310AA235C005041C0 /* MapKit.framework */,
+				4DBDE09F10AA2349005041C0 /* QuartzCore.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

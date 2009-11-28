@@ -1,6 +1,6 @@
 //
 //  MainViewController.m
-//  SM3DARViewer
+//  SM3DAR_Viewer
 //
 //  Created by P. Mark Anderson on 11/10/09.
 //  Copyright Bordertown Labs, LLC 2009. All rights reserved.
@@ -96,7 +96,7 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	ThreeDARController *ar = [[ThreeDARController alloc] init];
+	SM3DAR_Controller *ar = [[SM3DAR_Controller alloc] init];
 	[self.view addSubview:ar.view];
 	self.arController = ar;
 	ar.delegate = self;
@@ -129,13 +129,13 @@
 }
 
 -(void)loadPointsOfInterest {
-	ThreeDARPointOfInterest *poi;
+	SM3DAR_PointOfInterest *poi;
 	NSArray *markers = [self loadData];
 	CLLocation *loc;
 	NSDate *now = [NSDate date];
 	CLLocationCoordinate2D coord;
 	double alt;
-	double currentAlt = [SM3DARSession sharedSM3DARSession].currentLocation.altitude;
+	double currentAlt = [SM3DAR_Session sharedSM3DAR_Session].currentLocation.altitude;
 	NSString *title;
 	
 	for (NSDictionary *row in markers) {	
@@ -145,18 +145,18 @@
 		alt = currentAlt - 50;
 		title = [row objectForKey:@"title"];
 		loc = [[CLLocation alloc] initWithCoordinate:coord altitude:alt horizontalAccuracy:1 verticalAccuracy:1 timestamp:now];
-		poi = [[ThreeDARPointOfInterest alloc] initWithLocation:loc title:title subtitle:nil url:nil];
+		poi = [[SM3DAR_PointOfInterest alloc] initWithLocation:loc title:title subtitle:nil url:nil];
 		[self.arController addPointOfInterest:poi];
 		[poi release];
 	}
 }
 
--(void)didChangeFocusToPOI:(ThreeDARPointOfInterest*)newPOI fromPOI:(ThreeDARPointOfInterest*)oldPOI {
+-(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
 	NSLog(@"POI acquired focus: %@", newPOI.title);
 	[self playFocusSound];
 }
 
--(void)didChangeSelectionToPOI:(ThreeDARPointOfInterest*)newPOI fromPOI:(ThreeDARPointOfInterest*)oldPOI {
+-(void)didChangeSelectionToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
 	NSLog(@"POI was selected: %@", newPOI.title);
 }
 
