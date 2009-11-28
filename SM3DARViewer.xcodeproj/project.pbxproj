@@ -31,6 +31,7 @@
 		4D44A2B410C086E300A39FF4 /* SM3DARLibary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D44A2B310C086E300A39FF4 /* SM3DARLibary.a */; };
 		4D44A2CF10C0893D00A39FF4 /* tap.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4D44A2CE10C0893D00A39FF4 /* tap.aif */; };
 		4D44A2DE10C08A6700A39FF4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D44A2DD10C08A6700A39FF4 /* AudioToolbox.framework */; };
+		4D44A55510C0CA6300A39FF4 /* authorized_keys.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D44A55410C0CA6300A39FF4 /* authorized_keys.txt */; };
 		4D8B38FC10B1E3D8008F49F3 /* markers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D8B38FB10B1E3D8008F49F3 /* markers.json */; };
 		4DBDE09C10AA2318005041C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE09B10AA2318005041C0 /* CoreLocation.framework */; };
 		4DBDE0A010AA2349005041C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDE09F10AA2349005041C0 /* QuartzCore.framework */; };
@@ -76,6 +77,7 @@
 		4D44A2CE10C0893D00A39FF4 /* tap.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tap.aif; sourceTree = "<group>"; };
 		4D44A2DD10C08A6700A39FF4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4D44A3AF10C0A04E00A39FF4 /* SM3DAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DAR.h; sourceTree = "<group>"; };
+		4D44A55410C0CA6300A39FF4 /* authorized_keys.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = authorized_keys.txt; sourceTree = "<group>"; };
 		4D8B38FB10B1E3D8008F49F3 /* markers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markers.json; sourceTree = "<group>"; };
 		4DBDE09B10AA2318005041C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4DBDE09F10AA2349005041C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -193,6 +195,7 @@
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* SM3DARViewer-Info.plist */,
+				4D44A55410C0CA6300A39FF4 /* authorized_keys.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				4D1EF38710ACF39C00BC2081 /* Icon.png in Resources */,
 				4D8B38FC10B1E3D8008F49F3 /* markers.json in Resources */,
 				4D44A2CF10C0893D00A39FF4 /* tap.aif in Resources */,
+				4D44A55510C0CA6300A39FF4 /* authorized_keys.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
