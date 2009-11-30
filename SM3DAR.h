@@ -1,11 +1,10 @@
 /*
- *  SM3DAR_.h
- *  SM3DAR_Libary
+ *  SM3DAR.h
  *
- *  Created by P. Mark Anderson on 11/27/09.
  *  Copyright 2009 Spot Metrix, Inc. All rights reserved.
  *
- *  This is the developer's API.
+ *  API for 3DAR.
+ *
  */
 
 #import <MapKit/MapKit.h>
