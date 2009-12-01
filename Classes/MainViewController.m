@@ -24,6 +24,19 @@
     return self;
 }
 
+- (void)alignInfoButtonWith3darLogo {
+	CGRect logoFrame = [self.arController logoFrame];
+	CGPoint logoCenter = CGPointMake(logoFrame.origin.x+logoFrame.size.width/2, 
+																	 logoFrame.origin.y+logoFrame.size.height/2);
+	int x, y, w, h, xpad;
+	w = self.infoButton.frame.size.width;
+	h = self.infoButton.frame.size.height;
+	xpad = logoFrame.origin.x;
+	x = self.view.frame.size.width - xpad - (w/2);
+	y = logoCenter.y;
+	self.infoButton.center = CGPointMake(x, y);
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
@@ -32,11 +45,11 @@
 	self.arController = controller;	
 	controller.delegate = self;
 
+	[self alignInfoButtonWith3darLogo];
 	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:4];
 }
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-    
 	[self dismissModalViewControllerAnimated:YES];
 }
 

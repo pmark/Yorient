@@ -52,6 +52,10 @@
 - (CATransform3D)cameraTransform;
 - (NSString*)loadJSONFromFile:(NSString*)fileName;
 - (void)loadMarkersFromJSONFile:(NSString*)jsonFileName;
+- (void)loadMarkersFromJSON:(NSString*)jsonString;
+- (SM3DAR_PointOfInterest*)initPointOfInterest:(NSDictionary*)properties;
+- (void)debug:(NSString*)message;
+- (CGRect)logoFrame;
 
 // map
 - (void)initMap;
