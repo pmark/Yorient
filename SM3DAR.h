@@ -43,11 +43,15 @@
 @property (nonatomic, retain) SM3DAR_PointOfInterest *selectedPOI;
 
 - (void)addPointOfInterest:(SM3DAR_PointOfInterest*)point;
+- (void)replaceAllPoints:(NSArray*)points;
+
 - (UIView *)viewForCoordinate:(SM3DAR_PointOfInterest*)poi;
 - (BOOL)displayPoint:(SM3DAR_PointOfInterest*)poi;
 - (CLLocation*)currentLocation;
 - (void)startCamera;
 - (CATransform3D)cameraTransform;
+- (NSString*)loadJSONFromFile:(NSString*)fileName;
+- (void)loadMarkersFromJSONFile:(NSString*)jsonFileName;
 
 // map
 - (void)initMap;

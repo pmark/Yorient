@@ -24,45 +24,20 @@
     return self;
 }
 
-- (void)initSound {
-	NSLog(@"Initializing sounds");
-	CFBundleRef mainBundle = CFBundleGetMainBundle ();
-	CFURLRef soundFileURLRef = CFBundleCopyResourceURL (mainBundle, CFSTR ("focus"), CFSTR ("aif"), NULL) ;
-	AudioServicesCreateSystemSoundID (soundFileURLRef, &focusSound);
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+
+	SM3DAR_Controller *controller = [[[SM3DAR_Controller alloc] init] autorelease];
+	[self.view addSubview:controller.view];
+	self.arController = controller;	
+	controller.delegate = self;
+
+	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:4];
 }
-
-- (void)playFocusSound {
-	AudioServicesPlaySystemSound(focusSound);
-} 
-
-/*
- // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
- - (void)viewDidLoad {
- [super viewDidLoad];
- }
- */
-
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
     
 	[self dismissModalViewControllerAnimated:YES];
-}
-
-
-- (IBAction)showInfo {    
-
-	[self.arController toggleMap];
-	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:2];
-
 }
 
 - (void)showFlipside {
@@ -71,6 +46,10 @@
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentModalViewController:controller animated:YES];	
 	[controller release];
+}
+
+- (IBAction)showInfo {
+	[self showFlipside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,78 +72,38 @@
 
 #pragma mark -
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-
-	[self init3DAR];
-
-	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:4];
-}
-
-- (void)init3DAR {
-	// TODO: consider an initWithController:overlay
-	SM3DAR_Controller *controller = [[[SM3DAR_Controller alloc] init] autorelease];
-	[self.view addSubview:controller.view];
-	self.arController = controller;	
-	controller.delegate = self;
-	//[ar.camera setCameraOverlayView:myOverlay];
-}
-
 - (void)showInfoButton {
 	[self.view bringSubviewToFront:[self.view viewWithTag:INFO_BUTTON_TAG]];
 }
 
 
 #pragma mark Data loading
--(NSString*)loadJSONFromFile:(NSString*)fileName {
-	NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"json"];
-	NSString *json = nil;
-	if (filePath) {
-		json = [NSString stringWithContentsOfFile:filePath usedEncoding:NULL error:NULL];
-	} else {
-		NSLog(@"JSON file does not exist: %@", fileName);
-	}
-	return json;
-}
-
--(NSArray*)loadData {
-	NSString *jsonString = [self loadJSONFromFile:@"markers"];
-	NSLog(@"JSON: %@", jsonString);
-	return [NSArray arrayWithJSONString:jsonString];
-}
-
 -(void)loadPointsOfInterest {
-	SM3DAR_PointOfInterest *poi;
-	NSArray *markers = [self loadData];
-	CLLocation *loc;
-	NSDate *now = [NSDate date];
-	CLLocationCoordinate2D coord;
-	double alt;
-	double currentAlt = [SM3DAR_Session sharedSM3DAR_Session].currentLocation.altitude;
-	NSString *title;
-	
-	for (NSDictionary *row in markers) {	
-		coord.latitude = [((NSDecimalNumber*)[row objectForKey:@"latitude"]) floatValue];
-		coord.longitude = [((NSDecimalNumber*)[row objectForKey:@"longitude"]) floatValue];
-		//alt = [((NSDecimalNumber*)[row objectForKey:@"altitude"]) floatValue];
-		alt = currentAlt - 50;
-		title = [row objectForKey:@"title"];
-		loc = [[CLLocation alloc] initWithCoordinate:coord altitude:alt horizontalAccuracy:1 verticalAccuracy:1 timestamp:now];
-		poi = [[SM3DAR_PointOfInterest alloc] initWithLocation:loc title:title subtitle:nil url:nil];
-		[self.arController addPointOfInterest:poi];
-		[poi release];
-	}
+	[self.arController loadMarkersFromJSONFile:@"markers"];
 }
 
 -(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
-	NSLog(@"POI acquired focus: %@", newPOI.title);
+	//NSLog(@"POI acquired focus: %@", newPOI.title);
 	[self playFocusSound];
 }
 
 -(void)didChangeSelectionToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
-	NSLog(@"POI was selected: %@", newPOI.title);
+	//NSLog(@"POI was selected: %@", newPOI.title);
 }
 
+#pragma mark Sound
+- (void)initSound {
+	CFBundleRef mainBundle = CFBundleGetMainBundle();
+	CFURLRef soundFileURLRef = CFBundleCopyResourceURL(mainBundle, CFSTR ("focus"), CFSTR ("aif"), NULL) ;
+	AudioServicesCreateSystemSoundID(soundFileURLRef, &focusSound);
+}
 
+- (void)playFocusSound {
+	AudioServicesPlaySystemSound(focusSound);
+} 
+
+
+
+#pragma mark -
 
 @end
