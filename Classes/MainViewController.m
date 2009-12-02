@@ -37,8 +37,12 @@
 	self.infoButton.center = CGPointMake(x, y);
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
+//- (void)viewDidAppear:(BOOL)animated {
+//	[super viewDidAppear:animated];
+//}
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
 
 	SM3DAR_Controller *controller = [[[SM3DAR_Controller alloc] init] autorelease];
 	[self.view addSubview:controller.view];

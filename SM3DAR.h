@@ -42,18 +42,23 @@
 @property (nonatomic, retain) SM3DAR_PointOfInterest *focusedPOI;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *selectedPOI;
 
+// points of interest
 - (void)addPointOfInterest:(SM3DAR_PointOfInterest*)point;
-- (void)replaceAllPoints:(NSArray*)points;
+- (void)addPointsOfInterest:(NSArray*)points;
+- (void)removePointOfInterest:(SM3DAR_PointOfInterest*)point;
+- (void)removePointsOfInterest:(NSArray*)points;
+- (void)removeAllPointsOfInterest;
+- (void)replaceAllPointsOfInterestWith:(NSArray*)points;
+- (NSString*)loadJSONFromFile:(NSString*)fileName;
+- (void)loadMarkersFromJSONFile:(NSString*)jsonFileName;
+- (void)loadMarkersFromJSON:(NSString*)jsonString;
+- (SM3DAR_PointOfInterest*)initPointOfInterest:(NSDictionary*)properties;
 
 - (UIView *)viewForCoordinate:(SM3DAR_PointOfInterest*)poi;
 - (BOOL)displayPoint:(SM3DAR_PointOfInterest*)poi;
 - (CLLocation*)currentLocation;
 - (void)startCamera;
 - (CATransform3D)cameraTransform;
-- (NSString*)loadJSONFromFile:(NSString*)fileName;
-- (void)loadMarkersFromJSONFile:(NSString*)jsonFileName;
-- (void)loadMarkersFromJSON:(NSString*)jsonString;
-- (SM3DAR_PointOfInterest*)initPointOfInterest:(NSDictionary*)properties;
 - (void)debug:(NSString*)message;
 - (CGRect)logoFrame;
 

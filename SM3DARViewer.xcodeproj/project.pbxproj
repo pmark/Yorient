@@ -170,6 +170,7 @@
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				4D1EF22A10ACBE9700BC2081 /* SM3DAR_resources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -190,7 +191,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4D1EF22A10ACBE9700BC2081 /* SM3DAR_resources */,
 				4D44A2CE10C0893D00A39FF4 /* focus.aif */,
 				4D1EF38410ACF39C00BC2081 /* Default.png */,
 				4D1EF38510ACF39C00BC2081 /* Icon.png */,
