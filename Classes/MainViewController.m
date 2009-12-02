@@ -115,7 +115,7 @@
 #pragma mark Sound
 - (void)initSound {
 	CFBundleRef mainBundle = CFBundleGetMainBundle();
-	CFURLRef soundFileURLRef = CFBundleCopyResourceURL(mainBundle, CFSTR ("focus"), CFSTR ("aif"), NULL) ;
+	CFURLRef soundFileURLRef = CFBundleCopyResourceURL(mainBundle, CFSTR ("focus2"), CFSTR ("aif"), NULL) ;
 	AudioServicesCreateSystemSoundID(soundFileURLRef, &focusSound);
 }
 

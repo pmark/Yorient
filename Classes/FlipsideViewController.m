@@ -24,9 +24,7 @@
 - (void)runSearch {
 	((MainViewController*)self.delegate).searchQuery = self.searchBar.text;
 	
-	if (self.searchBar.text == nil) {
-		NSLog(@"TODO: load markers.json");
-	} else {
+	if (self.searchBar.text != nil) {
 		[self localSearch:self.searchBar.text];	
 	}
 	[self.delegate flipsideViewControllerDidFinish:self];	
@@ -38,7 +36,6 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)bar {
 	[bar resignFirstResponder];
-	NSLog(@"canceling search");
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)bar {
