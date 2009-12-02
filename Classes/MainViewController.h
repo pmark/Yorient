@@ -14,8 +14,10 @@
 	SM3DAR_Controller *arController;
 	IBOutlet UIButton *infoButton;
 	SystemSoundID focusSound;
+	NSString *searchQuery;
 }
 
+@property (nonatomic, retain) NSString *searchQuery;
 @property (nonatomic, retain) SM3DAR_Controller *arController;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
 

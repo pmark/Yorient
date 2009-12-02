@@ -118,4 +118,23 @@
 @end
 
 
+@interface SM3DAR_MarkerView : UIView {
+	SM3DAR_PointOfInterest *poi;
+}
+
+
+@property (nonatomic, retain) SM3DAR_PointOfInterest *poi;
+- (id)initWithPointOfInterest:(SM3DAR_PointOfInterest*)pointOfInterest;
+- (void)buildView;
+- (void)scaleToRange;
+@end
+
+
+@interface SM3DAR_IconMarkerView : SM3DAR_MarkerView {
+	UIImageView *icon;
+}
+@property (nonatomic, retain) UIImageView *icon;
++ (NSString*)randomIconName;
+@end
+
 

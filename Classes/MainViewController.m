@@ -15,7 +15,7 @@
 
 @implementation MainViewController
 
-@synthesize arController, infoButton;
+@synthesize arController, infoButton, searchQuery;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -55,6 +55,9 @@
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
 	[self dismissModalViewControllerAnimated:YES];
+	if (self.searchQuery == nil) {
+		[self loadPointsOfInterest];
+	}
 }
 
 - (void)showFlipside {
@@ -84,6 +87,7 @@
 - (void)dealloc {
 	[arController release];
 	[infoButton release];
+	[searchQuery release];
 	[super dealloc];
 }
 

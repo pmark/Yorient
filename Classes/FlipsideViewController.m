@@ -13,18 +13,36 @@
 
 @implementation FlipsideViewController
 
-@synthesize delegate, webData;
+@synthesize delegate, webData, searchBar;
 
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	//self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
+	self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 }
 
+- (void)runSearch {
+	((MainViewController*)self.delegate).searchQuery = self.searchBar.text;
+	
+	if (self.searchBar.text == nil) {
+		NSLog(@"TODO: load markers.json");
+	} else {
+		[self localSearch:self.searchBar.text];	
+	}
+	[self.delegate flipsideViewControllerDidFinish:self];	
+}
 
 - (IBAction)done {
-	[self localSearch:@"pizza"];	
-	[self.delegate flipsideViewControllerDidFinish:self];	
+	[self runSearch];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)bar {
+	[bar resignFirstResponder];
+	NSLog(@"canceling search");
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)bar {
+	[self runSearch];
 }
 
 - (SM3DAR_Controller*)get3darController {
@@ -35,8 +53,6 @@
 
 	SM3DAR_Controller *arController = [self get3darController];
 	CLLocation *loc = [arController currentLocation];
-	NSLog(@"current location: %3.5f, %3.5f, %3.5f", loc.coordinate.latitude, loc.coordinate.longitude, loc.altitude);
-	NSLog (@"LOCATION ACCURACY: %f\n", loc.horizontalAccuracy) ;
 
 	//NSString *googleMapUri = @"http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=%@&sll=%3.5f,%3.5f&spn=0.038852,0.077162&ie=UTF8&z=12&output=json";
 	NSString *yahooMapUri = @"http://local.yahooapis.com/LocalSearchService/V3/localSearch?appid=YahooDemo&query=%@&latitude=%3.5f&longitude=%3.5f&results=20&output=json";
@@ -115,9 +131,15 @@
 	// e.g. self.myOutlet = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	self.searchBar.text = ((MainViewController*)self.delegate).searchQuery;
+}
+
 
 - (void)dealloc {
 	[webData release];
+	[searchBar release];
 	[super dealloc];
 }
 
