@@ -100,6 +100,7 @@
 
 #pragma mark Data loading
 -(void)loadPointsOfInterest {
+	self.arController.markerViewClass = nil;
 	[self.arController loadMarkersFromJSONFile:@"markers"];
 }
 

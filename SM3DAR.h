@@ -30,6 +30,7 @@
 	NSMutableArray *pointsOfInterest;
 	SM3DAR_PointOfInterest *focusedPOI;
 	SM3DAR_PointOfInterest *selectedPOI;
+	Class markerViewClass;
 }
 
 @property (assign) BOOL mapIsVisible;
@@ -41,6 +42,7 @@
 @property (nonatomic, retain) NSMutableDictionary *pointsOfInterest;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *focusedPOI;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *selectedPOI;
+@property (nonatomic, assign) Class markerViewClass;
 
 // points of interest
 - (void)addPointOfInterest:(SM3DAR_PointOfInterest*)point;
@@ -121,8 +123,6 @@
 @interface SM3DAR_MarkerView : UIView {
 	SM3DAR_PointOfInterest *poi;
 }
-
-
 @property (nonatomic, retain) SM3DAR_PointOfInterest *poi;
 - (id)initWithPointOfInterest:(SM3DAR_PointOfInterest*)pointOfInterest;
 - (void)buildView;
@@ -136,5 +136,4 @@
 @property (nonatomic, retain) UIImageView *icon;
 + (NSString*)randomIconName;
 @end
-
 

@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import "NSArray+BSJSONAdditions.h"
 #import "NSString+BSJSONAdditions.h"
+#import "SearchResultMarkerView.h"
 
 @implementation FlipsideViewController
 
@@ -24,7 +25,7 @@
 - (void)runSearch {
 	((MainViewController*)self.delegate).searchQuery = self.searchBar.text;
 	
-	if (self.searchBar.text != nil) {
+	if ([self.searchBar.text length] != 0) {
 		[self localSearch:self.searchBar.text];	
 	}
 	[self.delegate flipsideViewControllerDidFinish:self];	
@@ -56,7 +57,7 @@
 
 	NSString *uri = [NSString stringWithFormat:yahooMapUri, 
 									 query, loc.coordinate.latitude, loc.coordinate.longitude];
-	NSLog(@"Searching...\n\n%@\n\n", uri);
+	NSLog(@"Searching...\n%@\n", uri);
 	NSURL *mapSearchURL = [NSURL URLWithString:uri];
 	NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:mapSearchURL] delegate:self startImmediately:YES];
 
@@ -85,13 +86,10 @@
 	NSDictionary *responseDict = [NSDictionary dictionaryWithJSONString:json];	
 	NSDictionary *container = [responseDict objectForKey:@"ResultSet"];	
 	NSArray *responseSet = [container objectForKey:@"Result"];
-	NSLog(@"Map query found %i points of interest", [responseSet count]);
-
 	NSDictionary *marker, *minMarker;
 	NSMutableArray *markers = [NSMutableArray arrayWithCapacity:[responseSet count]];
 
 	for (marker in responseSet) {
-		//NSLog(@"result: %@", marker);
 		minMarker = [NSDictionary dictionaryWithObjectsAndKeys:
 							[marker objectForKey:@"Title"], @"title",
 							[marker objectForKey:@"Address"], @"subtitle",
@@ -113,6 +111,7 @@
 	NSArray *markers = [self parseYahooMapSearchResults:response];
 	SM3DAR_Controller *arController = [self get3darController];
 	[arController removeAllPointsOfInterest];
+	arController.markerViewClass = [SearchResultMarkerView class];
 	[arController loadMarkersFromJSON:[markers jsonStringValue]];
 }
 
