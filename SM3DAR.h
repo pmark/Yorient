@@ -13,6 +13,7 @@
 
 @class SM3DAR_PointOfInterest;		
 @class SM3DAR_Session;
+@class SM3DAR_FocusView;
 
 @protocol SM3DAR_Delegate
 -(void)loadPointsOfInterest;
@@ -43,6 +44,7 @@
 @property (nonatomic, retain) SM3DAR_PointOfInterest *focusedPOI;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *selectedPOI;
 @property (nonatomic, assign) Class markerViewClass;
+@property (nonatomic, retain) SM3DAR_FocusView *focusView;
 
 // points of interest
 - (void)addPointOfInterest:(SM3DAR_PointOfInterest*)point;
@@ -63,6 +65,7 @@
 - (CATransform3D)cameraTransform;
 - (void)debug:(NSString*)message;
 - (CGRect)logoFrame;
+- (void)addFocusView:(SM3DAR_FocusView*)customFocusView;
 
 // map
 - (void)initMap;
@@ -97,11 +100,16 @@
 @property (assign) BOOL hasFocus;
 
 - (UIView*)defaultView;
+- (id)initWithLocation:(CLLocation*)loc properties:(NSDictionary*)props;
 - (id)initWithLocation:(CLLocation*)loc title:(NSString*)title subtitle:(NSString*)subtitle url:(NSURL*)url;
-- (NSString*)formattedDistanceInMilesFrom:(CLLocation*)otherPoint;
-- (NSString*)formattedDistanceInMilesFromCurrentLocation;
+- (CGFloat)distanceInMetersFrom:(CLLocation*)otherPoint;
+- (CGFloat)distanceInMetersFromCurrentLocation;
+- (NSString*)formattedDistanceInMetersFrom:(CLLocation*)otherPoint;
+- (NSString*)formattedDistanceInMetersFromCurrentLocation;
 - (CGFloat)distanceInMilesFrom:(CLLocation*)otherPoint;
 - (CGFloat)distanceInMilesFromCurrentLocation;
+- (NSString*)formattedDistanceInMilesFrom:(CLLocation*)otherPoint;
+- (NSString*)formattedDistanceInMilesFromCurrentLocation;
 - (BOOL)isInView:(CGPoint*)point;
 - (CATransform3D)objectTransform;
 @end
@@ -127,6 +135,7 @@
 - (id)initWithPointOfInterest:(SM3DAR_PointOfInterest*)pointOfInterest;
 - (void)buildView;
 - (void)scaleToRange;
+- (void)didReceiveFocus;
 @end
 
 
@@ -137,3 +146,12 @@
 + (NSString*)randomIconName;
 @end
 
+
+@interface SM3DAR_FocusView : UIView {
+	SM3DAR_PointOfInterest *poi;
+}
+@property (nonatomic, retain) SM3DAR_PointOfInterest *poi;
+- (void)buildView;
+- (void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI;
+- (void)updatePositionAndOrientation:(CGFloat)screenOrientationRadians;
+@end

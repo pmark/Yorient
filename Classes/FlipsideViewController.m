@@ -95,6 +95,7 @@
 							[marker objectForKey:@"Address"], @"subtitle",
 							[marker objectForKey:@"Latitude"], @"latitude",
 							[marker objectForKey:@"Longitude"], @"longitude",
+							self.searchBar.text, @"search",
 							nil];
 		[markers addObject:minMarker];
 	}
@@ -110,6 +111,7 @@
 	// convert response json into a collection of markers
 	NSArray *markers = [self parseYahooMapSearchResults:response];
 	SM3DAR_Controller *arController = [self get3darController];
+	
 	[arController removeAllPointsOfInterest];
 	arController.markerViewClass = [SearchResultMarkerView class];
 	[arController loadMarkersFromJSON:[markers jsonStringValue]];

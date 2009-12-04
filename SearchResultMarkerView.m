@@ -8,18 +8,19 @@
 
 #import "SearchResultMarkerView.h"
 
-
 @implementation SearchResultMarkerView
 
 - (void)buildView {
-	UIImage *img = [UIImage imageNamed:@"bubble.png"];
+	UIImage *img = [UIImage imageNamed:@"bubble1.png"];
 	self.icon = [[UIImageView alloc] initWithImage:img];
 
 	self.frame = CGRectMake(0, 0, img.size.width, img.size.height);
-	//self.backgroundColor = [SM3DARBtlUtilities randomColor];
 	
 	[self scaleToRange];
 	[self addSubview:icon];
+}
+
+- (void)didReceiveFocus {
 }
 
 @end

@@ -8,7 +8,6 @@
 
 #import "SM3DAR.h"
 
-
 @interface SearchResultMarkerView : SM3DAR_IconMarkerView {
 
 }
