@@ -112,9 +112,15 @@
 	NSArray *markers = [self parseYahooMapSearchResults:response];
 	SM3DAR_Controller *arController = [self get3darController];
 	
+	NSLog(@"removing all POIs");
 	[arController removeAllPointsOfInterest];
-	arController.markerViewClass = [SearchResultMarkerView class];
-	[arController loadMarkersFromJSON:[markers jsonStringValue]];
+	
+	NSLog(@"Adding %i POIs", [markers count]);
+	if (markers && [markers count] > 0) {
+		arController.markerViewClass = [SearchResultMarkerView class];
+		[arController loadMarkersFromJSON:[markers jsonStringValue]];
+	}
+	
 }
 
 - (void)didReceiveMemoryWarning {
