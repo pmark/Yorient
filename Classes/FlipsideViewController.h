@@ -14,17 +14,14 @@
 
 @interface FlipsideViewController : UIViewController <UISearchBarDelegate> {
 	id <FlipsideViewControllerDelegate> delegate;
-	NSMutableData *webData;
 	IBOutlet UISearchBar *searchBar;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
-@property (nonatomic, retain) NSMutableData *webData;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 
 - (IBAction)done;
-- (void)localSearch:(NSString*)query;
-- (SM3DAR_Controller*)get3darController;
+- (void)runLocalSearch:(NSString*)query;
 
 @end
 

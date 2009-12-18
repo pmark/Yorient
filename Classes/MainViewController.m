@@ -15,17 +15,16 @@
 
 @implementation MainViewController
 
-@synthesize arController, infoButton, searchQuery;
+@synthesize sm3dar, infoButton, searchQuery, search;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-			[self initSound];
     }
     return self;
 }
 
 - (void)alignInfoButtonWith3darLogo {
-	CGRect logoFrame = [self.arController logoFrame];
+	CGRect logoFrame = [self.sm3dar logoFrame];
 	CGPoint logoCenter = CGPointMake(logoFrame.origin.x+logoFrame.size.width/2, 
 																	 logoFrame.origin.y+logoFrame.size.height/2);
 	int x, y, w, h, xpad;
@@ -37,16 +36,27 @@
 	self.infoButton.center = CGPointMake(x, y);
 }
 
-//- (void)viewDidAppear:(BOOL)animated {
-//	[super viewDidAppear:animated];
-//}
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+
+  if (!sm3darInitialized) {
+    [self.view addSubview:self.sm3dar.view];
+    NSLog(@"Added 3DAR view");
+    
+    [self.sm3dar startCamera];
+    
+    [self initSound];
+    self.search = [[[LocalSearch alloc] init] autorelease];
+    self.search.sm3dar = self.sm3dar;  
+    sm3darInitialized = YES;
+  }  
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	SM3DAR_Controller *controller = [[[SM3DAR_Controller alloc] init] autorelease];
-	[self.view addSubview:controller.view];
-	self.arController = controller;	
+	self.sm3dar = controller;	
 	controller.delegate = self;
 
 	[self alignInfoButtonWith3darLogo];
@@ -54,10 +64,11 @@
 }
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-	[self dismissModalViewControllerAnimated:YES];
-	if (self.searchQuery == nil) {
-		[self loadPointsOfInterest];
-	}
+  [self dismissModalViewControllerAnimated:YES];
+  if (self.searchQuery == nil) {
+    [self loadPointsOfInterestFromMarkersFile];
+  }
+  [self showInfoButton];
 }
 
 - (void)showFlipside {
@@ -67,6 +78,11 @@
 	[self presentModalViewController:controller animated:YES];	
 	[controller release];
 }
+
+- (void)runLocalSearch:(NSString*)query {
+  [self.search execute:query];
+}
+
 
 - (IBAction)showInfo {
 	[self showFlipside];
@@ -85,9 +101,10 @@
 }
 
 - (void)dealloc {
-	[arController release];
+	[sm3dar release];
 	[infoButton release];
 	[searchQuery release];
+  [search release];
 	[super dealloc];
 }
 
@@ -100,8 +117,12 @@
 
 #pragma mark Data loading
 -(void)loadPointsOfInterest {
-	self.arController.markerViewClass = nil;
-	[self.arController loadMarkersFromJSONFile:@"markers"];
+  [self runLocalSearch:@"pizza"];
+}
+
+-(void)loadPointsOfInterestFromMarkersFile {
+	self.sm3dar.markerViewClass = nil;
+	[self.sm3dar loadMarkersFromJSONFile:@"markers"];
 }
 
 -(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
@@ -127,5 +148,8 @@
 
 
 #pragma mark -
+
+-(void)sm3darViewDidLoad {
+}
 
 @end

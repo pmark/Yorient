@@ -16,6 +16,7 @@
 @class SM3DAR_FocusView;
 
 @protocol SM3DAR_Delegate
+-(void)sm3darViewDidLoad;
 -(void)loadPointsOfInterest;
 -(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI;
 -(void)didChangeSelectionToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI;
