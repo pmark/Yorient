@@ -15,13 +15,13 @@
 @synthesize sm3dar, webData, query;
 
 - (void)execute:(NSString*)searchQuery {
-  self.query = query;
+  self.query = searchQuery;
 	CLLocation *loc = [self.sm3dar currentLocation];
-  NSLog(@"Executing search at current location: %@", loc);
+  NSLog(@"Executing search for '%@' at current location: %@", searchQuery, loc);
   
 	NSString *yahooMapUri = @"http://local.yahooapis.com/LocalSearchService/V3/localSearch?appid=YahooDemo&query=%@&latitude=%3.5f&longitude=%3.5f&results=20&output=json";
 	NSString *uri = [NSString stringWithFormat:yahooMapUri, 
-									 query, loc.coordinate.latitude, loc.coordinate.longitude];
+									 searchQuery, loc.coordinate.latitude, loc.coordinate.longitude];
 	NSLog(@"Searching...\n%@\n", uri);
 	NSURL *mapSearchURL = [NSURL URLWithString:uri];
 	NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:mapSearchURL] delegate:self startImmediately:YES];
