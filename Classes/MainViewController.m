@@ -37,14 +37,18 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+  NSLog(@"MainViewController: viewDidAppear");
 	[super viewDidAppear:animated];
 
-  if (!sm3darInitialized) {
+  if (sm3darInitialized) {
+    // wait for view to fully appear before starting the camera
+    // or bad things will happen
+    [self.sm3dar performSelector:@selector(startCamera) withObject:nil afterDelay:1.1f];
+    [self.sm3dar resume];
+
+  } else {
     [self.view addSubview:self.sm3dar.view];
-    NSLog(@"Added 3DAR view");
-    
     [self.sm3dar startCamera];
-    
     [self initSound];
     self.search = [[[LocalSearch alloc] init] autorelease];
     self.search.sm3dar = self.sm3dar;  
@@ -52,19 +56,27 @@
   }  
 }
 
+-(void)viewDidDisappear:(BOOL)animated { 
+  [super viewDidDisappear:animated];
+  [self.sm3dar suspend];
+  [self.sm3dar stopCamera];
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
+  self.view.backgroundColor = [UIColor blackColor];
 
 	SM3DAR_Controller *controller = [[[SM3DAR_Controller alloc] init] autorelease];
 	self.sm3dar = controller;	
 	controller.delegate = self;
 
 	[self alignInfoButtonWith3darLogo];
-	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:4];
+	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:3];
 }
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
   [self dismissModalViewControllerAnimated:YES];
+  
   if (self.searchQuery == nil) {
     [self loadPointsOfInterestFromMarkersFile];
   }
@@ -74,15 +86,16 @@
 - (void)showFlipside {
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;	
-	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 	[self presentModalViewController:controller animated:YES];	
 	[controller release];
 }
 
 - (void)runLocalSearch:(NSString*)query {
+	self.searchQuery = query;
   [self.search execute:query];
+	[self.sm3dar removeAllPointsOfInterest];
 }
-
 
 - (IBAction)showInfo {
 	[self showFlipside];
@@ -109,11 +122,9 @@
 }
 
 #pragma mark -
-
 - (void)showInfoButton {
 	[self.view bringSubviewToFront:[self.view viewWithTag:INFO_BUTTON_TAG]];
 }
-
 
 #pragma mark Data loading
 -(void)loadPointsOfInterest {
@@ -131,7 +142,7 @@
 }
 
 -(void)didChangeSelectionToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
-	//NSLog(@"POI was selected: %@", newPOI.title);
+	NSLog(@"POI was selected: %@", newPOI.title);
 }
 
 #pragma mark Sound
@@ -146,9 +157,7 @@
 } 
 
 
-
 #pragma mark -
-
 -(void)sm3darViewDidLoad {
 }
 

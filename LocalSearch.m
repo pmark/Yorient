@@ -10,6 +10,7 @@
 #import "NSArray+BSJSONAdditions.h"
 #import "NSString+BSJSONAdditions.h"
 #import "SearchResultMarkerView.h"
+#import "UIApplication_TLCommon.h"
 
 @implementation LocalSearch
 @synthesize sm3dar, webData, query;
@@ -21,12 +22,13 @@
   
 	NSString *yahooMapUri = @"http://local.yahooapis.com/LocalSearchService/V3/localSearch?appid=YahooDemo&query=%@&latitude=%3.5f&longitude=%3.5f&results=20&output=json";
 	NSString *uri = [NSString stringWithFormat:yahooMapUri, 
-									 searchQuery, loc.coordinate.latitude, loc.coordinate.longitude];
+									 [searchQuery stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], loc.coordinate.latitude, loc.coordinate.longitude];
 	NSLog(@"Searching...\n%@\n", uri);
 	NSURL *mapSearchURL = [NSURL URLWithString:uri];
 	NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:mapSearchURL] delegate:self startImmediately:YES];
 
 	if (conn) {
+    [[UIApplication sharedApplication] didStartNetworkRequest];
 		self.webData = [NSMutableData data];
 	} else {
 		NSLog(@"ERROR: Connection was not established");
@@ -43,6 +45,7 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+  [[UIApplication sharedApplication] didStopNetworkRequest];
 	NSLog(@"ERROR: Connection failed: %@", [error localizedDescription]);
 }
 
@@ -69,6 +72,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+  [[UIApplication sharedApplication] didStopNetworkRequest];
 	NSLog(@"Received bytes: %d", [self.webData length]);
 	NSString *response = [[NSString alloc] initWithData:self.webData encoding:NSASCIIStringEncoding];
 	//NSLog(@"RESPONSE:\n\n%@", response);	

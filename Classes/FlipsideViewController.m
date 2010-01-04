@@ -65,8 +65,7 @@
 
 - (void)runLocalSearch:(NSString*)query {
   MainViewController *c = (MainViewController*)self.delegate;
-	c.searchQuery = self.searchBar.text;
-  [c.search execute:query];
+  [c runLocalSearch:query];
 }
 
 

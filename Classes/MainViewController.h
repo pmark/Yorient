@@ -32,5 +32,6 @@
 - (void)playFocusSound;
 - (void)loadPointsOfInterestFromMarkersFile;
 - (void)showInfoButton;
+- (void)runLocalSearch:(NSString*)query;
 
 @end

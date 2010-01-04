@@ -16,6 +16,7 @@
 @class SM3DAR_FocusView;
 
 @protocol SM3DAR_Delegate
+@optional
 -(void)sm3darViewDidLoad;
 -(void)loadPointsOfInterest;
 -(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI;
@@ -63,6 +64,9 @@
 - (BOOL)displayPoint:(SM3DAR_PointOfInterest*)poi;
 - (CLLocation*)currentLocation;
 - (void)startCamera;
+- (void)stopCamera;
+- (void)suspend;
+- (void)resume;
 - (CATransform3D)cameraTransform;
 - (void)debug:(NSString*)message;
 - (CGRect)logoFrame;
