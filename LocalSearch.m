@@ -10,6 +10,7 @@
 #import "NSArray+BSJSONAdditions.h"
 #import "NSString+BSJSONAdditions.h"
 #import "SearchResultMarkerView.h"
+#import "Star3DMarkerView.h"
 #import "UIApplication_TLCommon.h"
 
 @implementation LocalSearch
@@ -82,7 +83,8 @@
 	
 	NSLog(@"Adding %i POIs", [markers count]);
 	if (markers && [markers count] > 0) {
-		self.sm3dar.markerViewClass = [SearchResultMarkerView class];
+		//self.sm3dar.markerViewClass = [SearchResultMarkerView class];
+    self.sm3dar.markerViewClass = [Star3DMarkerView class];
 		[self.sm3dar loadMarkersFromJSON:[markers jsonStringValue]];
 	}
 }

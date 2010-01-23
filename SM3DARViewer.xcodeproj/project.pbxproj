@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		035908A610C0EB3100ED3894 /* SM3DAR_keys.txt in Resources */ = {isa = PBXBuildFile; fileRef = 035908A510C0EB3100ED3894 /* SM3DAR_keys.txt */; };
+		03E9A7291108307300D8EDD8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E9A7281108307300D8EDD8 /* OpenGLES.framework */; };
+		03E9A7DD110875C800D8EDD8 /* Star3DMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E9A7DC110875C800D8EDD8 /* Star3DMarkerView.m */; };
 		1D3623260D0F684500981E51 /* SM3DARViewerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* SM3DARViewerAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -57,6 +59,9 @@
 
 /* Begin PBXFileReference section */
 		035908A510C0EB3100ED3894 /* SM3DAR_keys.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SM3DAR_keys.txt; path = ../SM3DAR_keys.txt; sourceTree = "<group>"; };
+		03E9A7281108307300D8EDD8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		03E9A7DB110875C800D8EDD8 /* Star3DMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star3DMarkerView.h; sourceTree = "<group>"; };
+		03E9A7DC110875C800D8EDD8 /* Star3DMarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Star3DMarkerView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* SM3DARViewerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DARViewerAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* SM3DARViewerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SM3DARViewerAppDelegate.m; sourceTree = "<group>"; };
@@ -136,12 +141,20 @@
 				4DBDE0A410AA235C005041C0 /* MapKit.framework in Frameworks */,
 				4D44A2DE10C08A6700A39FF4 /* AudioToolbox.framework in Frameworks */,
 				4DF90EDF10F1862D00B8D74B /* SM3DARLibary.a in Frameworks */,
+				03E9A7291108307300D8EDD8 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03E9A808110A7E5C00D8EDD8 /* Geometry Formats */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Geometry Formats";
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Application Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				4DF90EDE10F1862D00B8D74B /* SM3DARLibary.a */,
+				03E9A808110A7E5C00D8EDD8 /* Geometry Formats */,
 				4D40ECE910C649C800FB0C20 /* 3DAR Custom Marker Views */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
@@ -237,6 +251,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03E9A7281108307300D8EDD8 /* OpenGLES.framework */,
 				4D44A2DD10C08A6700A39FF4 /* AudioToolbox.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 				4DBDE09B10AA2318005041C0 /* CoreLocation.framework */,
@@ -269,6 +284,8 @@
 		4D40ECE910C649C800FB0C20 /* 3DAR Custom Marker Views */ = {
 			isa = PBXGroup;
 			children = (
+				03E9A7DB110875C800D8EDD8 /* Star3DMarkerView.h */,
+				03E9A7DC110875C800D8EDD8 /* Star3DMarkerView.m */,
 				4D40ED0710C64D0A00FB0C20 /* SearchResultMarkerView.h */,
 				4D40ED0810C64D0A00FB0C20 /* SearchResultMarkerView.m */,
 			);
@@ -400,6 +417,7 @@
 				4D40EEA710C6E47700FB0C20 /* UIImage-CellCorners.m in Sources */,
 				4DB266C110DC1C3000AC4DA0 /* LocalSearch.m in Sources */,
 				4DF90E0F10F1735900B8D74B /* UIApplication_TLCommon.m in Sources */,
+				03E9A7DD110875C800D8EDD8 /* Star3DMarkerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
