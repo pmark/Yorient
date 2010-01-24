@@ -15,12 +15,29 @@
 @class SM3DAR_Session;
 @class SM3DAR_FocusView;
 
+typedef struct
+  {
+    CGFloat x, y, z;
+  } Coord3D;
+
+@protocol SM3DAR_PointProtocol
+- (Coord3D) worldCoordinate;
+- (UIView*) view;
+- (SM3DAR_FocusView*) focusView;
+- (BOOL) canReceiveFocus;
+- (void) setFocus:(BOOL)hasFocus;
+- (BOOL) hasFocus;
+@end
+
+typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
+
+
 @protocol SM3DAR_Delegate
 @optional
 -(void)sm3darViewDidLoad;
 -(void)loadPointsOfInterest;
--(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI;
--(void)didChangeSelectionToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI;
+-(void)didChangeFocusToPOI:(SM3DAR_Point*)newPOI fromPOI:(SM3DAR_Point*)oldPOI;
+-(void)didChangeSelectionToPOI:(SM3DAR_Point*)newPOI fromPOI:(SM3DAR_Point*)oldPOI;
 @end
 
 @interface SM3DAR_Controller : UIViewController <UIAccelerometerDelegate, CLLocationManagerDelegate, MKMapViewDelegate> {
@@ -31,8 +48,8 @@
 	UIImagePickerController *camera;
 	NSObject<SM3DAR_Delegate> *delegate;
 	NSMutableArray *pointsOfInterest;
-	SM3DAR_PointOfInterest *focusedPOI;
-	SM3DAR_PointOfInterest *selectedPOI;
+	SM3DAR_Point *focusedPOI;
+	SM3DAR_Point *selectedPOI;
 	Class markerViewClass;
 }
 
@@ -43,25 +60,25 @@
 @property (nonatomic, retain) UIImagePickerController *camera;
 @property (nonatomic, assign) NSObject<SM3DAR_Delegate> *delegate;
 @property (nonatomic, retain) NSMutableDictionary *pointsOfInterest;
-@property (nonatomic, retain) SM3DAR_PointOfInterest *focusedPOI;
-@property (nonatomic, retain) SM3DAR_PointOfInterest *selectedPOI;
+@property (nonatomic, retain) SM3DAR_Point *focusedPOI;
+@property (nonatomic, retain) SM3DAR_Point *selectedPOI;
 @property (nonatomic, assign) Class markerViewClass;
 @property (nonatomic, retain) SM3DAR_FocusView *focusView;
 
 // points of interest
-- (void)addPointOfInterest:(SM3DAR_PointOfInterest*)point;
+- (void)addPointOfInterest:(SM3DAR_Point*)point;
 - (void)addPointsOfInterest:(NSArray*)points;
-- (void)removePointOfInterest:(SM3DAR_PointOfInterest*)point;
+- (void)removePointOfInterest:(SM3DAR_Point*)point;
 - (void)removePointsOfInterest:(NSArray*)points;
 - (void)removeAllPointsOfInterest;
 - (void)replaceAllPointsOfInterestWith:(NSArray*)points;
 - (NSString*)loadJSONFromFile:(NSString*)fileName;
 - (void)loadMarkersFromJSONFile:(NSString*)jsonFileName;
 - (void)loadMarkersFromJSON:(NSString*)jsonString;
-- (SM3DAR_PointOfInterest*)initPointOfInterest:(NSDictionary*)properties;
+- (SM3DAR_Point*)initPointOfInterest:(NSDictionary*)properties;
 
-- (UIView *)viewForCoordinate:(SM3DAR_PointOfInterest*)poi;
-- (BOOL)displayPoint:(SM3DAR_PointOfInterest*)poi;
+- (UIView *)viewForCoordinate:(SM3DAR_Point*)poi;
+- (BOOL)displayPoint:(SM3DAR_Point*)poi;
 - (CLLocation*)currentLocation;
 - (void)startCamera;
 - (void)stopCamera;
@@ -86,7 +103,7 @@
 
 
 @class SM3DAR_Controller;
-@interface SM3DAR_PointOfInterest : CLLocation <MKAnnotation> {
+@interface SM3DAR_PointOfInterest : CLLocation <MKAnnotation, SM3DAR_PointProtocol> {
 	NSString *title;
 	NSString *subtitle;
 	NSURL *dataURL;
@@ -134,10 +151,10 @@
 
 
 @interface SM3DAR_MarkerView : UIView {
-	SM3DAR_PointOfInterest *poi;
+	SM3DAR_Point *poi;
 }
-@property (nonatomic, retain) SM3DAR_PointOfInterest *poi;
-- (id)initWithPointOfInterest:(SM3DAR_PointOfInterest*)pointOfInterest;
+@property (nonatomic, retain) SM3DAR_Point *poi;
+- (id)initWithPointOfInterest:(SM3DAR_Point*)pointOfInterest;
 - (void)buildView;
 - (void)scaleToRange;
 - (void)didReceiveFocus;
@@ -153,10 +170,26 @@
 
 
 @interface SM3DAR_FocusView : UIView {
-	SM3DAR_PointOfInterest *poi;
+	SM3DAR_Point *poi;
 }
-@property (nonatomic, retain) SM3DAR_PointOfInterest *poi;
+@property (nonatomic, retain) SM3DAR_Point *poi;
 - (void)buildView;
-- (void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI;
+- (void)didChangeFocusToPOI:(SM3DAR_Point*)newPOI;
 - (void)updatePositionAndOrientation:(CGFloat)screenOrientationRadians;
+@end
+
+@interface Texture : NSObject
+{
+}
++ (Texture *) newTextureFromResource:(NSString *)resource;
+- (void) replaceTextureFromResource:(NSString *)resource;
+@end
+
+@interface Geometry : NSObject
+{
+}
++ (Geometry *) newOBJFromResource:(NSString *)resource;
+- (void) displayWireframe;
+- (void) displayFilledWithTexture:(Texture *)texture;
+- (void) displayShaded;
 @end
