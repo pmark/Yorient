@@ -1,6 +1,6 @@
 //
-//  Y!orientAppDelegate.h
-//  Y!orient
+//  YorientAppDelegate.h
+//  Yorient
 //
 //  Created by P. Mark Anderson on 11/10/09.
 //  Copyright Spot Metrix, Inc 2009. All rights reserved.
