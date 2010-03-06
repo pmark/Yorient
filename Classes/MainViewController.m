@@ -14,7 +14,7 @@
 
 @implementation MainViewController
 
-@synthesize searchQuery, search, flipsideController;
+@synthesize searchQuery, search, flipsideController, tip;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {      
@@ -32,6 +32,7 @@
   SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedSM3DAR_Controller];
   if (![sm3dar.view superview]) {
     [self.view addSubview:sm3dar.view];
+    [sm3dar.view addSubview:tip];
     [sm3dar startCamera];
   }
 }
@@ -70,7 +71,7 @@
   sm3dar.view.hidden = YES;
   [self.view bringSubviewToFront:flipsideController.view];
 
-  CGFloat duration = 0.66f;
+  CGFloat duration = 0.4f;
   CATransition *transition = [CATransition animation];
   transition.type = kCATransitionFade;
   transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -102,6 +103,7 @@
 	[searchQuery release];
   [search release];
   [flipsideController release];
+  [tip release], tip = nil;
 	[super dealloc];
 }
 

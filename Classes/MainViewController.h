@@ -18,11 +18,13 @@
   YahooLocalSearch *search;
   BOOL sm3darInitialized;
   FlipsideViewController *flipsideController;
+  IBOutlet UILabel *tip;
 }
 
 @property (nonatomic, retain) NSString *searchQuery;
 @property (nonatomic, retain) YahooLocalSearch *search;
 @property (nonatomic, retain) FlipsideViewController *flipsideController;
+@property (nonatomic, retain) IBOutlet UILabel *tip;
 
 - (void)loadPointsOfInterest;
 - (void)initSound;
