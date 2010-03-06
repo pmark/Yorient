@@ -1,9 +1,9 @@
 //
 //  FlipsideView.m
-//  SM3DAR_Viewer
+//  Y!orient
 //
 //  Created by P. Mark Anderson on 11/10/09.
-//  Copyright Bordertown Labs, LLC 2009. All rights reserved.
+//  Copyright Spot Metrix, Inc 2009. All rights reserved.
 //
 
 #import "FlipsideView.h"

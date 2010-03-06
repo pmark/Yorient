@@ -1,139 +1,120 @@
 //
 //  MainViewController.m
-//  SM3DAR_Viewer
+//  Y!orient
 //
 //  Created by P. Mark Anderson on 11/10/09.
-//  Copyright Bordertown Labs, LLC 2009. All rights reserved.
+//  Copyright Spot Metrix, Inc 2009. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
 #import "MainViewController.h"
 #import "MainView.h"
-#import <MapKit/MapKit.h>
 #import "NSArray+BSJSONAdditions.h"
-
-#define INFO_BUTTON_TAG 99877
+#import "BubbleMarkerView.h"
 
 @implementation MainViewController
 
-@synthesize sm3dar, infoButton, searchQuery, search;
+@synthesize searchQuery, search, flipsideController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {      
     }
     return self;
 }
 
-- (void)alignInfoButtonWith3darLogo {
-	CGRect logoFrame = [self.sm3dar logoFrame];
-	CGPoint logoCenter = CGPointMake(logoFrame.origin.x+logoFrame.size.width/2, 
-																	 logoFrame.origin.y+logoFrame.size.height/2);
-	int x, y, w, h, xpad;
-	w = self.infoButton.frame.size.width;
-	h = self.infoButton.frame.size.height;
-	xpad = logoFrame.origin.x;
-	x = self.view.frame.size.width - xpad - (w/2);
-	y = logoCenter.y;
-	self.infoButton.center = CGPointMake(x, y);
+- (SM3DAR_Controller*) sm3dar {
+	return [SM3DAR_Controller sharedSM3DAR_Controller];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  NSLog(@"MainViewController: viewDidAppear");
 	[super viewDidAppear:animated];
-
-  if (sm3darInitialized) {
-    // wait for view to fully appear before starting the camera
-    // or bad things will happen
-    [self.sm3dar performSelector:@selector(startCamera) withObject:nil afterDelay:1.1f];
-    [self.sm3dar resume];
-
-  } else {
-    [self.view addSubview:self.sm3dar.view];
-    [self.sm3dar startCamera];
-    [self initSound];
-    self.search = [[[LocalSearch alloc] init] autorelease];
-    self.search.sm3dar = self.sm3dar;  
-    sm3darInitialized = YES;
-  }  
-}
-
--(void)viewDidDisappear:(BOOL)animated { 
-  [super viewDidDisappear:animated];
-  [self.sm3dar suspend];
-  [self.sm3dar stopCamera];
+  
+  SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedSM3DAR_Controller];
+  if (![sm3dar.view superview]) {
+    [self.view addSubview:sm3dar.view];
+    [sm3dar startCamera];
+  }
 }
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+  [self initSound];
   self.view.backgroundColor = [UIColor blackColor];
 
-	SM3DAR_Controller *controller = [[[SM3DAR_Controller alloc] init] autorelease];
-	self.sm3dar = controller;	
-	controller.delegate = self;
+	SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedSM3DAR_Controller];
+	sm3dar.delegate = self;
+  sm3dar.markerViewClass = [BubbleMarkerView class];
 
-	[self alignInfoButtonWith3darLogo];
-	[self performSelector:@selector(showInfoButton) withObject:self afterDelay:3];
+  self.search = [[[YahooLocalSearch alloc] init] autorelease];
+
+  FlipsideViewController *flipside = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+  flipside.delegate = self;	
+  flipside.view.hidden = YES;
+  [self.view addSubview:flipside.view];
+  self.flipsideController = flipside;
+  [flipside release];  
 }
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-  [self dismissModalViewControllerAnimated:YES];
-  
-  if (self.searchQuery == nil) {
-    [self loadPointsOfInterestFromMarkersFile];
-  }
-  [self showInfoButton];
+  flipsideController.view.hidden = YES;
+  SM3DAR_Controller *sm3dar = [self sm3dar];
+  [sm3dar resume];
+  sm3dar.view.hidden = NO;
+  [sm3dar resume];
 }
 
 - (void)showFlipside {
-	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
-	controller.delegate = self;	
-	controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-	[self presentModalViewController:controller animated:YES];	
-	[controller release];
+  SM3DAR_Controller *sm3dar = [self sm3dar];
+  [sm3dar suspend];
+  
+  sm3dar.view.hidden = YES;
+  [self.view bringSubviewToFront:flipsideController.view];
+
+  CGFloat duration = 0.66f;
+  CATransition *transition = [CATransition animation];
+  transition.type = kCATransitionFade;
+  transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+  transition.duration = duration;
+  [flipsideController.view.layer addAnimation:transition forKey:nil];
+
+  flipsideController.view.hidden = NO;
+  [flipsideController.searchBar performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:duration];  
 }
 
 - (void)runLocalSearch:(NSString*)query {
 	self.searchQuery = query;
+	[[self sm3dar] removeAllPointsOfInterest];
   [self.search execute:query];
-	[self.sm3dar removeAllPointsOfInterest];
-}
-
-- (IBAction)showInfo {
-	[self showFlipside];
 }
 
 - (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
+  NSLog(@"\n\ndidReceiveMemoryWarning\n\n");
+  [super didReceiveMemoryWarning];
 }
 
 - (void)viewDidUnload {
+  NSLog(@"viewDidUnload");
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
 
 - (void)dealloc {
-	[sm3dar release];
-	[infoButton release];
 	[searchQuery release];
   [search release];
+  [flipsideController release];
 	[super dealloc];
-}
-
-#pragma mark -
-- (void)showInfoButton {
-	[self.view bringSubviewToFront:[self.view viewWithTag:INFO_BUTTON_TAG]];
 }
 
 #pragma mark Data loading
 -(void)loadPointsOfInterest {
-  [self runLocalSearch:@"pizza"];
+  // 3DAR initialization is complete
+  [self runLocalSearch:@"cafe"];
 }
 
 -(void)loadPointsOfInterestFromMarkersFile {
-	self.sm3dar.markerViewClass = nil;
-	[self.sm3dar loadMarkersFromJSONFile:@"markers"];
+  SM3DAR_Controller *sm3dar = [self sm3dar];
+	sm3dar.markerViewClass = nil;
+	[sm3dar loadMarkersFromJSONFile:@"markers"];
 }
 
 -(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
@@ -156,9 +137,16 @@
 	AudioServicesPlaySystemSound(focusSound);
 } 
 
-
 #pragma mark -
--(void)sm3darViewDidLoad {
+-(void)logoWasTapped {
+  [self showFlipside];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation 
+{
+  [manager stopUpdatingLocation];
 }
 
 @end

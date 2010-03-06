@@ -1,37 +1,33 @@
 //
 //  MainViewController.h
-//  SM3DAR_Viewer
+//  Y!orient
 //
 //  Created by P. Mark Anderson on 11/10/09.
-//  Copyright Bordertown Labs, LLC 2009. All rights reserved.
+//  Copyright Spot Metrix, Inc 2009. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "SM3DAR.h" 
 #import "FlipsideViewController.h"
 #import "AudioToolbox/AudioServices.h"
-#import "LocalSearch.h"
+#import "YahooLocalSearch.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DAR_Delegate> {
-	SM3DAR_Controller *sm3dar;
-	IBOutlet UIButton *infoButton;
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DAR_Delegate, CLLocationManagerDelegate> {
 	SystemSoundID focusSound;
 	NSString *searchQuery;
-  LocalSearch *search;
+  YahooLocalSearch *search;
   BOOL sm3darInitialized;
+  FlipsideViewController *flipsideController;
 }
 
-//@property (nonatomic, assign) BOOL sm3darInitialized;
 @property (nonatomic, retain) NSString *searchQuery;
-@property (nonatomic, retain) SM3DAR_Controller *sm3dar;
-@property (nonatomic, retain) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) LocalSearch *search;
+@property (nonatomic, retain) YahooLocalSearch *search;
+@property (nonatomic, retain) FlipsideViewController *flipsideController;
 
-- (IBAction)showInfo;
 - (void)loadPointsOfInterest;
 - (void)initSound;
 - (void)playFocusSound;
 - (void)loadPointsOfInterestFromMarkersFile;
-- (void)showInfoButton;
 - (void)runLocalSearch:(NSString*)query;
 
 @end

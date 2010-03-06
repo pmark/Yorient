@@ -1,9 +1,9 @@
 //
 //  FlipsideViewController.m
-//  SM3DAR_Viewer
+//  Y!orient
 //
 //  Created by P. Mark Anderson on 11/10/09.
-//  Copyright Bordertown Labs, LLC 2009. All rights reserved.
+//  Copyright Spot Metrix, Inc 2009. All rights reserved.
 //
 
 #import "FlipsideViewController.h"
@@ -16,10 +16,15 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
+	self.view.backgroundColor = [UIColor whiteColor];      
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [self viewDidAppear:animated];
 }
 
 - (void)runSearch {
+  [searchBar resignFirstResponder];
 	((MainViewController*)self.delegate).searchQuery = self.searchBar.text;
 	
 	if ([self.searchBar.text length] != 0) {
@@ -33,7 +38,7 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)bar {
-	[bar resignFirstResponder];
+	[self runSearch];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)bar {
@@ -52,14 +57,16 @@
 	// e.g. self.myOutlet = nil;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	self.searchBar.text = ((MainViewController*)self.delegate).searchQuery;
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	searchBar.text = ((MainViewController*)self.delegate).searchQuery;
 }
 
 
 - (void)dealloc {
-	[searchBar release];
+  // IBOutlets should be released and set to nil
+	[searchBar release], searchBar = nil;
+  
 	[super dealloc];
 }
 
