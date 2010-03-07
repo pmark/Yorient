@@ -16,7 +16,7 @@
 
 - (void)execute:(NSString*)searchQuery {
   SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedSM3DAR_Controller];
-
+  
   self.query = searchQuery;
 	CLLocation *loc = [sm3dar currentLocation];
   NSLog(@"Executing search for '%@' at current location: %@", searchQuery, loc);
@@ -27,7 +27,7 @@
 	NSLog(@"Searching...\n%@\n", uri);
 	NSURL *mapSearchURL = [NSURL URLWithString:uri];
 	NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:mapSearchURL] delegate:self startImmediately:YES];
-
+  
 	if (conn) {
     [[UIApplication sharedApplication] didStartNetworkRequest];
 		self.webData = [NSMutableData data];
@@ -67,16 +67,16 @@
     //NSLog(@"stars: %f, rating: %@", stars, rating);
     
 		minMarker = [NSDictionary dictionaryWithObjectsAndKeys:
-							[marker objectForKey:@"Title"], @"title",
-							rating, @"subtitle",
-							[marker objectForKey:@"Latitude"], @"latitude",
-							[marker objectForKey:@"Longitude"], @"longitude",
-							self.query, @"search",
-
-              // you can set the marker's view class right here
-              //@"BubbleMarkerView", @"view_class_name",
-
-							nil];
+                 [marker objectForKey:@"Title"], @"title",
+                 rating, @"subtitle",
+                 [marker objectForKey:@"Latitude"], @"latitude",
+                 [marker objectForKey:@"Longitude"], @"longitude",
+                 self.query, @"search",
+                 
+                 // you can set the marker's view class right here
+                 //@"BubbleMarkerView", @"view_class_name",
+                 
+                 nil];
     
     merged = [NSMutableDictionary dictionaryWithDictionary:marker];
     [merged addEntriesFromDictionary:minMarker];
@@ -94,7 +94,7 @@
 	
 	// convert response json into a collection of markers
 	NSArray *markers = [self parseYahooMapSearchResults:response];
-
+  
   SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedSM3DAR_Controller];
 	
 	NSLog(@"Adding %i POIs", [markers count]);
@@ -103,7 +103,7 @@
     for (NSDictionary *row in markers) {
       [points addObject:[sm3dar initPointOfInterest:row]];
     }
-      
+    
     [sm3dar addPointsOfInterest:points];
 	}
 }
