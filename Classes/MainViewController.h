@@ -15,21 +15,20 @@
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DAR_Delegate, CLLocationManagerDelegate> {
 	SystemSoundID focusSound;
 	NSString *searchQuery;
-  YahooLocalSearch *search;
-  BOOL sm3darInitialized;
-  FlipsideViewController *flipsideController;
-  IBOutlet UILabel *tip;
+    YahooLocalSearch *search;
+    BOOL sm3darInitialized;
+    FlipsideViewController *flipsideController;
 }
 
 @property (nonatomic, retain) NSString *searchQuery;
 @property (nonatomic, retain) YahooLocalSearch *search;
 @property (nonatomic, retain) FlipsideViewController *flipsideController;
-@property (nonatomic, retain) IBOutlet UILabel *tip;
 
 - (void)loadPointsOfInterest;
 - (void)initSound;
 - (void)playFocusSound;
 - (void)loadPointsOfInterestFromMarkersFile;
 - (void)runLocalSearch:(NSString*)query;
+- (IBAction)showFlipside;
 
 @end

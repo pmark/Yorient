@@ -13,6 +13,10 @@
 
 @synthesize delegate, searchBar;
 
+- (void)dealloc {
+	[searchBar release], searchBar = nil;    
+	[super dealloc];
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -20,11 +24,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  [self viewDidAppear:animated];
+    [self viewDidAppear:animated];
 }
 
 - (void)runSearch {
-  [searchBar resignFirstResponder];
+    [searchBar resignFirstResponder];
 	((MainViewController*)self.delegate).searchQuery = self.searchBar.text;
 	
 	if ([self.searchBar.text length] != 0) {
@@ -63,17 +67,9 @@
 }
 
 
-- (void)dealloc {
-  // IBOutlets should be released and set to nil
-	[searchBar release], searchBar = nil;
-  
-	[super dealloc];
-}
-
 - (void)runLocalSearch:(NSString*)query {
-  MainViewController *c = (MainViewController*)self.delegate;
-  [c runLocalSearch:query];
+    MainViewController *c = (MainViewController*)self.delegate;
+    [c runLocalSearch:query];
 }
-
 
 @end

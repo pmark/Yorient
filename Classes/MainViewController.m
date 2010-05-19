@@ -8,13 +8,21 @@
 
 #import <MapKit/MapKit.h>
 #import "MainViewController.h"
-#import "MainView.h"
 #import "NSArray+BSJSONAdditions.h"
 #import "BubbleMarkerView.h"
 
 @implementation MainViewController
 
-@synthesize searchQuery, search, flipsideController, tip;
+@synthesize searchQuery;
+@synthesize search;
+@synthesize flipsideController;
+
+- (void)dealloc {
+	[searchQuery release];
+    [search release];
+    [flipsideController release];
+	[super dealloc];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {      
@@ -22,99 +30,84 @@
     return self;
 }
 
-- (SM3DAR_Controller*) sm3dar {
-	return [SM3DAR_Controller sharedSM3DAR_Controller];
-}
-
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-  
-  SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedSM3DAR_Controller];
-  if (![sm3dar.view superview]) {
-    [self.view addSubview:sm3dar.view];
-    [sm3dar.view addSubview:tip];
-    [sm3dar startCamera];
-  }
+    
+    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    if (![sm3dar.view superview]) {
+        [self.view addSubview:sm3dar.view];
+        [sm3dar startCamera];
+    }
 }
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-  [self initSound];
-  self.view.backgroundColor = [UIColor blackColor];
-
-	SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedSM3DAR_Controller];
+    [self initSound];
+    self.view.backgroundColor = [UIColor blackColor];
+    
+	SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
 	sm3dar.delegate = self;
-  sm3dar.markerViewClass = [BubbleMarkerView class];
-
-  self.search = [[[YahooLocalSearch alloc] init] autorelease];
-
-  FlipsideViewController *flipside = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
-  flipside.delegate = self;	
-  flipside.view.hidden = YES;
-  [self.view addSubview:flipside.view];
-  self.flipsideController = flipside;
-  [flipside release];  
+    sm3dar.markerViewClass = [BubbleMarkerView class];    
+    
+    self.search = [[[YahooLocalSearch alloc] init] autorelease];
+    
+    FlipsideViewController *flipside = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+    flipside.delegate = self;	
+    flipside.view.hidden = YES;
+    [self.view addSubview:flipside.view];
+    self.flipsideController = flipside;
+    [flipside release];  
 }
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-  flipsideController.view.hidden = YES;
-  SM3DAR_Controller *sm3dar = [self sm3dar];
-  [sm3dar resume];
-  sm3dar.view.hidden = NO;
-  [sm3dar resume];
+    flipsideController.view.hidden = YES;
+    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    sm3dar.view.hidden = NO;
+    [sm3dar resume];
 }
 
-- (void)showFlipside {
-  SM3DAR_Controller *sm3dar = [self sm3dar];
-  [sm3dar suspend];
-  
-  sm3dar.view.hidden = YES;
-  [self.view bringSubviewToFront:flipsideController.view];
-
-  CGFloat duration = 0.4f;
-  CATransition *transition = [CATransition animation];
-  transition.type = kCATransitionFade;
-  transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-  transition.duration = duration;
-  [flipsideController.view.layer addAnimation:transition forKey:nil];
-
-  flipsideController.view.hidden = NO;
-  [flipsideController.searchBar performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:duration];  
+- (IBAction)showFlipside {
+    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    [sm3dar suspend];    
+    sm3dar.view.hidden = YES;
+    
+    [self.view bringSubviewToFront:flipsideController.view];
+    
+    CGFloat duration = 0.4f;
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.duration = duration;
+    [flipsideController.view.layer addAnimation:transition forKey:nil];
+    flipsideController.view.hidden = NO;
+    [flipsideController.searchBar performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:duration];  
 }
 
 - (void)runLocalSearch:(NSString*)query {
 	self.searchQuery = query;
-	[[self sm3dar] removeAllPointsOfInterest];
-  [self.search execute:query];
+    [[SM3DAR_Controller sharedController] removeAllPointsOfInterest];
+    [self.search execute:query];
 }
 
 - (void)didReceiveMemoryWarning {
-  NSLog(@"\n\ndidReceiveMemoryWarning\n\n");
-  [super didReceiveMemoryWarning];
+    NSLog(@"\n\ndidReceiveMemoryWarning\n\n");
+    [super didReceiveMemoryWarning];
 }
 
 - (void)viewDidUnload {
-  NSLog(@"viewDidUnload");
+    NSLog(@"viewDidUnload");
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
 
-- (void)dealloc {
-	[searchQuery release];
-  [search release];
-  [flipsideController release];
-  [tip release], tip = nil;
-	[super dealloc];
-}
-
 #pragma mark Data loading
 -(void)loadPointsOfInterest {
-  // 3DAR initialization is complete
-  [self runLocalSearch:@"cafe"];
+    // 3DAR initialization is complete
+    [self runLocalSearch:@"cafe"];
 }
 
 -(void)loadPointsOfInterestFromMarkersFile {
-  SM3DAR_Controller *sm3dar = [self sm3dar];
+    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
 	sm3dar.markerViewClass = nil;
 	[sm3dar loadMarkersFromJSONFile:@"markers"];
 }
@@ -141,14 +134,14 @@
 
 #pragma mark -
 -(void)logoWasTapped {
-  [self showFlipside];
+    [self showFlipside];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation 
 {
-  [manager stopUpdatingLocation];
+    [manager stopUpdatingLocation];
 }
 
 @end
