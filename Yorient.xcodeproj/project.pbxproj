@@ -14,7 +14,6 @@
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
-		4D0C491B12153A5A000BD2D5 /* lib3DAR_v4_0_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D0C491A12153A5A000BD2D5 /* lib3DAR_v4_0_1.a */; };
 		4D1EF21110ACB7AE00BC2081 /* markers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF21010ACB7AE00BC2081 /* markers.json */; };
 		4D1EF38610ACF39C00BC2081 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF38410ACF39C00BC2081 /* Default.png */; };
 		4D1EF38710ACF39C00BC2081 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EF38510ACF39C00BC2081 /* Icon.png */; };
@@ -80,6 +79,7 @@
 		A645426312A4E3B40014F23C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645426212A4E3B40014F23C /* OpenGLES.framework */; };
 		A645426512A4E3B40014F23C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645426412A4E3B40014F23C /* QuartzCore.framework */; };
 		A645426712A4E3B40014F23C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645426612A4E3B40014F23C /* UIKit.framework */; };
+		A6DEEEFB130870F60009DE15 /* lib3DAR_v4_0_8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DEEEFA130870F60009DE15 /* lib3DAR_v4_0_8.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +95,6 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Yorient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yorient_Prefix.pch; sourceTree = "<group>"; };
-		4D0C491A12153A5A000BD2D5 /* lib3DAR_v4_0_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v4_0_1.a; sourceTree = "<group>"; };
 		4D1EF21010ACB7AE00BC2081 /* markers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markers.json; sourceTree = "<group>"; };
 		4D1EF38410ACF39C00BC2081 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4D1EF38510ACF39C00BC2081 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -204,6 +203,7 @@
 		A645426212A4E3B40014F23C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A645426412A4E3B40014F23C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A645426612A4E3B40014F23C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A6DEEEFA130870F60009DE15 /* lib3DAR_v4_0_8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v4_0_8.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +211,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D0C491B12153A5A000BD2D5 /* lib3DAR_v4_0_1.a in Frameworks */,
 				A645425712A4E3B40014F23C /* AudioToolbox.framework in Frameworks */,
 				A645425912A4E3B40014F23C /* CoreGraphics.framework in Frameworks */,
 				A645425B12A4E3B40014F23C /* CoreLocation.framework in Frameworks */,
@@ -221,6 +220,7 @@
 				A645426312A4E3B40014F23C /* OpenGLES.framework in Frameworks */,
 				A645426512A4E3B40014F23C /* QuartzCore.framework in Frameworks */,
 				A645426712A4E3B40014F23C /* UIKit.framework in Frameworks */,
+				A6DEEEFB130870F60009DE15 /* lib3DAR_v4_0_8.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +444,7 @@
 		4D8589C71141B62700F25004 /* 3DAR */ = {
 			isa = PBXGroup;
 			children = (
-				4D0C491A12153A5A000BD2D5 /* lib3DAR_v4_0_1.a */,
+				A6DEEEFA130870F60009DE15 /* lib3DAR_v4_0_8.a */,
 				4DEF733B11A3618B00CE34D2 /* Views */,
 				4DEF734011A3618B00CE34D2 /* API */,
 				4DEF734311A3618B00CE34D2 /* Lib */,
@@ -682,11 +682,11 @@
 				INFOPLIST_FILE = "Yorient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
-					"-ObjC",
 					"-lstdc++",
 				);
 				PRODUCT_NAME = Yorient;
@@ -705,11 +705,11 @@
 				INFOPLIST_FILE = "Yorient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
-					"-ObjC",
 					"-lstdc++",
 				);
 				PRODUCT_NAME = Yorient;
@@ -738,7 +738,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Spot Metrix, Inc.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -746,7 +746,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
 				PRODUCT_NAME = Yorient;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AB03D8E8-8142-4B86-8076-EF896F27052E";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

@@ -2,10 +2,10 @@
  *  SM3DAR.h
  *  3DAR API header
  *
- *  Copyright 2009 Spot Metrix, Inc. All rights reserved.
- *  http://spotmetrix.com
+ *  Copyright 2010 Spot Metrix, Inc. All rights reserved.
+ *  Please see http://spotmetrix.com
  *
- *  Version 4.0.1
+ *  Version 4.0.8
  *
  */
 
@@ -113,6 +113,8 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 @property (nonatomic, assign) CGFloat currentPitch;
 @property (nonatomic, assign) CGFloat currentRoll;
 @property (nonatomic, assign) CGFloat mapZoomPadding;
+@property (nonatomic, assign) CGFloat cameraAltitudeMeters;
+@property (nonatomic, assign) BOOL running;
 
 + (SM3DAR_Controller*)sharedController;
 + (SM3DAR_Controller*)reinit;
@@ -168,6 +170,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (Coord3D)solarPositionScaled:(CGFloat)meters;
 - (void)initOrigin;
 - (Coord3D)ray:(CGPoint)screenPoint;
+- (void)setCameraOffset:(Coord3D)offset;
 @end
 
 
