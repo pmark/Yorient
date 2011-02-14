@@ -11,6 +11,7 @@
 #import "FlipsideViewController.h"
 #import "AudioToolbox/AudioServices.h"
 #import "YahooLocalSearch.h"
+#import "Joystick.h"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DAR_Delegate, CLLocationManagerDelegate> {
 	SystemSoundID focusSound;
@@ -18,6 +19,8 @@
     YahooLocalSearch *search;
     BOOL sm3darInitialized;
     FlipsideViewController *flipsideController;
+    Joystick *joystick;
+    Coord3D cameraOffset;
 }
 
 @property (nonatomic, retain) NSString *searchQuery;
@@ -30,5 +33,5 @@
 - (void)loadPointsOfInterestFromMarkersFile;
 - (void)runLocalSearch:(NSString*)query;
 - (IBAction)showFlipside;
-
+- (void)addDirectionBillboardsWithFixtures;
 @end

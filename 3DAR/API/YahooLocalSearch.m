@@ -99,7 +99,12 @@
     NSMutableArray *points = [NSMutableArray arrayWithCapacity:[markers count]];
 	if (markers && [markers count] > 0) {
         for (NSDictionary *row in markers) {
-            [points addObject:[sm3dar initPointOfInterest:row]];
+
+            //////
+            SM3DAR_PointOfInterest *poi = [sm3dar initPointOfInterest:row];
+            poi.canReceiveFocus = NO;
+            [points addObject:poi];
+            //////
         }
         
         [sm3dar addPointsOfInterest:points];

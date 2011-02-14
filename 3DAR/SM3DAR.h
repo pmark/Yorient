@@ -89,7 +89,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 @property (nonatomic, retain) UILabel *statusLabel;
 @property (nonatomic, retain) UIImagePickerController *camera;
 @property (nonatomic, assign) NSObject<SM3DAR_Delegate> *delegate;
-@property (nonatomic, retain) NSMutableDictionary *pointsOfInterest;
+@property (nonatomic, retain) NSArray *pointsOfInterest;
 @property (nonatomic, retain) SM3DAR_Point *focusedPOI;
 @property (nonatomic, retain) SM3DAR_Point *selectedPOI;
 @property (nonatomic, assign) Class markerViewClass;
@@ -97,6 +97,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 @property (nonatomic, retain) NSObject<SM3DAR_FocusDelegate> *focusView;
 @property (nonatomic, assign) CGFloat screenOrientationRadians;
 @property (nonatomic, retain) UIView *glView;
+@property (nonatomic, retain) UIView *hudView;
 @property (nonatomic, assign) CGFloat nearClipMeters;
 @property (nonatomic, assign) CGFloat farClipMeters;
 @property (assign) NSTimeInterval locationUpdateInterval;
@@ -170,7 +171,12 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (Coord3D)solarPositionScaled:(CGFloat)meters;
 - (void)initOrigin;
 - (Coord3D)ray:(CGPoint)screenPoint;
-- (void)setCameraOffset:(Coord3D)offset;
+
+///////////// NEW 1/30/2011
+- (void) setCameraAltitudeMeters:(CGFloat)altitude;
+- (void) setCameraOffset:(Coord3D)offset;
+/////////////
+
 @end
 
 
