@@ -15,10 +15,10 @@
 	<key>3darDisableLocationServices</key>
 	<false/>
 	<key>3darShowToolBar</key>
-	<false/>
+	<true/>
 	<key>3darShowStatusBar</key>
 	<false/>
 	<key>3darLocationUpdateIntervalSec</key>
-	<integer>10</integer>
+	<integer>1</integer>
 </dict>
 </plist>

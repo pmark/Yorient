@@ -55,6 +55,7 @@
 	SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
 	sm3dar.delegate = self;
     sm3dar.markerViewClass = [BubbleMarkerView class];    
+    sm3dar.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
     
     self.search = [[[YahooLocalSearch alloc] init] autorelease];
     
@@ -79,7 +80,6 @@
     
     [sm3dar.hudView addSubview:joystick];
     [NSTimer scheduledTimerWithTimeInterval:0.10f target:self selector:@selector(updateJoystick) userInfo:nil repeats:YES];    
-
 }
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
@@ -148,14 +148,13 @@
 
 -(void)loadPointsOfInterest {
     // 3DAR initialization is complete
-
-    [self addFlatGrid];
-
-//    [self runLocalSearch:@"cafe"];
     
-//    [self loadPointsOfInterestFromMarkersFile];
-    
+    [self addFlatGrid];    
+
     [self addDirectionBillboardsWithFixtures];
+
+    self.searchQuery = @"cafe";
+    [self.search execute:searchQuery];    
     
 }
 
@@ -186,7 +185,13 @@
 
 #pragma mark -
 -(void)logoWasTapped {
-    [self showFlipside];
+//    [self showFlipside];
+
+    
+    self.searchQuery = @"cafe";
+    [self.search execute:searchQuery];
+
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -263,7 +268,7 @@
     
     north = south = east = west = origin;
     
-    CGFloat range = 1000.0;    
+    CGFloat range = 8000.0;    
     
     north.y += range;
     south.y -= range;

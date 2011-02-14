@@ -6,8 +6,6 @@
 #import "FlatGridView.h"
 #import <OpenGLES/ES1/gl.h>
 
-#define FLAT_GRID_SCALE 100
-
 
 @implementation FlatGridView
 
