@@ -125,9 +125,7 @@
 
 - (IBAction)showFlipside 
 {
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-//    [sm3dar suspend];    
-    sm3dar.view.hidden = YES;
+    SM3DAR.view.hidden = YES;
     
     [self.view bringSubviewToFront:flipsideController.view];
     
@@ -210,13 +208,22 @@
 	[SM3DAR loadMarkersFromJSONFile:@"markers"];
 }
 
+- (void) focusedMarkerAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    if (context)
+    {
+        ((UIView*)context).alpha = 1.0;
+    }
+}
+
 - (void) animateFocusedMarker
 {
-    [UIView animateWithDuration:0.66 
+/*
+    [UIView animateWithDuration:1.0 
                           delay:0.0
-                        options:
-     UIViewAnimationOptionAutoreverse |
-     UIViewAnimationOptionRepeat
+                        options:0
+//     UIViewAnimationOptionAutoreverse |
+//     UIViewAnimationOptionRepeat
                      animations: 
                             ^{
                                 focusedMarker.alpha = 0.15;
@@ -224,6 +231,20 @@
                      completion:^(BOOL finished)
                             {
                             }];
+*/
+    
+    focusedMarker.alpha = 1.0;
+    
+    [UIView beginAnimations:@"focusedMarkerAnim" context:focusedMarker];
+    [UIView setAnimationDuration:0.66];    
+    [UIView setAnimationRepeatAutoreverses:YES];
+    [UIView setAnimationRepeatCount:1.0];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(focusedMarkerAnimationDidStop:finished:context:)];
+    
+    focusedMarker.alpha = 0.15;
+    
+    [UIView commitAnimations];
 }
 
 - (void) focusedMarkerAnimationDidStop
@@ -244,8 +265,8 @@
     SM3DAR_IconMarkerView *newMarker = (SM3DAR_IconMarkerView *)newPOI.view;
     SM3DAR_IconMarkerView *oldMarker = (SM3DAR_IconMarkerView *)oldPOI.view;
     
-    [oldMarker.layer removeAllAnimations];
-    oldMarker.alpha = 1.0;
+//    [oldMarker.layer removeAllAnimations];
+//    oldMarker.alpha = 1.0;
 
     newMarker.icon.image = [UIImage imageNamed:@"bubble3.png"];
     oldMarker.icon.image = [UIImage imageNamed:@"bubble1.png"];
