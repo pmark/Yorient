@@ -5,6 +5,7 @@
 
 #import "BubbleMarkerView.h"
 #import <OpenGLES/ES1/gl.h>
+#import "Constants.h"
 
 #define MIN_SIZE_SCALAR 0.08
 #define SCALE_REDUCTION 0.3
@@ -16,17 +17,19 @@
 static float bmvShadowVerts[BMV_SHADOW_VERTEX_COUNT][3];
 static unsigned short bmvShadowIndexes[BMV_SHADOW_VERTEX_COUNT];
 
+/*
 static float bmvLineVertex[2][3] =
 {
     // x y z 
-    { 0, 0, 0 },
-    { 0, 0, -500 }
+    { 0, 0, BUBBLE_ALTITUDE_METERS },
+    { 0, 0, GROUNDPLANE_ALTITUDE_METERS }
 };
 
 static unsigned short bmvLineIndex[2] = 
 {
     0, 1
 };
+*/
 
 - (void) buildView {
 	UIImage *img = [UIImage imageNamed:@"bubble1.png"];
@@ -38,7 +41,7 @@ static unsigned short bmvLineIndex[2] =
     
     // Shadow    
     
-    CGFloat radius = 100;
+    CGFloat radius = 200;
 	
 	for (int i=0; i < BMV_SHADOW_VERTEX_COUNT; i++)
 	{
@@ -46,7 +49,7 @@ static unsigned short bmvLineIndex[2] =
 		
 		bmvShadowVerts[i][0] = radius * cos(theta);
 		bmvShadowVerts[i][1] = radius * sin(theta);
-		bmvShadowVerts[i][2] = -500.0;
+		bmvShadowVerts[i][2] = GROUNDPLANE_ALTITUDE_METERS - BUBBLE_ALTITUDE_METERS;
 		
 		bmvShadowIndexes[i] = i;
 	}
@@ -91,9 +94,6 @@ static unsigned short bmvLineIndex[2] =
 #pragma mark -
 - (void) drawInGLContext 
 {
-    glScalef (-1, 1, 1);
-  	glRotatef(180.0, 0, 0, 1);
-    
     glDepthMask(0);
     
     glDisable(GL_LIGHTING);
@@ -109,17 +109,19 @@ static unsigned short bmvLineIndex[2] =
     // Shadow
     
     glLineWidth(1.0);
-    glColor4f(.2, .2, .2, 0.5);
+//    glColor4f(.2, .2, .2, 0.8);
+    glColor4f(0.1, 0.1, 0.1, 0.7);
 	glVertexPointer(3, GL_FLOAT, 0, bmvShadowVerts);
 	glDrawElements(GL_TRIANGLE_FAN, BMV_SHADOW_VERTEX_COUNT, GL_UNSIGNED_SHORT, bmvShadowIndexes);
     
     
     // Line
-    
-    glLineWidth(2.0);
-    glColor4f(.3, .3, .3, 0.8);
+/*
+    glLineWidth(1.0);
+    glColor4f(0.75, .3, .3, 0.8);
     glVertexPointer(3, GL_FLOAT, sizeof(float) * 3, bmvLineVertex);
     glDrawElements(GL_LINES, 2, GL_UNSIGNED_SHORT, bmvLineIndex);
+*/
 }
 
 @end

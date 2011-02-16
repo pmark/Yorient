@@ -5,8 +5,8 @@
 
 #import "SM3DAR.h"
 
-#define FLAT_GRID_LINE_COUNT 100
-#define FLAT_GRID_SCALE 1000
+#define FLAT_GRID_LINE_COUNT 500
+#define FLAT_GRID_SCALE 100
 
 
 @interface FlatGridView : SM3DAR_MarkerView 

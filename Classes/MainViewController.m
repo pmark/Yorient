@@ -13,6 +13,7 @@
 #import "CGPointUtil.h"
 #import "FlatGridView.h"
 #import "RoundedLabelMarkerView.h"
+#import "Constants.h"
 
 @implementation MainViewController
 
@@ -34,64 +35,97 @@
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void) viewDidAppear:(BOOL)animated 
+{
 	[super viewDidAppear:animated];
     
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
 
-    if (![sm3dar.view superview]) {
+    if (![sm3dar.view superview]) 
+    {
 
         [self.view addSubview:sm3dar.view];
         
-//        [sm3dar startCamera];
+        [sm3dar startCamera];
     }
 }
 
-- (void)viewDidLoad {
+- (void) decorateMap
+{
+    [SM3DAR.map addSubview:spinner];
+    [SM3DAR.map addSubview:searchButton];
+}
+
+- (void) clearFocus
+{
+    poiTitle.text = nil;
+    poiSubtitle.text = nil;
+    poiDistance.text = nil;
+}
+
+- (void) viewDidLoad 
+{
 	[super viewDidLoad];
     [self initSound];
     self.view.backgroundColor = [UIColor blackColor];
     
-	SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-	sm3dar.delegate = self;
-    sm3dar.markerViewClass = [BubbleMarkerView class];    
+	SM3DAR_Controller *sm3dar = SM3DAR;
     sm3dar.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+	sm3dar.delegate = self;
+    sm3dar.focusView = nil;
+    sm3dar.hudView = hudView;
+    sm3dar.markerViewClass = [BubbleMarkerView class];
+    centerMenu.hidden = YES;
+    hudView.hidden = YES;
+
+    [self clearFocus];
+    
+    CALayer *l = centerMenu.layer;
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:7.0];
+    [l setBorderWidth:2.0];
+    [l setBorderColor:[[UIColor darkGrayColor] CGColor]];
+
+    [self.view insertSubview:sm3dar.view atIndex:0];
+    [self.view addSubview:sm3dar.iconLogo];
+
+    
+    // Search screen
     
     self.search = [[[YahooLocalSearch alloc] init] autorelease];
+    search.delegate = self;
     
     FlipsideViewController *flipside = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
     flipside.delegate = self;	
     flipside.view.hidden = YES;
     [self.view addSubview:flipside.view];
     self.flipsideController = flipside;
-    [flipside release];  
+    [flipside release];
 
-    
-    // HUD
+    [self decorateMap];
+}
 
-    sm3dar.hudView = [[[UIView alloc] initWithFrame:sm3dar.view.frame] autorelease];
-    [sm3dar.view addSubview:sm3dar.hudView];
-    
-    
-    // Joystick
-    
+- (void) addJoystick
+{
     joystick = [[Joystick alloc] initWithBackground:[UIImage imageNamed:@"128_white.png"]];
     joystick.center = CGPointMake(160, 406);
     
-    [sm3dar.hudView addSubview:joystick];
+    [SM3DAR.hudView addSubview:joystick];
     [NSTimer scheduledTimerWithTimeInterval:0.10f target:self selector:@selector(updateJoystick) userInfo:nil repeats:YES];    
 }
 
-- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
+- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller 
+{
     flipsideController.view.hidden = YES;
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     sm3dar.view.hidden = NO;
     [sm3dar resume];
 }
 
-- (IBAction)showFlipside {
+- (IBAction)showFlipside 
+{
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-    [sm3dar suspend];    
+//    [sm3dar suspend];    
     sm3dar.view.hidden = YES;
     
     [self.view bringSubviewToFront:flipsideController.view];
@@ -106,18 +140,26 @@
     [flipsideController.searchBar performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:duration];  
 }
 
-- (void)runLocalSearch:(NSString*)query {
+- (void)runLocalSearch:(NSString*)query 
+{
+    [self clearFocus];
+    
+    centerMenu.hidden = YES;
+    [spinner startAnimating];
+
 	self.searchQuery = query;
-    [[SM3DAR_Controller sharedController] removeAllPointsOfInterest];
+    [SM3DAR removeAllPointsOfInterest:NO];
     [self.search execute:query];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning 
+{
     NSLog(@"\n\ndidReceiveMemoryWarning\n\n");
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload 
+{
     NSLog(@"viewDidUnload");
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
@@ -146,7 +188,8 @@
     [fixture release];
 }
 
--(void)loadPointsOfInterest {
+-(void)loadPointsOfInterest 
+{
     // 3DAR initialization is complete
     
     [self addFlatGrid];    
@@ -155,7 +198,6 @@
 
     self.searchQuery = @"cafe";
     [self.search execute:searchQuery];    
-    
 }
 
 -(void)loadPointsOfInterestFromMarkersFile {
@@ -165,7 +207,18 @@
 
 -(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
 	//NSLog(@"POI acquired focus: %@", newPOI.title);
+
+    if (SM3DAR.view.hidden)
+        return;
+    
 	[self playFocusSound];
+ 
+    poiIcon.image = ((SM3DAR_IconMarkerView*)newPOI.view).icon.image;
+    poiTitle.text = newPOI.title;
+    poiSubtitle.text = newPOI.subtitle;
+    poiDistance.text = [NSString stringWithFormat:@"%@ mi", 
+                        [newPOI formattedDistanceInMilesFromCurrentLocation]];
+    
 }
 
 -(void)didChangeSelectionToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
@@ -184,21 +237,38 @@
 } 
 
 #pragma mark -
--(void)logoWasTapped {
-//    [self showFlipside];
 
+-(void)logoWasTapped 
+{
+    hudView.hidden = !hudView.hidden;
+    centerMenu.hidden = !centerMenu.hidden;    
     
-    self.searchQuery = @"cafe";
-    [self.search execute:searchQuery];
+    if ([SM3DAR mapIsVisible])
+    {
+        // Map will be hidden.
 
+        [hudView addSubview:spinner];
+        [hudView addSubview:searchButton];        
+    }
+    else
+    {
+        // Map will be shown.
 
+        [self decorateMap];
+        searchButton.transform = CGAffineTransformIdentity;
+        
+    }
+
+    [SM3DAR toggleMap];
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation 
 {
-    [manager stopUpdatingLocation];
+//    [SM3DAR debug:[NSString stringWithFormat:@" X %0.1f     Y %0.1f ", 
+//                   SM3DAR.currentPosition.x, SM3DAR.currentPosition.y]];
 }
 
 #pragma mark -
@@ -261,14 +331,14 @@
 - (void) addDirectionBillboardsWithFixtures
 {
     Coord3D origin = {
-        0, 0, 0
+        0, 0, DIRECTION_BILLBOARD_ALTITUDE_METERS
     };    
     
     Coord3D north, south, east, west;
     
     north = south = east = west = origin;
     
-    CGFloat range = 8000.0;    
+    CGFloat range = 5000.0;    
     
     north.y += range;
     south.y -= range;
@@ -279,6 +349,21 @@
     [self addLabelFixture:@"S" subtitle:@"" coord:south];
     [self addLabelFixture:@"E" subtitle:@"" coord:east];
     [self addLabelFixture:@"W" subtitle:@"" coord:west];
+}
+
+- (void) searchDidFinishWithEmptyResults
+{
+    [spinner stopAnimating];
+}
+
+- (void) searchDidFinishWithResults
+{
+    [spinner stopAnimating];
+
+    if (![SM3DAR mapIsVisible])
+    {
+        centerMenu.hidden = NO;
+    }    
 }
 
 @end

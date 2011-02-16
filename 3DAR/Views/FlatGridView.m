@@ -5,6 +5,7 @@
 
 #import "FlatGridView.h"
 #import <OpenGLES/ES1/gl.h>
+#import "Constants.h"
 
 
 @implementation FlatGridView
@@ -58,7 +59,7 @@
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     
     NSInteger half = FLAT_GRID_LINE_COUNT / 2 * FLAT_GRID_SCALE;
-    glTranslatef(-half, -half, -500);
+    glTranslatef(-half, -half, GROUNDPLANE_ALTITUDE_METERS);
     
 //    glScalef(FLAT_GRID_SCALE, FLAT_GRID_SCALE, FLAT_GRID_SCALE);    
 
@@ -79,11 +80,11 @@
     glFogfv(GL_FOG_COLOR, fogColor);
     
     glFogf(GL_FOG_MODE, GL_LINEAR);
-    glFogf(GL_FOG_DENSITY, 1.0);
+    glFogf(GL_FOG_DENSITY, 0.6);
     
     glFogf(GL_FOG_START, 0.0);
     
-    CGFloat fogEnd = FLAT_GRID_LINE_COUNT * FLAT_GRID_SCALE;
+    CGFloat fogEnd = FLAT_GRID_LINE_COUNT * FLAT_GRID_SCALE / 2.0;
     glFogf(GL_FOG_END, fogEnd);
     
     glHint(GL_FOG_HINT, GL_NICEST);

@@ -10,48 +10,76 @@
 #import "NSString+BSJSONAdditions.h"
 #import "UIApplication_TLCommon.h"
 #import "SM3DAR.h"
+#import "Constants.h"
+
+#define MAX_SEARCH_RESULT_COUNT 10
 
 @implementation YahooLocalSearch
-@synthesize webData, query;
 
-- (void)execute:(NSString*)searchQuery {
+@synthesize webData;
+@synthesize query;
+@synthesize delegate;
+
+- (void)dealloc 
+{
+    [webData release];
+    [query release];
+	[super dealloc];
+}
+
+
+- (void)execute:(NSString*)searchQuery 
+{
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     
     self.query = searchQuery;
 	CLLocation *loc = [sm3dar currentLocation];
     NSLog(@"Executing search for '%@' at current location: %@", searchQuery, loc);
     
-	NSString *yahooMapUri = @"http://local.yahooapis.com/LocalSearchService/V3/localSearch?appid=YahooDemo&query=%@&latitude=%3.5f&longitude=%3.5f&results=20&output=json";
-	NSString *uri = [NSString stringWithFormat:yahooMapUri, 
-                     [searchQuery stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], loc.coordinate.latitude, loc.coordinate.longitude];
+	NSString *yahooMapUri = @"http://local.yahooapis.com/LocalSearchService/V3/localSearch?appid=YahooDemo&query=%@&latitude=%3.5f&longitude=%3.5f&results=%i&output=json";
+	
+    NSString *uri = [NSString stringWithFormat:yahooMapUri, 
+                     [searchQuery stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], 
+                     loc.coordinate.latitude, 
+                     loc.coordinate.longitude,
+                     MAX_SEARCH_RESULT_COUNT];
+
 	NSLog(@"Searching...\n%@\n", uri);
 	NSURL *mapSearchURL = [NSURL URLWithString:uri];
 	NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:mapSearchURL] delegate:self startImmediately:YES];
     
-	if (conn) {
+	if (conn) 
+    {
         [[UIApplication sharedApplication] didStartNetworkRequest];
 		self.webData = [NSMutableData data];
-	} else {
+	} 
+    else 
+    {
 		NSLog(@"ERROR: Connection was not established");
 	}	
+    
 	[conn release];
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
+{
 	[self.webData setLength: 0];
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data 
+{
 	[self.webData appendData:data];
 }
 
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
+{
     [[UIApplication sharedApplication] didStopNetworkRequest];
 	NSLog(@"ERROR: Connection failed: %@", [error localizedDescription]);
 }
 
 // thank you http://json.parser.online.fr/
-- (NSArray*)parseYahooMapSearchResults:(NSString*)json {
+- (NSArray*)parseYahooMapSearchResults:(NSString*)json 
+{
 	NSDictionary *properties = [NSDictionary dictionaryWithJSONString:json];
 	NSDictionary *container = [properties objectForKey:@"ResultSet"];	
 	NSArray *responseSet = [container objectForKey:@"Result"];
@@ -60,7 +88,8 @@
     NSMutableDictionary *merged;
     NSString *star = @"★"; // @"\U2605";
     
-	for (NSDictionary *marker in responseSet) {
+	for (NSDictionary *marker in responseSet) 
+    {
         NSString *rating = [[marker objectForKey:@"Rating"] objectForKey:@"AverageRating"];
         CGFloat stars = [rating floatValue];
         rating = [@"" stringByPaddingToLength:stars withString:star startingAtIndex:0];
@@ -71,6 +100,7 @@
                      rating, @"subtitle",
                      [marker objectForKey:@"Latitude"], @"latitude",
                      [marker objectForKey:@"Longitude"], @"longitude",
+                     [NSString stringWithFormat:@"%.0f", BUBBLE_ALTITUDE_METERS], @"altitude",
                      self.query, @"search",
                      
                      // you can set the marker's view class right here
@@ -86,7 +116,8 @@
 	return markers;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection 
+{
     [[UIApplication sharedApplication] didStopNetworkRequest];
 	NSString *response = [[NSString alloc] initWithData:self.webData encoding:NSASCIIStringEncoding];
 	
@@ -97,26 +128,33 @@
 	
 	NSLog(@"Adding %i POIs", [markers count]);
     NSMutableArray *points = [NSMutableArray arrayWithCapacity:[markers count]];
-	if (markers && [markers count] > 0) {
-        for (NSDictionary *row in markers) {
+    
+	if (markers && [markers count] > 0) 
+    {
+        NSInteger markerCount = 0;
+        
+        for (NSDictionary *row in markers) 
+        {
+            if (markerCount++ >= MAX_SEARCH_RESULT_COUNT)
+                break;
 
             //////
             SM3DAR_PointOfInterest *poi = [sm3dar initPointOfInterest:row];
-            poi.canReceiveFocus = NO;
+            poi.canReceiveFocus = YES;
             [points addObject:poi];
             //////
         }
         
         [sm3dar addPointsOfInterest:points];
-	}
+
+	    [delegate searchDidFinishWithResults];
+    }
+    else
+    {
+        [delegate searchDidFinishWithEmptyResults];
+    }
     
     [sm3dar zoomMapToFit];
-}
-
-- (void)dealloc {
-    [webData release];
-    [query release];
-	[super dealloc];
 }
 
 

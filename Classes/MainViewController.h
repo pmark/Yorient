@@ -13,7 +13,7 @@
 #import "YahooLocalSearch.h"
 #import "Joystick.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DAR_Delegate, CLLocationManagerDelegate> {
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, SM3DAR_Delegate, CLLocationManagerDelegate, SearchDelegate> {
 	SystemSoundID focusSound;
 	NSString *searchQuery;
     YahooLocalSearch *search;
@@ -21,6 +21,15 @@
     FlipsideViewController *flipsideController;
     Joystick *joystick;
     Coord3D cameraOffset;
+    
+    IBOutlet UIView *hudView;
+    IBOutlet UIView *centerMenu;
+    IBOutlet UILabel *poiTitle;
+    IBOutlet UILabel *poiSubtitle;
+    IBOutlet UILabel *poiDistance;
+    IBOutlet UIImageView *poiIcon;
+    IBOutlet UIButton *searchButton;
+    IBOutlet UIActivityIndicatorView *spinner;
 }
 
 @property (nonatomic, retain) NSString *searchQuery;

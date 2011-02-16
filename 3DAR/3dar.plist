@@ -5,20 +5,20 @@
 	<key>3darAutofocusPoi</key>
 	<true/>
 	<key>3darOverridePoiAltitude</key>
-	<true/>
+	<false/>
 	<key>3darLookMode</key>
 	<string>free</string>
 	<key>3darEnableMap</key>
-	<false/>
+	<true/>
+	<key>3darMapMode</key>
+	<string>manual</string>
 	<key>3darDrawGroundplaneGrid</key>
 	<false/>
 	<key>3darDisableLocationServices</key>
 	<false/>
-	<key>3darShowToolBar</key>
-	<true/>
-	<key>3darShowStatusBar</key>
-	<false/>
 	<key>3darLocationUpdateIntervalSec</key>
 	<integer>1</integer>
+	<key>3darDisableGyro</key>
+	<false/>
 </dict>
 </plist>

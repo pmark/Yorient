@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/ES1/gl.h>
+#import "Constants.h"
 
 @implementation RoundedLabelMarkerView
 
@@ -35,7 +36,7 @@
         
         if (self.poi)
         {
-            distance = [self.poi formattedDistanceInMilesFromCurrentLocation];
+            distance = [self.poi formattedDistanceInMetersFromCurrentLocation];
         }
         
         NSInteger fontSize = 18;
@@ -55,7 +56,7 @@
         if (distance && [self.markerSubtitle isEqualToString:@"distance"])
         {
             h = (4*fontSize);
-            label.text = [NSString stringWithFormat:@"%@\n%@ mi", line1, distance];
+            label.text = [NSString stringWithFormat:@"%@\n%@ m", line1, distance];
             label.numberOfLines = 2;
         }
         else
@@ -115,18 +116,19 @@
     return nil;
 }
 
+/*
 static float rlLineVertex[2][3] =
 {
     // x y z 
-    { 0, 0, 0 },
-    { 0, 0, -500 }
+    { 0, 0, 100-GROUNDPLANE_ALTITUDE_METERS },
+    { 0, 0, GROUNDPLANE_ALTITUDE_METERS }
 };
 
 static unsigned short rlLineIndex[2] = 
 {
     0, 1
 };
-
+*/
 
 - (void) drawInGLContext 
 {
@@ -146,11 +148,12 @@ static unsigned short rlLineIndex[2] =
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     
     // Line
-    
-    glLineWidth(2.0);
+/*    
+    glLineWidth(10.0);
     glColor4f(0, 0, 1, 0.33);
     glVertexPointer(3, GL_FLOAT, sizeof(float) * 3, rlLineVertex);
     glDrawElements(GL_LINES, 2, GL_UNSIGNED_SHORT, rlLineIndex);
+*/
 }
 
 - (CGAffineTransform) pointTransform 
