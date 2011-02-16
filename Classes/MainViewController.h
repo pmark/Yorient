@@ -31,6 +31,7 @@
     IBOutlet UIImageView *poiIcon;
     IBOutlet UIButton *searchButton;
     IBOutlet UIActivityIndicatorView *spinner;
+    
 }
 
 @property (nonatomic, retain) NSString *searchQuery;

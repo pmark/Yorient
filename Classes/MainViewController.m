@@ -66,6 +66,7 @@
 - (void) viewDidLoad 
 {
 	[super viewDidLoad];
+
     [self initSound];
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -75,8 +76,9 @@
     sm3dar.focusView = nil;
     sm3dar.hudView = hudView;
     sm3dar.markerViewClass = [BubbleMarkerView class];
+
     centerMenu.hidden = YES;
-    hudView.hidden = YES;
+    hudView.hidden = NO;
 
     [self clearFocus];
     
@@ -102,7 +104,6 @@
     self.flipsideController = flipside;
     [flipside release];
 
-    [self decorateMap];
 }
 
 - (void) addJoystick
@@ -192,6 +193,9 @@
 -(void)loadPointsOfInterest 
 {
     // 3DAR initialization is complete
+    
+    [SM3DAR hideMap];
+    [SM3DAR.view bringSubviewToFront:hudView];
     
     [self addFlatGrid];    
 
