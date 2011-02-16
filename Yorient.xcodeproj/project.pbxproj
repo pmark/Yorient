@@ -64,7 +64,6 @@
 		4DEF736611A3618B00CE34D2 /* UIApplication_TLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEF735B11A3618B00CE34D2 /* UIApplication_TLCommon.m */; };
 		4DEF736711A3618B00CE34D2 /* UIColor_Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEF735D11A3618B00CE34D2 /* UIColor_Expanded.m */; };
 		4DF90E0F10F1735900B8D74B /* UIApplication_TLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF90E0E10F1735900B8D74B /* UIApplication_TLCommon.m */; };
-		A6334514130897F2004AFB13 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6334513130897F2004AFB13 /* lib3DAR.a */; };
 		A63346321308BB85004AFB13 /* RoundedLabelMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A63346301308BB85004AFB13 /* RoundedLabelMarkerView.m */; };
 		A63348E813091F62004AFB13 /* markers_ne.json in Resources */ = {isa = PBXBuildFile; fileRef = A63348E713091F62004AFB13 /* markers_ne.json */; };
 		A63349D8130B370A004AFB13 /* markers_office.json in Resources */ = {isa = PBXBuildFile; fileRef = A63349D7130B370A004AFB13 /* markers_office.json */; };
@@ -618,6 +617,8 @@
 		A6B83C5D130B79B400CCF08F /* 99-umbrella.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B83ACD130B79B400CCF08F /* 99-umbrella.png */; };
 		A6B83C5E130B79B400CCF08F /* 99-umbrella@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B83ACE130B79B400CCF08F /* 99-umbrella@2x.png */; };
 		A6B83C71130BAE6A00CCF08F /* group_64x42.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B83C70130BAE6A00CCF08F /* group_64x42.png */; };
+		A6B83D0C130BCB9E00CCF08F /* lib3DAR_v4_0_8b.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B83D0B130BCB9E00CCF08F /* lib3DAR_v4_0_8b.a */; };
+		A6B83D2E130BD08C00CCF08F /* bubble3.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B83D2D130BD08C00CCF08F /* bubble3.png */; };
 		A6BFE087130B7484007D8CA3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE081130B7484007D8CA3 /* Default.png */; };
 		A6BFE088130B7484007D8CA3 /* focus1.aif in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE082130B7484007D8CA3 /* focus1.aif */; };
 		A6BFE089130B7484007D8CA3 /* focus2.aif in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE083130B7484007D8CA3 /* focus2.aif */; };
@@ -743,7 +744,6 @@
 		4DF90E0D10F1735900B8D74B /* UIApplication_TLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIApplication_TLCommon.h; sourceTree = "<group>"; };
 		4DF90E0E10F1735900B8D74B /* UIApplication_TLCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIApplication_TLCommon.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Yorient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Yorient-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		A6334513130897F2004AFB13 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../Library/iOS/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
 		A63346301308BB85004AFB13 /* RoundedLabelMarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedLabelMarkerView.m; sourceTree = "<group>"; };
 		A63346311308BB85004AFB13 /* RoundedLabelMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedLabelMarkerView.h; sourceTree = "<group>"; };
 		A63348E713091F62004AFB13 /* markers_ne.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markers_ne.json; sourceTree = "<group>"; };
@@ -1299,6 +1299,8 @@
 		A6B83ACD130B79B400CCF08F /* 99-umbrella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "99-umbrella.png"; sourceTree = "<group>"; };
 		A6B83ACE130B79B400CCF08F /* 99-umbrella@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "99-umbrella@2x.png"; sourceTree = "<group>"; };
 		A6B83C70130BAE6A00CCF08F /* group_64x42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group_64x42.png; sourceTree = "<group>"; };
+		A6B83D0B130BCB9E00CCF08F /* lib3DAR_v4_0_8b.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v4_0_8b.a; sourceTree = "<group>"; };
+		A6B83D2D130BD08C00CCF08F /* bubble3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble3.png; sourceTree = "<group>"; };
 		A6BFE081130B7484007D8CA3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A6BFE082130B7484007D8CA3 /* focus1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = focus1.aif; sourceTree = "<group>"; };
 		A6BFE083130B7484007D8CA3 /* focus2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = focus2.aif; sourceTree = "<group>"; };
@@ -1335,7 +1337,7 @@
 				A645426312A4E3B40014F23C /* OpenGLES.framework in Frameworks */,
 				A645426512A4E3B40014F23C /* QuartzCore.framework in Frameworks */,
 				A645426712A4E3B40014F23C /* UIKit.framework in Frameworks */,
-				A6334514130897F2004AFB13 /* lib3DAR.a in Frameworks */,
+				A6B83D0C130BCB9E00CCF08F /* lib3DAR_v4_0_8b.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1555,7 +1557,6 @@
 		4D8589C71141B62700F25004 /* 3DAR */ = {
 			isa = PBXGroup;
 			children = (
-				A6334513130897F2004AFB13 /* lib3DAR.a */,
 				4DEF733B11A3618B00CE34D2 /* Views */,
 				4DEF734011A3618B00CE34D2 /* API */,
 				4DEF734311A3618B00CE34D2 /* Lib */,
@@ -1570,6 +1571,7 @@
 				4D8589CF1141B62700F25004 /* 3dar_marker_icon6.png */,
 				4D8589D01141B62700F25004 /* bubble1.png */,
 				4D858CFE11420EFD00F25004 /* bubble2.png */,
+				A6B83D2D130BD08C00CCF08F /* bubble3.png */,
 				4D8589D11141B62700F25004 /* compass_rose.png */,
 				4D8589D21141B62700F25004 /* SM3DAR.h */,
 				4D8589D31141B62700F25004 /* SM3DAR_keys.txt */,
@@ -1627,6 +1629,7 @@
 		4DEF734311A3618B00CE34D2 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				A6B83D0B130BCB9E00CCF08F /* lib3DAR_v4_0_8b.a */,
 				4DEF734411A3618B00CE34D2 /* BSJSONAdditions */,
 				4DEF734F11A3618B00CE34D2 /* HTTPRiot */,
 			);
@@ -2874,6 +2877,7 @@
 				A6B83C5D130B79B400CCF08F /* 99-umbrella.png in Resources */,
 				A6B83C5E130B79B400CCF08F /* 99-umbrella@2x.png in Resources */,
 				A6B83C71130BAE6A00CCF08F /* group_64x42.png in Resources */,
+				A6B83D2E130BD08C00CCF08F /* bubble3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2946,6 +2950,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR\"",
+					"\"$(SRCROOT)/3DAR/Lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2969,6 +2974,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR\"",
+					"\"$(SRCROOT)/3DAR/Lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

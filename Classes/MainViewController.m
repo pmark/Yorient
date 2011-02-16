@@ -52,8 +52,8 @@
 
 - (void) decorateMap
 {
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     [SM3DAR.map addSubview:spinner];
-    [SM3DAR.map addSubview:searchButton];
 }
 
 - (void) clearFocus
@@ -145,6 +145,7 @@
     [self clearFocus];
     
     centerMenu.hidden = YES;
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     [spinner startAnimating];
 
 	self.searchQuery = query;
@@ -205,20 +206,56 @@
 	[SM3DAR loadMarkersFromJSONFile:@"markers"];
 }
 
+- (void) animateFocusedMarker
+{
+    [UIView animateWithDuration:0.66 
+                          delay:0.0
+                        options:
+     UIViewAnimationOptionAutoreverse |
+     UIViewAnimationOptionRepeat
+                     animations: 
+                            ^{
+                                focusedMarker.alpha = 0.15;
+                            }
+                     completion:^(BOOL finished)
+                            {
+                            }];
+}
+
+- (void) focusedMarkerAnimationDidStop
+{
+    if (focusedMarker && ![SM3DAR mapIsVisible])
+    {
+        [self animateFocusedMarker];
+    }
+} 
+     
 -(void)didChangeFocusToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
-	//NSLog(@"POI acquired focus: %@", newPOI.title);
 
     if (SM3DAR.view.hidden)
         return;
     
 	[self playFocusSound];
- 
-    poiIcon.image = ((SM3DAR_IconMarkerView*)newPOI.view).icon.image;
+
+    SM3DAR_IconMarkerView *newMarker = (SM3DAR_IconMarkerView *)newPOI.view;
+    SM3DAR_IconMarkerView *oldMarker = (SM3DAR_IconMarkerView *)oldPOI.view;
+    
+    [oldMarker.layer removeAllAnimations];
+    oldMarker.alpha = 1.0;
+
+    newMarker.icon.image = [UIImage imageNamed:@"bubble3.png"];
+    oldMarker.icon.image = [UIImage imageNamed:@"bubble1.png"];
+    
+    focusedMarker = newMarker;
+
+    poiIcon.image = newMarker.icon.image;
     poiTitle.text = newPOI.title;
     poiSubtitle.text = newPOI.subtitle;
     poiDistance.text = [NSString stringWithFormat:@"%@ mi", 
                         [newPOI formattedDistanceInMilesFromCurrentLocation]];
     
+
+    [self animateFocusedMarker];
 }
 
 -(void)didChangeSelectionToPOI:(SM3DAR_PointOfInterest*)newPOI fromPOI:(SM3DAR_PointOfInterest*)oldPOI {
@@ -248,14 +285,13 @@
         // Map will be hidden.
 
         [hudView addSubview:spinner];
-        [hudView addSubview:searchButton];        
+
     }
     else
     {
         // Map will be shown.
 
         [self decorateMap];
-        searchButton.transform = CGAffineTransformIdentity;
         
     }
 

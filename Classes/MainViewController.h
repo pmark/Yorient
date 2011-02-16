@@ -21,6 +21,7 @@
     FlipsideViewController *flipsideController;
     Joystick *joystick;
     Coord3D cameraOffset;
+    UIView *focusedMarker;
     
     IBOutlet UIView *hudView;
     IBOutlet UIView *centerMenu;

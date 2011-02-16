@@ -110,7 +110,7 @@ static unsigned short bmvLineIndex[2] =
     
     glLineWidth(1.0);
 //    glColor4f(.2, .2, .2, 0.8);
-    glColor4f(0.1, 0.1, 0.1, 0.7);
+    glColor4f(0, 0, 0, 1.0);
 	glVertexPointer(3, GL_FLOAT, 0, bmvShadowVerts);
 	glDrawElements(GL_TRIANGLE_FAN, BMV_SHADOW_VERTEX_COUNT, GL_UNSIGNED_SHORT, bmvShadowIndexes);
     
