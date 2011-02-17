@@ -54,6 +54,8 @@
 {
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     [SM3DAR.map addSubview:spinner];
+    
+    [SM3DAR.view bringSubviewToFront:SM3DAR.map];
 }
 
 - (void) clearFocus
@@ -76,6 +78,7 @@
     sm3dar.focusView = nil;
     sm3dar.hudView = hudView;
     sm3dar.markerViewClass = [BubbleMarkerView class];
+    sm3dar.map.alpha = 0.0;
 
     centerMenu.hidden = YES;
     hudView.hidden = NO;
@@ -192,14 +195,11 @@
 {
     // 3DAR initialization is complete
     
-    [SM3DAR hideMap];
-    [SM3DAR.view bringSubviewToFront:hudView];
-    
     [self addFlatGrid];    
 
     [self addDirectionBillboardsWithFixtures];
 
-    self.searchQuery = @"cafe";
+    self.searchQuery = @"pizza";
     [self.search execute:searchQuery];    
 }
 
