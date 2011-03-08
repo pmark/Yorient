@@ -181,7 +181,7 @@
     Coord3D coord;
     coord.x = 0;
     coord.y = 0;
-    coord.z = 0;
+    coord.z = -50;
     
     fixture.worldPoint = coord;
     
@@ -197,10 +197,11 @@
     
     [self addFlatGrid];    
 
-    [self addDirectionBillboardsWithFixtures];
-
-    self.searchQuery = @"pizza";
-    [self.search execute:searchQuery];    
+    [self addDirectionBillboardsWithFixtures];    
+    
+    //    self.searchQuery = @"pizza";
+    //    [self.search execute:searchQuery];    
+    
 }
 
 -(void)loadPointsOfInterestFromMarkersFile {

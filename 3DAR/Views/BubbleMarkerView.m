@@ -41,7 +41,7 @@ static unsigned short bmvLineIndex[2] =
     
     // Shadow    
     
-    CGFloat radius = 200;
+    CGFloat radius = 20;
 	
 	for (int i=0; i < BMV_SHADOW_VERTEX_COUNT; i++)
 	{
