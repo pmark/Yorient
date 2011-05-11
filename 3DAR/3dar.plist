@@ -4,21 +4,11 @@
 <dict>
 	<key>3darAutofocusPoi</key>
 	<true/>
-	<key>3darOverridePoiAltitude</key>
-	<false/>
-	<key>3darLookMode</key>
-	<string>free</string>
-	<key>3darEnableMap</key>
-	<true/>
-	<key>3darMapMode</key>
-	<string>manual</string>
-	<key>3darDrawGroundplaneGrid</key>
-	<false/>
 	<key>3darDisableLocationServices</key>
 	<false/>
-	<key>3darLocationUpdateIntervalSec</key>
-	<integer>1</integer>
-	<key>3darDisableGyro</key>
-	<false/>
+	<key>3darDrawGroundplaneGrid</key>
+	<true/>
+	<key>3darMapMode</key>
+	<string>auto</string>
 </dict>
 </plist>
