@@ -12,11 +12,16 @@
 //#import "RoundedLabelMarkerView.h"
 #import "Constants.h"
 
+#define SG_CONSUMER_KEY @"cxu7vcXRsfSaBZGm4EZffVGRq662YCNJ"
+#define SG_CONSUMER_SECRET @"fTGANz54NXzMVQ6gwgnJcKEua4m2MLSs"
+
+
 @implementation MainViewController
 
 @synthesize searchQuery;
 @synthesize search;
 @synthesize mapView;
+@synthesize simplegeo;
 
 - (void)dealloc 
 {
@@ -32,6 +37,8 @@
     [spinner release];
     spinner = nil;
     
+    [simplegeo release];
+    
 	[super dealloc];
 }
 
@@ -39,6 +46,11 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) 
     {      
+        self.simplegeo = [SimpleGeo clientWithDelegate:self
+                                    consumerKey:SG_CONSUMER_KEY
+                                 consumerSecret:SG_CONSUMER_SECRET];
+        
+        [simplegeo setDelegate:self];
     }
     
     return self;
@@ -48,7 +60,7 @@
 {
 	[super viewDidAppear:animated];
     
-//    [mapView startCamera];
+    [mapView startCamera];
 }
 
 - (void) viewDidLoad 
@@ -73,7 +85,7 @@
     [spinner startAnimating];
 
     [mapView removeAnnotations:mapView.annotations];
-    [mapView addBackground];
+    //[mapView addBackground];
     
 	self.searchQuery = query;
     search.location = mapView.sm3dar.userLocation;
@@ -101,7 +113,9 @@
     
 //    [self addDirectionBillboardsWithFixtures];    
     
-    [self runLocalSearch:@"pizza"];
+//    [self runLocalSearch:@"bar"];
+
+    [self fetchSimpleGeoPlaces];
     
 }
 
@@ -226,5 +240,77 @@
 {
     hudView.hidden = NO;
 }
+
+#pragma mark SimpleGeoDelegate methods
+
+- (void)requestDidFail:(ASIHTTPRequest *)request
+{
+    NSLog(@"SimpleGeo Request failed: %@: %i", [request responseStatusMessage], [request responseStatusCode]);
+}
+
+- (void)requestDidFinish:(ASIHTTPRequest *)request
+{
+    NSLog(@"SimpleGeo Request finished: %@", [request responseString]);
+}
+
+- (void) fetchSimpleGeoPlaces
+{
+    SGPoint *here = [SGPoint pointWithLatitude:mapView.sm3dar.userLocation.coordinate.latitude
+                                     longitude:mapView.sm3dar.userLocation.coordinate.longitude];
+    
+    [simplegeo getPlacesNear:here 
+                    matching:nil 
+                  inCategory:@"Bars & Pubs" 
+                      within:15.0 
+                       count:220];
+}
+
+- (void)didLoadPlaces:(SGFeatureCollection *)places
+             forQuery:(NSDictionary *)query
+{
+    
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[places count]];
+    
+    for (SGFeature *place in [places features]) 
+    {
+        SGPoint *point = (SGPoint *)[place geometry];
+        NSString *name = [[place properties] objectForKey:@"name"];
+        NSString *category = @"";
+        
+        if ([[[place properties] objectForKey:@"classifiers"] count] > 0) 
+        {
+            NSDictionary *classifiers = [[[place properties] objectForKey:@"classifiers"] objectAtIndex:0];
+            
+            category = [classifiers objectForKey:@"category"];
+            
+            //NSLog(@"place cat: %@", category);
+            
+            NSString *subcategory = (NSString *)[classifiers objectForKey:@"subcategory"];
+            if (subcategory && ! ([subcategory isEqual:@""] ||
+                                  [subcategory isEqual:[NSNull null]])) {
+                category = [NSString stringWithFormat:@"%@ : %@", category, subcategory];
+            }
+        }
+        
+        MKPointAnnotation *annotation = [[[MKPointAnnotation alloc] init] autorelease];
+        CLLocationCoordinate2D coordinate;
+        coordinate.latitude = point.latitude;
+        coordinate.longitude = point.longitude;
+        
+        annotation.coordinate = coordinate;
+        annotation.title = name;
+        annotation.subtitle = category;
+        
+        [annotations addObject:annotation];
+    }
+    
+    [self.mapView addAnnotations:annotations];
+
+    [mapView zoomMapToFit];
+    [spinner stopAnimating];
+}
+
+#pragma mark -
+
 
 @end

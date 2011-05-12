@@ -67,8 +67,8 @@
 		A6622C48137A221F0002E03D /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = A6622C38137A221E0002E03D /* sphere.obj */; };
 		A6622C49137A221F0002E03D /* star.obj in Resources */ = {isa = PBXBuildFile; fileRef = A6622C39137A221E0002E03D /* star.obj */; };
 		A6622C4A137A221F0002E03D /* ufo.obj in Resources */ = {isa = PBXBuildFile; fileRef = A6622C3A137A221E0002E03D /* ufo.obj */; };
-		A6622C4B137A221F0002E03D /* lib3DAR_Mapping_1_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6622C3C137A221E0002E03D /* lib3DAR_Mapping_1_0.a */; };
 		A6622C4D137A221F0002E03D /* SM3DAR_keys.txt in Resources */ = {isa = PBXBuildFile; fileRef = A6622C3F137A221F0002E03D /* SM3DAR_keys.txt */; };
+		A6A8C863137B672F00A57235 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A8C862137B672F00A57235 /* lib3DAR.a */; };
 		A6B8389D130B799400CCF08F /* 01-arrow-east.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B83825130B799300CCF08F /* 01-arrow-east.png */; };
 		A6B8389E130B799400CCF08F /* 01-arrow-east@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B83826130B799300CCF08F /* 01-arrow-east@2x.png */; };
 		A6B8389F130B799400CCF08F /* 02-arrow-southeast.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B83827130B799300CCF08F /* 02-arrow-southeast.png */; };
@@ -616,10 +616,23 @@
 		A6BFE08A130B7484007D8CA3 /* focus3.aif in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE084130B7484007D8CA3 /* focus3.aif */; };
 		A6BFE08B130B7484007D8CA3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE085130B7484007D8CA3 /* Icon.png */; };
 		A6BFE08C130B7484007D8CA3 /* spot_metrix_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE086130B7484007D8CA3 /* spot_metrix_logo.jpg */; };
+		A6D68F88137A690900402D63 /* SimpleGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D68F6A137A690800402D63 /* SimpleGeo.framework */; };
+		A6D68F89137A690900402D63 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D68F87137A690900402D63 /* YAJL.framework */; };
+		A6D68FB4137A692A00402D63 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A6D68FAF137A692A00402D63 /* Debug.xcconfig */; };
+		A6D68FB5137A692A00402D63 /* Distribution.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A6D68FB0137A692A00402D63 /* Distribution.xcconfig */; };
+		A6D68FB6137A692A00402D63 /* Private.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A6D68FB1137A692A00402D63 /* Private.xcconfig */; };
+		A6D68FB7137A692A00402D63 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A6D68FB2137A692A00402D63 /* Release.xcconfig */; };
+		A6D68FB8137A692A00402D63 /* Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A6D68FB3137A692A00402D63 /* Shared.xcconfig */; };
+		A6D68FBA137A697900402D63 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D68FB9137A697900402D63 /* CFNetwork.framework */; };
+		A6D68FBE137A69B400402D63 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D68FBD137A69B400402D63 /* MobileCoreServices.framework */; };
+		A6D68FC0137A69B400402D63 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D68FBF137A69B400402D63 /* SystemConfiguration.framework */; };
+		A6D68FC4137A69C800402D63 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D68FC3137A69C800402D63 /* libz.dylib */; };
+		A6D69046137A6E8500402D63 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D69043137A6E8500402D63 /* Default@2x.png */; };
+		A6D69047137A6E8500402D63 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D69044137A6E8500402D63 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D6058910D05DD3D006BFB54 /* Yorient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yorient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Bar Hopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Hopper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Yorient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yorient_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Yorient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Yorient-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -726,10 +739,9 @@
 		A6622C38137A221E0002E03D /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
 		A6622C39137A221E0002E03D /* star.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = star.obj; sourceTree = "<group>"; };
 		A6622C3A137A221E0002E03D /* ufo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ufo.obj; sourceTree = "<group>"; };
-		A6622C3C137A221E0002E03D /* lib3DAR_Mapping_1_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_Mapping_1_0.a; sourceTree = "<group>"; };
-		A6622C3D137A221F0002E03D /* lib3DAR_Mapping_1_0_fat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_Mapping_1_0_fat.a; sourceTree = "<group>"; };
 		A6622C3E137A221F0002E03D /* SM3DAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DAR.h; sourceTree = "<group>"; };
 		A6622C3F137A221F0002E03D /* SM3DAR_keys.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SM3DAR_keys.txt; sourceTree = "<group>"; };
+		A6A8C862137B672F00A57235 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../Library/iOS/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
 		A6B83825130B799300CCF08F /* 01-arrow-east.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-arrow-east.png"; sourceTree = "<group>"; };
 		A6B83826130B799300CCF08F /* 01-arrow-east@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-arrow-east@2x.png"; sourceTree = "<group>"; };
 		A6B83827130B799300CCF08F /* 02-arrow-southeast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-arrow-southeast.png"; sourceTree = "<group>"; };
@@ -1277,6 +1289,46 @@
 		A6BFE084130B7484007D8CA3 /* focus3.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = focus3.aif; sourceTree = "<group>"; };
 		A6BFE085130B7484007D8CA3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A6BFE086130B7484007D8CA3 /* spot_metrix_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spot_metrix_logo.jpg; sourceTree = "<group>"; };
+		A6D68F6A137A690800402D63 /* SimpleGeo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleGeo.framework; sourceTree = "<group>"; };
+		A6D68F6C137A690800402D63 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		A6D68F6D137A690800402D63 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		A6D68F6E137A690800402D63 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		A6D68F6F137A690800402D63 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		A6D68F70137A690800402D63 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		A6D68F71137A690800402D63 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		A6D68F72137A690800402D63 /* ASIHTTPRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+OAuth.h"; sourceTree = "<group>"; };
+		A6D68F73137A690800402D63 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		A6D68F74137A690800402D63 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		A6D68F75137A690800402D63 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		A6D68F76137A690800402D63 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		A6D68F77137A690800402D63 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		A6D68F78137A690800402D63 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		A6D68F79137A690800402D63 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A6D68F7A137A690800402D63 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFeature.h; sourceTree = "<group>"; };
+		A6D68F7B137A690800402D63 /* SGFeatureCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFeatureCollection.h; sourceTree = "<group>"; };
+		A6D68F7C137A690800402D63 /* SGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGeometry.h; sourceTree = "<group>"; };
+		A6D68F7D137A690800402D63 /* SGGeometryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGeometryCollection.h; sourceTree = "<group>"; };
+		A6D68F7E137A690800402D63 /* SGMultiPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMultiPolygon.h; sourceTree = "<group>"; };
+		A6D68F7F137A690800402D63 /* SGPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPoint.h; sourceTree = "<group>"; };
+		A6D68F80137A690800402D63 /* SGPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPolygon.h; sourceTree = "<group>"; };
+		A6D68F81137A690800402D63 /* SGStoredRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGStoredRecord.h; sourceTree = "<group>"; };
+		A6D68F82137A690800402D63 /* SimpleGeo+Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Context.h"; sourceTree = "<group>"; };
+		A6D68F83137A690800402D63 /* SimpleGeo+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Internal.h"; sourceTree = "<group>"; };
+		A6D68F84137A690800402D63 /* SimpleGeo+Places.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Places.h"; sourceTree = "<group>"; };
+		A6D68F85137A690800402D63 /* SimpleGeo+Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Storage.h"; sourceTree = "<group>"; };
+		A6D68F86137A690800402D63 /* SimpleGeo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleGeo.h; sourceTree = "<group>"; };
+		A6D68F87137A690900402D63 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
+		A6D68FAF137A692A00402D63 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		A6D68FB0137A692A00402D63 /* Distribution.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Distribution.xcconfig; sourceTree = "<group>"; };
+		A6D68FB1137A692A00402D63 /* Private.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Private.xcconfig; sourceTree = "<group>"; };
+		A6D68FB2137A692A00402D63 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		A6D68FB3137A692A00402D63 /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		A6D68FB9137A697900402D63 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A6D68FBD137A69B400402D63 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A6D68FBF137A69B400402D63 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A6D68FC3137A69C800402D63 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A6D69043137A6E8500402D63 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A6D69044137A6E8500402D63 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1293,7 +1345,13 @@
 				A645426312A4E3B40014F23C /* OpenGLES.framework in Frameworks */,
 				A645426512A4E3B40014F23C /* QuartzCore.framework in Frameworks */,
 				A645426712A4E3B40014F23C /* UIKit.framework in Frameworks */,
-				A6622C4B137A221F0002E03D /* lib3DAR_Mapping_1_0.a in Frameworks */,
+				A6D68F88137A690900402D63 /* SimpleGeo.framework in Frameworks */,
+				A6D68F89137A690900402D63 /* YAJL.framework in Frameworks */,
+				A6D68FBA137A697900402D63 /* CFNetwork.framework in Frameworks */,
+				A6D68FBE137A69B400402D63 /* MobileCoreServices.framework in Frameworks */,
+				A6D68FC0137A69B400402D63 /* SystemConfiguration.framework in Frameworks */,
+				A6D68FC4137A69C800402D63 /* libz.dylib in Frameworks */,
+				A6A8C863137B672F00A57235 /* lib3DAR.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1303,7 +1361,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Yorient.app */,
+				1D6058910D05DD3D006BFB54 /* Bar Hopper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1311,10 +1369,12 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A6D68FAE137A692A00402D63 /* Build Configuration */,
 				A6622C2C137A221E0002E03D /* 3DAR */,
 				A6334ACC130B7416004AFB13 /* Assets */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				A6D68F69137A690800402D63 /* ext */,
 				A6622BA3137A21E30002E03D /* Source */,
 				A6622BB7137A21E30002E03D /* Vendor */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -1343,6 +1403,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6D68FB9137A697900402D63 /* CFNetwork.framework */,
+				A6D68FBD137A69B400402D63 /* MobileCoreServices.framework */,
+				A6D68FBF137A69B400402D63 /* SystemConfiguration.framework */,
+				A6D68FC3137A69C800402D63 /* libz.dylib */,
 				A645425612A4E3B40014F23C /* AudioToolbox.framework */,
 				A645425812A4E3B40014F23C /* CoreGraphics.framework */,
 				A645425A12A4E3B40014F23C /* CoreLocation.framework */,
@@ -1359,6 +1423,8 @@
 		A6334ACC130B7416004AFB13 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A6D69043137A6E8500402D63 /* Default@2x.png */,
+				A6D69044137A6E8500402D63 /* Icon@2x.png */,
 				A6B8393E130B79B300CCF08F /* icons */,
 				A6B83915130B79A900CCF08F /* mini-icons */,
 				A6B83824130B799300CCF08F /* symbols */,
@@ -1605,8 +1671,7 @@
 		A6622C3B137A221E0002E03D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				A6622C3C137A221E0002E03D /* lib3DAR_Mapping_1_0.a */,
-				A6622C3D137A221F0002E03D /* lib3DAR_Mapping_1_0_fat.a */,
+				A6A8C862137B672F00A57235 /* lib3DAR.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -2173,6 +2238,62 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
+		A6D68F69137A690800402D63 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				A6D68F6A137A690800402D63 /* SimpleGeo.framework */,
+				A6D68F6B137A690800402D63 /* Headers */,
+				A6D68F87137A690900402D63 /* YAJL.framework */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
+		A6D68F6B137A690800402D63 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A6D68F6C137A690800402D63 /* ASIAuthenticationDialog.h */,
+				A6D68F6D137A690800402D63 /* ASICacheDelegate.h */,
+				A6D68F6E137A690800402D63 /* ASIDataCompressor.h */,
+				A6D68F6F137A690800402D63 /* ASIDataDecompressor.h */,
+				A6D68F70137A690800402D63 /* ASIDownloadCache.h */,
+				A6D68F71137A690800402D63 /* ASIFormDataRequest.h */,
+				A6D68F72137A690800402D63 /* ASIHTTPRequest+OAuth.h */,
+				A6D68F73137A690800402D63 /* ASIHTTPRequest.h */,
+				A6D68F74137A690800402D63 /* ASIHTTPRequestConfig.h */,
+				A6D68F75137A690800402D63 /* ASIHTTPRequestDelegate.h */,
+				A6D68F76137A690800402D63 /* ASIInputStream.h */,
+				A6D68F77137A690800402D63 /* ASINetworkQueue.h */,
+				A6D68F78137A690800402D63 /* ASIProgressDelegate.h */,
+				A6D68F79137A690800402D63 /* Reachability.h */,
+				A6D68F7A137A690800402D63 /* SGFeature.h */,
+				A6D68F7B137A690800402D63 /* SGFeatureCollection.h */,
+				A6D68F7C137A690800402D63 /* SGGeometry.h */,
+				A6D68F7D137A690800402D63 /* SGGeometryCollection.h */,
+				A6D68F7E137A690800402D63 /* SGMultiPolygon.h */,
+				A6D68F7F137A690800402D63 /* SGPoint.h */,
+				A6D68F80137A690800402D63 /* SGPolygon.h */,
+				A6D68F81137A690800402D63 /* SGStoredRecord.h */,
+				A6D68F82137A690800402D63 /* SimpleGeo+Context.h */,
+				A6D68F83137A690800402D63 /* SimpleGeo+Internal.h */,
+				A6D68F84137A690800402D63 /* SimpleGeo+Places.h */,
+				A6D68F85137A690800402D63 /* SimpleGeo+Storage.h */,
+				A6D68F86137A690800402D63 /* SimpleGeo.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		A6D68FAE137A692A00402D63 /* Build Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				A6D68FAF137A692A00402D63 /* Debug.xcconfig */,
+				A6D68FB0137A692A00402D63 /* Distribution.xcconfig */,
+				A6D68FB1137A692A00402D63 /* Private.xcconfig */,
+				A6D68FB2137A692A00402D63 /* Release.xcconfig */,
+				A6D68FB3137A692A00402D63 /* Shared.xcconfig */,
+			);
+			name = "Build Configuration";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2190,7 +2311,7 @@
 			);
 			name = Yorient;
 			productName = SM3DARViewer;
-			productReference = 1D6058910D05DD3D006BFB54 /* Yorient.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Bar Hopper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2786,6 +2907,13 @@
 				A6622C49137A221F0002E03D /* star.obj in Resources */,
 				A6622C4A137A221F0002E03D /* ufo.obj in Resources */,
 				A6622C4D137A221F0002E03D /* SM3DAR_keys.txt in Resources */,
+				A6D68FB4137A692A00402D63 /* Debug.xcconfig in Resources */,
+				A6D68FB5137A692A00402D63 /* Distribution.xcconfig in Resources */,
+				A6D68FB6137A692A00402D63 /* Private.xcconfig in Resources */,
+				A6D68FB7137A692A00402D63 /* Release.xcconfig in Resources */,
+				A6D68FB8137A692A00402D63 /* Shared.xcconfig in Resources */,
+				A6D69046137A6E8500402D63 /* Default@2x.png in Resources */,
+				A6D69047137A6E8500402D63 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2843,6 +2971,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ext\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2853,12 +2985,16 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR/lib\"",
+					"\"$(SRCROOT)/../../Library/iOS/build/Release-iphoneos\"",
+					"\"$(SRCROOT)/ext/YAJL.framework/Versions/A\"",
 				);
 				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 					"-lxml2",
 					"-lstdc++",
 				);
-				PRODUCT_NAME = Yorient;
+				PRODUCT_NAME = "Bar Hopper";
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 			};
 			name = Debug;
@@ -2868,6 +3004,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ext\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Yorient_Prefix.pch;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -2876,12 +3016,16 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR/lib\"",
+					"\"$(SRCROOT)/../../Library/iOS/build/Release-iphoneos\"",
+					"\"$(SRCROOT)/ext/YAJL.framework/Versions/A\"",
 				);
 				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 					"-lxml2",
 					"-lstdc++",
 				);
-				PRODUCT_NAME = Yorient;
+				PRODUCT_NAME = "Bar Hopper";
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 			};
 			name = Release;

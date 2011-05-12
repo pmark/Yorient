@@ -96,28 +96,48 @@
 	NSDictionary *minMarker;
 	NSMutableArray *markers = [NSMutableArray arrayWithCapacity:[responseSet count]];
     NSMutableDictionary *merged;
-    NSString *star = @"★"; // @"\U2605";
+//    NSString *star = @"★"; // @"\U2605";
+    
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *language = [locale displayNameForKey:NSLocaleIdentifier 
+                                             value:[locale localeIdentifier]];
+
+    BOOL useMetric = ([[language lowercaseString] rangeOfString:@"united states"].location == NSNotFound);
+    
     
 	for (NSDictionary *marker in responseSet) 
     {
-        NSString *rating = [[marker objectForKey:@"Rating"] objectForKey:@"AverageRating"];
-        CGFloat stars = [rating floatValue];
-        rating = [@"" stringByPaddingToLength:stars withString:star startingAtIndex:0];
+//        NSString *rating = [[marker objectForKey:@"Rating"] objectForKey:@"AverageRating"];
+//        CGFloat stars = [rating floatValue];
+//        rating = [@"" stringByPaddingToLength:stars withString:star startingAtIndex:0];
         
         CLLocationCoordinate2D coord;
         coord.latitude = [((NSDecimalNumber*)[marker objectForKey:@"Latitude"]) doubleValue];
         coord.longitude = [((NSDecimalNumber*)[marker objectForKey:@"Longitude"]) doubleValue];
-        double altitude = -200.0;	
+        double altitude = 0.0;	
         
         CLLocation *pointLocation = [[[CLLocation alloc] initWithCoordinate:coord 
                                                                    altitude:altitude 
-                                                         horizontalAccuracy:1 
-                                                           verticalAccuracy:1 
+                                                         horizontalAccuracy:-1 
+                                                           verticalAccuracy:-1 
                                                                   timestamp:nil] autorelease];
         
+        CLLocationDistance d = [self.location distanceFromLocation:pointLocation];
+        NSString *distance;
+
+        if (useMetric)
+        {
+            d *= 0.000621371192;  // Convert meters to miles
+            distance = [NSString stringWithFormat:@"%.1f mi", d];
+        }
+        else 
+        {
+            distance = [NSString stringWithFormat:@"%.1f m", d];
+        }
+
 		minMarker = [NSDictionary dictionaryWithObjectsAndKeys:
                      [marker objectForKey:@"Title"], @"title",
-                     rating, @"subtitle",
+                     distance, @"subtitle",
                      pointLocation, @"location",
                      self.query, @"search",
                      nil];

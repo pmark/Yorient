@@ -1,0 +1,11 @@
+//
+//  User-specific (private) settings
+//
+
+// you can get your OAuth credentials from http://simplegeo.com/tokens/
+CONSUMER_KEY = EDXfXBg3ZjUFXZTJ9YAwqWABEujCg5bP  // 3dartest
+CONSUMER_SECRET = Lt235RBxpSj7VsjpHRFybqvTJTxDB7DJ
+
+//CONSUMER_KEY = cxu7vcXRsfSaBZGm4EZffVGRq662YCNJ
+//CONSUMER_SECRET = fTGANz54NXzMVQ6gwgnJcKEua4m2MLSs
+
