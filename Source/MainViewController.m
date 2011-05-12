@@ -8,8 +8,6 @@
 
 #import <MapKit/MapKit.h>
 #import "MainViewController.h"
-#import "NSArray+BSJSONAdditions.h"
-//#import "RoundedLabelMarkerView.h"
 #import "Constants.h"
 
 #define SG_CONSUMER_KEY @"cxu7vcXRsfSaBZGm4EZffVGRq662YCNJ"
@@ -250,7 +248,7 @@
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
 {
-    NSLog(@"SimpleGeo Request finished: %@", [request responseString]);
+    //NSLog(@"SimpleGeo Request finished: %@", [request responseString]);
 }
 
 - (void) fetchSimpleGeoPlaces
@@ -259,10 +257,10 @@
                                      longitude:mapView.sm3dar.userLocation.coordinate.longitude];
     
     [simplegeo getPlacesNear:here 
-                    matching:nil 
-                  inCategory:@"Bars & Pubs" 
-                      within:15.0 
-                       count:220];
+                    matching:self.searchQuery 
+                  inCategory:nil
+                      within:25.0 
+                       count:40];
 }
 
 - (void)didLoadPlaces:(SGFeatureCollection *)places

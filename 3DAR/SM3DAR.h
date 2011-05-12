@@ -77,6 +77,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 @property (nonatomic, retain) MarkerCalloutView *calloutView;
 @property (nonatomic, retain) UIView *hudView;
 @property (nonatomic, retain) SM3DAR_Controller *sm3dar;
+@property (nonatomic, assign) CGFloat mapZoomPadding;
 
 - (void) init3DAR;
 - (void) add3darContainer:(SM3DAR_Controller *)sm3dar;
@@ -113,6 +114,7 @@ typedef struct
 @property (nonatomic, assign) BOOL canReceiveFocus;
 @property (nonatomic, assign) BOOL hasFocus;
 @property (nonatomic, assign) NSUInteger identifier;
+@property (nonatomic, retain) NSString *title;
 
 - (Coord3D) worldCoordinate;
 - (void) translateX:(CGFloat)x Y:(CGFloat)y Z:(CGFloat)z;
@@ -186,15 +188,19 @@ typedef struct
 - (id)initWithDelegate:(NSObject<SM3DAR_Delegate> *)delegate;
 - (void)forceRelease;
 - (void)setFrame:(CGRect)newFrame;
+
 - (void)addPoint:(SM3DAR_Point*)point;
 - (void)addPointOfInterest:(SM3DAR_Point*)point;
 - (void)addPointsOfInterest:(NSArray*)points;
 - (void)addPointsOfInterest:(NSArray*)points addToMap:(BOOL)addToMap;
+- (void)removePointOfInterest:(SM3DAR_Point*)point removeFromMap:(BOOL)removeFromMap;
 - (void)removePointOfInterest:(SM3DAR_Point*)point;
+- (void)removePointsOfInterest:(NSArray*)points removeFromMap:(BOOL)removeFromMap;
 - (void)removePointsOfInterest:(NSArray*)points;
 - (void)removeAllPointsOfInterest;
 - (void)removeAllPointsOfInterest:(BOOL)removeFixtures;
 - (void)replaceAllPointsOfInterestWith:(NSArray*)points;
+
 - (NSString*)loadJSONFromFile:(NSString*)fileName;
 - (void)loadMarkersFromJSONFile:(NSString*)fileName;
 - (void)loadMarkersFromJSON:(NSString*)json;
@@ -252,6 +258,7 @@ typedef struct
 @property (nonatomic, assign) BOOL canReceiveFocus;
 @property (nonatomic, assign) BOOL hasFocus;
 @property (nonatomic, assign) NSUInteger identifier;
+@property (nonatomic, retain) NSString *title;
 - (CGFloat)gearSpeed;
 - (NSInteger)numberOfTeethInGear;
 - (void) gearHasTurned;
@@ -440,4 +447,3 @@ typedef struct
 #define SM3DAR_POI_URL @"url"
 #define SM3DAR_POI_VIEW_CLASS_NAME @"view_class_name"
 #define SM3DAR_POI_DEFAULT_VIEW_CLASS_NAME @"SM3DAR_IconMarkerView"
-
