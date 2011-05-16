@@ -92,7 +92,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D6058910D05DD3D006BFB54 /* Nearby .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nearby .app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Yorient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yorient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Yorient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yorient_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Yorient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Yorient-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Nearby .app */,
+				1D6058910D05DD3D006BFB54 /* Yorient.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -607,7 +607,7 @@
 			);
 			name = Yorient;
 			productName = SM3DARViewer;
-			productReference = 1D6058910D05DD3D006BFB54 /* Nearby .app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Yorient.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -749,7 +749,7 @@
 					"-lxml2",
 					"-lstdc++",
 				);
-				PRODUCT_NAME = "Nearby ";
+				PRODUCT_NAME = Yorient;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 			};
 			name = Debug;
@@ -779,7 +779,7 @@
 					"-lxml2",
 					"-lstdc++",
 				);
-				PRODUCT_NAME = "Nearby ";
+				PRODUCT_NAME = Yorient;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 			};
 			name = Release;
