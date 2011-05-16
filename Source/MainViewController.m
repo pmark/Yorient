@@ -13,6 +13,9 @@
 #define SG_CONSUMER_KEY @"cxu7vcXRsfSaBZGm4EZffVGRq662YCNJ"
 #define SG_CONSUMER_SECRET @"fTGANz54NXzMVQ6gwgnJcKEua4m2MLSs"
 
+@interface MainViewController (Private)
+- (void) addBirdseyeView;
+@end
 
 @implementation MainViewController
 
@@ -36,6 +39,7 @@
     spinner = nil;
     
     [simplegeo release];
+    [birdseyeView release];
     
 	[super dealloc];
 }
@@ -70,6 +74,7 @@
     
     mapView.sm3dar.hudView = hudView;
     
+    [self addBirdseyeView];
 
     // Search screen
     
@@ -83,7 +88,6 @@
     [spinner startAnimating];
 
     [mapView removeAnnotations:mapView.annotations];
-    //[mapView addBackground];
     
 	self.searchQuery = query;
     search.location = mapView.sm3dar.userLocation;
@@ -148,6 +152,7 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation 
 {
+    birdseyeView.centerLocation = newLocation;
 }
 
 #pragma mark -
@@ -227,7 +232,7 @@
     [spinner stopAnimating];
 
 //    [mapView performSelectorOnMainThread:@selector(zoomMapToFit) withObject:nil waitUntilDone:YES];
-//    [mapView addBackground];
+    [mapView addBackground];
     [mapView zoomMapToFit];
 }
 
@@ -305,6 +310,7 @@
     }
     
     NSLog(@"Adding annotations");
+    [birdseyeView setLocations:annotations];
     [self.mapView addAnnotations:annotations];
 
     [mapView zoomMapToFit];
@@ -320,6 +326,22 @@
     [self.mapView removeAllAnnotations];
     
     [self fetchSimpleGeoPlaces];    
+}
+
+- (void) addBirdseyeView
+{
+    CGFloat birdseyeViewRadius = 70.0;
+
+    birdseyeView = [[BirdseyeView alloc] initWithLocations:nil
+                                                    around:mapView.sm3dar.userLocation 
+                                            radiusInPixels:birdseyeViewRadius];
+    
+    birdseyeView.center = CGPointMake(self.view.frame.size.width - (birdseyeViewRadius) - 10, 
+                                      10 + (birdseyeViewRadius));
+    
+    [self.view addSubview:birdseyeView];
+    
+    mapView.sm3dar.compassView = birdseyeView;    
 }
 
 @end

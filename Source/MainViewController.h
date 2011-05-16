@@ -12,6 +12,7 @@
 #import "YahooLocalSearch.h"
 #import <MapKit/MapKit.h>
 #import <SimpleGeo/SimpleGeo.h>
+#import "BirdseyeView.h"
 
 @interface MainViewController : UIViewController <MKMapViewDelegate, SM3DAR_Delegate, CLLocationManagerDelegate, SearchDelegate> 
 {
@@ -28,6 +29,7 @@
     IBOutlet UIActivityIndicatorView *spinner;
     
     SimpleGeo *simplegeo;
+    BirdseyeView *birdseyeView;
 }
 
 @property (nonatomic, retain) NSString *searchQuery;
