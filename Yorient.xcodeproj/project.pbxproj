@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		A60F89C6137C8DC000A4DCE4 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60F89C5137C8DC000A4DCE4 /* lib3DAR.a */; };
 		A645425712A4E3B40014F23C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645425612A4E3B40014F23C /* AudioToolbox.framework */; };
 		A645425912A4E3B40014F23C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645425812A4E3B40014F23C /* CoreGraphics.framework */; };
 		A645425B12A4E3B40014F23C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645425A12A4E3B40014F23C /* CoreLocation.framework */; };
@@ -20,6 +19,9 @@
 		A645426712A4E3B40014F23C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645426612A4E3B40014F23C /* UIKit.framework */; };
 		A64E69BB137C9B32003A06B5 /* SimpleGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64E69BA137C9B32003A06B5 /* SimpleGeo.framework */; };
 		A64E69BD137C9B32003A06B5 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64E69BC137C9B32003A06B5 /* YAJL.framework */; };
+		A64E6BFF137CB5C6003A06B5 /* refresh_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A64E6BFD137CB5C5003A06B5 /* refresh_button.png */; };
+		A64E6C00137CB5C6003A06B5 /* refresh_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A64E6BFE137CB5C6003A06B5 /* refresh_button@2x.png */; };
+		A64E6D35137DE315003A06B5 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A64E6D34137DE315003A06B5 /* lib3DAR.a */; };
 		A6622C03137A21E30002E03D /* UIApplication_TLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = A6622BA6137A21E30002E03D /* UIApplication_TLCommon.m */; };
 		A6622C04137A21E30002E03D /* UIColor_Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A6622BA8137A21E30002E03D /* UIColor_Expanded.m */; };
 		A6622C05137A21E30002E03D /* FlipsideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6622BAB137A21E30002E03D /* FlipsideView.m */; };
@@ -93,7 +95,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Yorient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yorient_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Yorient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Yorient-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		A60F89C5137C8DC000A4DCE4 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR.a; sourceTree = "<group>"; };
 		A645425612A4E3B40014F23C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A645425812A4E3B40014F23C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A645425A12A4E3B40014F23C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -105,6 +106,9 @@
 		A645426612A4E3B40014F23C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A64E69BA137C9B32003A06B5 /* SimpleGeo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleGeo.framework; sourceTree = "<group>"; };
 		A64E69BC137C9B32003A06B5 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
+		A64E6BFD137CB5C5003A06B5 /* refresh_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_button.png; sourceTree = "<group>"; };
+		A64E6BFE137CB5C6003A06B5 /* refresh_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_button@2x.png"; sourceTree = "<group>"; };
+		A64E6D34137DE315003A06B5 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../Library/iOS/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
 		A6622BA5137A21E30002E03D /* UIApplication_TLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIApplication_TLCommon.h; sourceTree = "<group>"; };
 		A6622BA6137A21E30002E03D /* UIApplication_TLCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIApplication_TLCommon.m; sourceTree = "<group>"; };
 		A6622BA7137A21E30002E03D /* UIColor_Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Expanded.h; sourceTree = "<group>"; };
@@ -236,9 +240,9 @@
 				A6D68FBE137A69B400402D63 /* MobileCoreServices.framework in Frameworks */,
 				A6D68FC0137A69B400402D63 /* SystemConfiguration.framework in Frameworks */,
 				A6D68FC4137A69C800402D63 /* libz.dylib in Frameworks */,
-				A60F89C6137C8DC000A4DCE4 /* lib3DAR.a in Frameworks */,
 				A64E69BB137C9B32003A06B5 /* SimpleGeo.framework in Frameworks */,
 				A64E69BD137C9B32003A06B5 /* YAJL.framework in Frameworks */,
+				A64E6D35137DE315003A06B5 /* lib3DAR.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +314,8 @@
 		A6334ACC130B7416004AFB13 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A64E6BFD137CB5C5003A06B5 /* refresh_button.png */,
+				A64E6BFE137CB5C6003A06B5 /* refresh_button@2x.png */,
 				A6BFE081130B7484007D8CA3 /* Default.png */,
 				A6BFE082130B7484007D8CA3 /* focus1.aif */,
 				A6BFE083130B7484007D8CA3 /* focus2.aif */,
@@ -562,7 +568,7 @@
 		A6622C3B137A221E0002E03D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				A60F89C5137C8DC000A4DCE4 /* lib3DAR.a */,
+				A64E6D34137DE315003A06B5 /* lib3DAR.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -656,6 +662,8 @@
 				A6D68FB6137A692A00402D63 /* Private.xcconfig in Resources */,
 				A6D68FB7137A692A00402D63 /* Release.xcconfig in Resources */,
 				A6D68FB8137A692A00402D63 /* Shared.xcconfig in Resources */,
+				A64E6BFF137CB5C6003A06B5 /* refresh_button.png in Resources */,
+				A64E6C00137CB5C6003A06B5 /* refresh_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,8 +733,8 @@
 				INFOPLIST_FILE = "Yorient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/3DAR/lib\"",
 					"\"$(SRCROOT)/ext/YAJL.framework/Versions/A\"",
+					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -754,8 +762,8 @@
 				INFOPLIST_FILE = "Yorient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/3DAR/lib\"",
 					"\"$(SRCROOT)/ext/YAJL.framework/Versions/A\"",
+					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

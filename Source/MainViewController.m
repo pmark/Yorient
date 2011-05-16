@@ -112,6 +112,8 @@
 //    [self addDirectionBillboardsWithFixtures];    
     
 //    [self runLocalSearch:@"bar"];
+    
+    self.searchQuery = nil;
 
     [self fetchSimpleGeoPlaces];
     
@@ -259,8 +261,8 @@
     [simplegeo getPlacesNear:here 
                     matching:self.searchQuery 
                   inCategory:nil
-                      within:25.0 
-                       count:40];
+                      within:15.0 
+                       count:50];
 }
 
 - (void)didLoadPlaces:(SGFeatureCollection *)places
@@ -302,6 +304,7 @@
         [annotations addObject:annotation];
     }
     
+    NSLog(@"Adding annotations");
     [self.mapView addAnnotations:annotations];
 
     [mapView zoomMapToFit];
@@ -310,5 +313,13 @@
 
 #pragma mark -
 
+- (IBAction) refreshButtonTapped
+{
+    [spinner startAnimating];
+    
+    [self.mapView removeAllAnnotations];
+    
+    [self fetchSimpleGeoPlaces];    
+}
 
 @end

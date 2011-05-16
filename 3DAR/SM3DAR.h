@@ -87,6 +87,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (void) stopCamera;
 - (void) addBackground;
 - (void) moveToLocation:(CLLocation *)newLocation;
+- (void) removeAllAnnotations;
 
 @end
 

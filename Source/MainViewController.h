@@ -40,5 +40,6 @@
 - (void)runLocalSearch:(NSString*)query;
 //- (void)addDirectionBillboardsWithFixtures;
 - (void) fetchSimpleGeoPlaces;
+- (IBAction) refreshButtonTapped;
 
 @end
