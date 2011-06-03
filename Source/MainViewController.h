@@ -14,7 +14,7 @@
 #import <SimpleGeo/SimpleGeo.h>
 #import "BirdseyeView.h"
 
-@interface MainViewController : UIViewController <MKMapViewDelegate, SM3DAR_Delegate, CLLocationManagerDelegate, SearchDelegate> 
+@interface MainViewController : UIViewController <MKMapViewDelegate, SM3DARDelegate, CLLocationManagerDelegate, SearchDelegate> 
 {
 	SystemSoundID focusSound;
 	NSString *searchQuery;

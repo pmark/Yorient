@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		A63D9BF2139870E300B09396 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A63D9BF1139870E300B09396 /* lib3DAR.a */; };
 		A645425712A4E3B40014F23C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645425612A4E3B40014F23C /* AudioToolbox.framework */; };
 		A645425912A4E3B40014F23C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645425812A4E3B40014F23C /* CoreGraphics.framework */; };
 		A645425B12A4E3B40014F23C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645425A12A4E3B40014F23C /* CoreLocation.framework */; };
@@ -73,7 +74,6 @@
 		A6622C4A137A221F0002E03D /* ufo.obj in Resources */ = {isa = PBXBuildFile; fileRef = A6622C3A137A221E0002E03D /* ufo.obj */; };
 		A6622C4D137A221F0002E03D /* SM3DAR_keys.txt in Resources */ = {isa = PBXBuildFile; fileRef = A6622C3F137A221F0002E03D /* SM3DAR_keys.txt */; };
 		A6BE263913811F0F000A4A4F /* BirdseyeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BE263813811F0F000A4A4F /* BirdseyeView.m */; };
-		A6BE274A13813ECA000A4A4F /* lib3DAR_Mapping_v0_9_3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BE274913813ECA000A4A4F /* lib3DAR_Mapping_v0_9_3.a */; };
 		A6BFE087130B7484007D8CA3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE081130B7484007D8CA3 /* Default.png */; };
 		A6BFE088130B7484007D8CA3 /* focus1.aif in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE082130B7484007D8CA3 /* focus1.aif */; };
 		A6BFE089130B7484007D8CA3 /* focus2.aif in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE083130B7484007D8CA3 /* focus2.aif */; };
@@ -96,6 +96,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Yorient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yorient_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Yorient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Yorient-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A63D9BF1139870E300B09396 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../Library/iOS/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
 		A645425612A4E3B40014F23C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A645425812A4E3B40014F23C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A645425A12A4E3B40014F23C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -207,7 +208,6 @@
 		A6622C3F137A221F0002E03D /* SM3DAR_keys.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SM3DAR_keys.txt; sourceTree = "<group>"; };
 		A6BE263713811F0E000A4A4F /* BirdseyeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdseyeView.h; sourceTree = "<group>"; };
 		A6BE263813811F0F000A4A4F /* BirdseyeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdseyeView.m; sourceTree = "<group>"; };
-		A6BE274913813ECA000A4A4F /* lib3DAR_Mapping_v0_9_3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_Mapping_v0_9_3.a; sourceTree = "<group>"; };
 		A6BFE081130B7484007D8CA3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A6BFE082130B7484007D8CA3 /* focus1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = focus1.aif; sourceTree = "<group>"; };
 		A6BFE083130B7484007D8CA3 /* focus2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = focus2.aif; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 				A6D68FC4137A69C800402D63 /* libz.dylib in Frameworks */,
 				A64E69BB137C9B32003A06B5 /* SimpleGeo.framework in Frameworks */,
 				A64E69BD137C9B32003A06B5 /* YAJL.framework in Frameworks */,
-				A6BE274A13813ECA000A4A4F /* lib3DAR_Mapping_v0_9_3.a in Frameworks */,
+				A63D9BF2139870E300B09396 /* lib3DAR.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +573,7 @@
 		A6622C3B137A221E0002E03D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				A6BE274913813ECA000A4A4F /* lib3DAR_Mapping_v0_9_3.a */,
+				A63D9BF1139870E300B09396 /* lib3DAR.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
