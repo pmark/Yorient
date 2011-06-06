@@ -1,5 +1,5 @@
 /*
- *  3DAR Version 0.9.6 beta 1
+ *  3DAR Version 0.9.6 beta 2
  *
  *  SM3DAR.h
  *
@@ -14,6 +14,9 @@
  *   SM3DARController: Added new convenience methods for creating an autoreleased POI with a view.
  *     - (SM3DARPoint *) addPointAtLocation:(CLLocation *)poiLocation title:(NSString *)poiTitle subtitle:(NSString *)poiSubtitle url:(NSURL *)poiURL properties:(NSDictionary *)poiProperties view:(UIView *)poiView
  *     - (SM3DARPoint *) addPointAtLatitude:(CLLocationDegrees)poiLatitude longitude:(CLLocationDegrees)poiLongitude altitude:(CLLocationDistance)poiAltitude title:(NSString *)poiTitle view:(UIView *)poiView
+ *   
+ *   SM3DARController: Additions.
+ *     - (void)cycleCameraAltitude;
  *
  */
 
@@ -256,8 +259,9 @@ typedef struct
 - (Coord3D)solarPositionScaled:(CGFloat)meters;
 - (void)initOrigin;
 - (Coord3D)ray:(CGPoint)screenPoint;
-- (void) setCameraAltitudeMeters:(CGFloat)altitude;
-- (void) setCameraPosition:(Coord3D)coordRelativeToOrigin;
+- (void)setCameraAltitudeMeters:(CGFloat)altitude;
+- (void)setCameraPosition:(Coord3D)coordRelativeToOrigin;
+- (void)cycleCameraAltitude;
 
 @end
 
@@ -478,3 +482,6 @@ typedef struct
 #define SM3DAR_POI_URL @"url"
 #define SM3DAR_POI_VIEW_CLASS_NAME @"view_class_name"
 #define SM3DAR_POI_DEFAULT_VIEW_CLASS_NAME @"SM3DARIconMarkerView"
+#define SM3DAR_DEFAULT_CAMERA_ALTITUDE_LOW 3.5f
+#define SM3DAR_DEFAULT_CAMERA_ALTITUDE_MID 50.0f
+#define SM3DAR_DEFAULT_CAMERA_ALTITUDE_HIGH 350.0f

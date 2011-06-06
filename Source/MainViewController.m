@@ -88,7 +88,7 @@
     self.search = [[[YahooLocalSearch alloc] init] autorelease];
     search.delegate = self;
  
-    mapView.sm3dar.focusView = mapView.calloutView;
+//    mapView.sm3dar.focusView = mapView.calloutView;
 }
 
 - (void)runLocalSearch:(NSString*)query 
@@ -240,7 +240,7 @@
     [spinner stopAnimating];
 
 //    [mapView performSelectorOnMainThread:@selector(zoomMapToFit) withObject:nil waitUntilDone:YES];
-    [mapView addBackground];
+//    [mapView addBackground];
     [mapView zoomMapToFit];
 }
 
@@ -350,12 +350,12 @@
 
 - (IBAction) refreshButtonTapped
 {
-//    [spinner startAnimating];
+    [spinner startAnimating];
     
     [self.mapView removeAllAnnotations];
  
-    [self add3dObjectNortheastOfUserLocation];
-//    [self fetchSimpleGeoPlaces];    
+//    [self add3dObjectNortheastOfUserLocation];
+    [self fetchSimpleGeoPlaces];    
 }
 
 - (void) addBirdseyeView
@@ -372,12 +372,6 @@
     [self.view addSubview:birdseyeView];
     
     mapView.sm3dar.compassView = birdseyeView;    
-}
-
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"main view tapped");
-    [self.nextResponder touchesBegan:touches withEvent:event];
 }
 
 @end
