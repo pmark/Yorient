@@ -41,6 +41,8 @@
     [simplegeo release];
     [birdseyeView release];
     
+    [toggleMapButton release];
+    
 	[super dealloc];
 }
 
@@ -61,6 +63,8 @@
 - (void) viewDidAppear:(BOOL)animated 
 {
 	[super viewDidAppear:animated];
+    
+    toggleMapButton.hidden = [((NSString*)[[NSUserDefaults standardUserDefaults] objectForKey:@"3darMapMode"]) isEqualToString:@"auto"];
     
     [mapView startCamera];
 }
@@ -139,7 +143,32 @@
 - (void) sm3dar:(SM3DARController *)sm3dar didChangeSelectionToPOI:(SM3DARPoint *)newPOI fromPOI:(SM3DARPoint *)oldPOI
 {
 	NSLog(@"POI was selected: %@", [newPOI title]);
+    
+    SM3DARPointOfInterest *poi = (SM3DARPointOfInterest *)newPOI;
+    
+    mapView.calloutView.hidden = NO;
+    mapView.calloutView.titleLabel.text = newPOI.title;
+    mapView.calloutView.distanceLabel.text = [poi formattedDistanceFromCurrentLocationWithUnits];
+    
+    [newPOI.view addSubview:mapView.calloutView];
+
+    CGPoint center = mapView.calloutView.center;
+    mapView.calloutView.center = CGPointMake((center.x), // - mapView.calloutView.bounds.size.width/2), 
+                                             center.y -(mapView.calloutView.bounds.size.height + 4));
+
+//    CGRect f = mapView.calloutView.frame;
+//    f.origin.y = newPOI.view.frame.origin.y - 100;
+//    mapView.calloutView.frame = f;
+    
+    
 }
+
+
+- (void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    NSLog(@"callout tapped");
+}
+
 
 #pragma mark Sound
 - (void) initSound 
@@ -372,6 +401,20 @@
     [self.view addSubview:birdseyeView];
     
     mapView.sm3dar.compassView = birdseyeView;    
+}
+
+- (IBAction) toggleMapButtonTapped:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    if (sender.selected)
+    {
+        [mapView.sm3dar hideMap];
+    }
+    else
+    {
+        [mapView.sm3dar showMap];
+    }
 }
 
 @end

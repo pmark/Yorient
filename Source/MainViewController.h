@@ -30,6 +30,8 @@
     
     SimpleGeo *simplegeo;
     BirdseyeView *birdseyeView;
+    
+    IBOutlet UIButton *toggleMapButton;
 }
 
 @property (nonatomic, retain) NSString *searchQuery;
@@ -43,5 +45,6 @@
 //- (void)addDirectionBillboardsWithFixtures;
 - (void) fetchSimpleGeoPlaces;
 - (IBAction) refreshButtonTapped;
+- (IBAction) toggleMapButtonTapped:(UIButton *)sender;
 
 @end

@@ -1,13 +1,17 @@
 /*
- *  3DAR Version 0.9.6 beta 2
+ *  3DAR Version 0.9.6
  *
  *  SM3DAR.h
  *
  *  Copyright 2009 Spot Metrix, Inc. All rights reserved.
  *  http://3DAR.us
  *
- *  Changes from v0.9.5
- *  ~~~~~~~~~~~~~~~~~~~
+ *
+ *  Changes since v0.9.5
+ *  ~~~~~~~~~~~~~~~~~~~~
+ *   Bug fix:
+ *     - Marker views were not tappable because of a view hierarchy problem.
+ *
  *   SM3DARMapView: Added new convenience method for creating a POI with a non-default view.
  *     - (void) addAnnotation:(id)object withPointView:(UIView *)poiView
  *
@@ -71,12 +75,42 @@ typedef NSObject<SM3DARPointProtocol> SM3DARPoint;
 - (void) mapAnnotationView:(MKAnnotationView*)annotationView calloutAccessoryControlTapped:(UIControl*)control;
 @end
 
+//
+//
+//
+@protocol SM3DARFocusDelegate
+
+-(void)pointDidGainFocus:(SM3DARPoint*)point;
+@optional
+-(void)pointDidLoseFocus:(SM3DARPoint*)point;
+-(void)updatePositionAndOrientation:(CGFloat)screenOrientationRadians;
+
+@end
+
+
+//
+//
+//
 @protocol SM3DARMarkerCalloutViewDelegate
 - (void) calloutViewWasTappedForPoint:(SM3DARPoint *)point;
 @end
 
-@class SM3DARMarkerCalloutView;
 
+//
+//
+//
+@interface SM3DARMarkerCalloutView : UIView <SM3DARFocusDelegate> {}
+@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UILabel *subtitleLabel;
+@property (nonatomic, retain) UILabel *distanceLabel;
+@property (nonatomic, retain) UIButton *disclosureButton;    
+@property (nonatomic, assign) id<SM3DARMarkerCalloutViewDelegate> delegate;
+@end
+
+
+//
+//
+//
 @interface SM3DARMapView : MKMapView <SM3DARDelegate, MKMapViewDelegate, SM3DARMarkerCalloutViewDelegate> {}
 
 @property (nonatomic, retain) UIView *containerView;
@@ -98,6 +132,10 @@ typedef NSObject<SM3DARPointProtocol> SM3DARPoint;
 
 @end
 
+
+//
+//
+//
 @interface SM3DARBasicPointAnnotation : MKPointAnnotation 
 @property (nonatomic, retain) NSString *imageName;
 @end
@@ -143,19 +181,6 @@ typedef struct
 
 
 @class SM3DARController;
-
-
-//
-//
-//
-@protocol SM3DARFocusDelegate
-
--(void)pointDidGainFocus:(SM3DARPoint*)point;
-@optional
--(void)pointDidLoseFocus:(SM3DARPoint*)point;
--(void)updatePositionAndOrientation:(CGFloat)screenOrientationRadians;
-
-@end
 
 
 //
