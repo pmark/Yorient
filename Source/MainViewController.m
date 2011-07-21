@@ -66,7 +66,7 @@
     
     toggleMapButton.hidden = [((NSString*)[[NSUserDefaults standardUserDefaults] objectForKey:@"3darMapMode"]) isEqualToString:@"auto"];
     
-    [mapView startCamera];
+//    [mapView startCamera];
 }
 
 - (void) viewDidLoad 
@@ -75,8 +75,6 @@
     
     [self initSound];
     self.view.backgroundColor = [UIColor blackColor];
-    
-    hudView = nil;////////////////
     
     if (hudView)
     {
@@ -89,8 +87,8 @@
     
     // Search screen
     
-    self.search = [[[YahooLocalSearch alloc] init] autorelease];
-    search.delegate = self;
+//    self.search = [[[YahooLocalSearch alloc] init] autorelease];
+//    search.delegate = self;
  
 //    mapView.sm3dar.focusView = mapView.calloutView;
 }
@@ -143,7 +141,8 @@
 - (void) sm3dar:(SM3DARController *)sm3dar didChangeSelectionToPOI:(SM3DARPoint *)newPOI fromPOI:(SM3DARPoint *)oldPOI
 {
 	NSLog(@"POI was selected: %@", [newPOI title]);
-    
+
+    /*
     SM3DARPointOfInterest *poi = (SM3DARPointOfInterest *)newPOI;
     
     mapView.calloutView.hidden = NO;
@@ -155,12 +154,7 @@
     CGPoint center = mapView.calloutView.center;
     mapView.calloutView.center = CGPointMake((center.x), // - mapView.calloutView.bounds.size.width/2), 
                                              center.y -(mapView.calloutView.bounds.size.height + 4));
-
-//    CGRect f = mapView.calloutView.frame;
-//    f.origin.y = newPOI.view.frame.origin.y - 100;
-//    mapView.calloutView.frame = f;
-    
-    
+    */
 }
 
 
