@@ -41,6 +41,8 @@
     [simplegeo release];
     [birdseyeView release];
     
+    [toggleMapButton release];
+    
 	[super dealloc];
 }
 
@@ -62,6 +64,8 @@
 {
 	[super viewDidAppear:animated];
     
+    toggleMapButton.hidden = [((NSString*)[[NSUserDefaults standardUserDefaults] objectForKey:@"3darMapMode"]) isEqualToString:@"auto"];
+    
     [mapView startCamera];
 }
 
@@ -72,15 +76,23 @@
     [self initSound];
     self.view.backgroundColor = [UIColor blackColor];
     
-    mapView.sm3dar.hudView = hudView;
+    hudView = nil;////////////////
+    
+    if (hudView)
+    {
+        mapView.sm3dar.hudView = hudView;
+        hudView.hidden = YES;
+    }    
     
     [self addBirdseyeView];
 
+    
     // Search screen
     
     self.search = [[[YahooLocalSearch alloc] init] autorelease];
     search.delegate = self;
-    
+ 
+//    mapView.sm3dar.focusView = mapView.calloutView;
 }
 
 - (void)runLocalSearch:(NSString*)query 
@@ -109,7 +121,7 @@
 
 #pragma mark Data loading
 
-- (void) sm3darLoadPoints:(SM3DAR_Controller *)sm3dar
+- (void) sm3darLoadPoints:(SM3DARController *)sm3dar
 {
     // 3DAR initialization is complete
     
@@ -123,15 +135,40 @@
     
 }
 
-- (void) sm3dar:(SM3DAR_Controller *)sm3dar didChangeFocusToPOI:(SM3DAR_Point *)newPOI fromPOI:(SM3DAR_Point *)oldPOI
+- (void) sm3dar:(SM3DARController *)sm3dar didChangeFocusToPOI:(SM3DARPoint *)newPOI fromPOI:(SM3DARPoint *)oldPOI
 {
 	[self playFocusSound];
 }
 
-- (void) sm3dar:(SM3DAR_Controller *)sm3dar didChangeSelectionToPOI:(SM3DAR_Point *)newPOI fromPOI:(SM3DAR_Point *)oldPOI
+- (void) sm3dar:(SM3DARController *)sm3dar didChangeSelectionToPOI:(SM3DARPoint *)newPOI fromPOI:(SM3DARPoint *)oldPOI
 {
-	//NSLog(@"POI was selected: %@", [newPOI title]);
+	NSLog(@"POI was selected: %@", [newPOI title]);
+    
+    SM3DARPointOfInterest *poi = (SM3DARPointOfInterest *)newPOI;
+    
+    mapView.calloutView.hidden = NO;
+    mapView.calloutView.titleLabel.text = newPOI.title;
+    mapView.calloutView.distanceLabel.text = [poi formattedDistanceFromCurrentLocationWithUnits];
+    
+    [newPOI.view addSubview:mapView.calloutView];
+
+    CGPoint center = mapView.calloutView.center;
+    mapView.calloutView.center = CGPointMake((center.x), // - mapView.calloutView.bounds.size.width/2), 
+                                             center.y -(mapView.calloutView.bounds.size.height + 4));
+
+//    CGRect f = mapView.calloutView.frame;
+//    f.origin.y = newPOI.view.frame.origin.y - 100;
+//    mapView.calloutView.frame = f;
+    
+    
 }
+
+
+- (void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    NSLog(@"callout tapped");
+}
+
 
 #pragma mark Sound
 - (void) initSound 
@@ -158,9 +195,9 @@
 #pragma mark -
 
 /*
-- (SM3DAR_Fixture*) addFixtureWithView:(SM3DAR_PointView*)pointView
+- (SM3DARFixture*) addFixtureWithView:(SM3DARPointView*)pointView
 {
-    SM3DAR_Fixture *point = [[SM3DAR_Fixture alloc] init];
+    SM3DARFixture *point = [[SM3DARFixture alloc] init];
     
     point.view = pointView;  
     
@@ -169,11 +206,11 @@
     return [point autorelease];
 }
 
-- (SM3DAR_Fixture*) addLabelFixture:(NSString*)title subtitle:(NSString*)subtitle coord:(Coord3D)coord
+- (SM3DARFixture*) addLabelFixture:(NSString*)title subtitle:(NSString*)subtitle coord:(Coord3D)coord
 {
     RoundedLabelMarkerView *v = [[RoundedLabelMarkerView alloc] initWithTitle:title subtitle:subtitle];
 
-    SM3DAR_Fixture *fixture = [self addFixtureWithView:v];
+    SM3DARFixture *fixture = [self addFixtureWithView:v];
     [v release];    
     
     fixture.worldPoint = coord;
@@ -218,7 +255,7 @@
     
     for (NSDictionary *data in results)
     {
-		SM3DAR_PointOfInterest *poi = [[SM3DAR_PointOfInterest alloc] initWithLocation:[data objectForKey:@"location"]
+		SM3DARPointOfInterest *poi = [[SM3DARPointOfInterest alloc] initWithLocation:[data objectForKey:@"location"]
                                                                                  title:[data objectForKey:@"title"] 
                                                                               subtitle:[data objectForKey:@"subtitle"] 
                                                                                    url:nil];
@@ -232,18 +269,20 @@
     [spinner stopAnimating];
 
 //    [mapView performSelectorOnMainThread:@selector(zoomMapToFit) withObject:nil waitUntilDone:YES];
-    [mapView addBackground];
+//    [mapView addBackground];
     [mapView zoomMapToFit];
 }
 
-- (void) sm3darDidShowMap:(SM3DAR_Controller *)sm3dar
+- (void) sm3darDidShowMap:(SM3DARController *)sm3dar
 {
     hudView.hidden = YES;
 }
 
-- (void) sm3darDidHideMap:(SM3DAR_Controller *)sm3dar
+- (void) sm3darDidHideMap:(SM3DARController *)sm3dar
 {
     hudView.hidden = NO;
+    [hudView addSubview:mapView.sm3dar.iconLogo];
+
 }
 
 #pragma mark SimpleGeoDelegate methods
@@ -319,12 +358,32 @@
 
 #pragma mark -
 
+- (void) add3dObjectNortheastOfUserLocation 
+{
+    SM3DARTexturedGeometryView *modelView = [[[SM3DARTexturedGeometryView alloc] initWithOBJ:@"star.obj" textureNamed:nil] autorelease];
+    
+    CLLocationDegrees latitude = mapView.sm3dar.userLocation.coordinate.latitude + 0.0001;
+    CLLocationDegrees longitude = mapView.sm3dar.userLocation.coordinate.longitude + 0.0001;
+
+    
+    // Add a point with a 3D 
+    
+    SM3DARPoint *poi = [[mapView.sm3dar addPointAtLatitude:latitude
+                                                 longitude:longitude
+                                                  altitude:0 
+                                                     title:nil 
+                                                      view:modelView] autorelease];
+    
+    [mapView addAnnotation:(SM3DARPointOfInterest*)poi];  // 
+}
+
 - (IBAction) refreshButtonTapped
 {
     [spinner startAnimating];
     
     [self.mapView removeAllAnnotations];
-    
+ 
+//    [self add3dObjectNortheastOfUserLocation];
     [self fetchSimpleGeoPlaces];    
 }
 
@@ -344,4 +403,19 @@
     mapView.sm3dar.compassView = birdseyeView;    
 }
 
+- (IBAction) toggleMapButtonTapped:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    if (sender.selected)
+    {
+        [mapView.sm3dar hideMap];
+    }
+    else
+    {
+        [mapView.sm3dar showMap];
+    }
+}
+
 @end
+

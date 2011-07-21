@@ -14,7 +14,7 @@
 #import <SimpleGeo/SimpleGeo.h>
 #import "BirdseyeView.h"
 
-@interface MainViewController : UIViewController <MKMapViewDelegate, SM3DAR_Delegate, CLLocationManagerDelegate, SearchDelegate> 
+@interface MainViewController : UIViewController <MKMapViewDelegate, SM3DARDelegate, CLLocationManagerDelegate, SearchDelegate> 
 {
 	SystemSoundID focusSound;
 	NSString *searchQuery;
@@ -30,6 +30,8 @@
     
     SimpleGeo *simplegeo;
     BirdseyeView *birdseyeView;
+    
+    IBOutlet UIButton *toggleMapButton;
 }
 
 @property (nonatomic, retain) NSString *searchQuery;
@@ -43,5 +45,6 @@
 //- (void)addDirectionBillboardsWithFixtures;
 - (void) fetchSimpleGeoPlaces;
 - (IBAction) refreshButtonTapped;
+- (IBAction) toggleMapButtonTapped:(UIButton *)sender;
 
 @end
