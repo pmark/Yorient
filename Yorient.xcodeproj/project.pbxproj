@@ -17,8 +17,6 @@
 		A645426312A4E3B40014F23C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645426212A4E3B40014F23C /* OpenGLES.framework */; };
 		A645426512A4E3B40014F23C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645426412A4E3B40014F23C /* QuartzCore.framework */; };
 		A645426712A4E3B40014F23C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645426612A4E3B40014F23C /* UIKit.framework */; };
-		A64E69BB137C9B32003A06B5 /* SimpleGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64E69BA137C9B32003A06B5 /* SimpleGeo.framework */; };
-		A64E69BD137C9B32003A06B5 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64E69BC137C9B32003A06B5 /* YAJL.framework */; };
 		A64E6BFF137CB5C6003A06B5 /* refresh_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A64E6BFD137CB5C5003A06B5 /* refresh_button.png */; };
 		A64E6C00137CB5C6003A06B5 /* refresh_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A64E6BFE137CB5C6003A06B5 /* refresh_button@2x.png */; };
 		A6622C03137A21E30002E03D /* UIApplication_TLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = A6622BA6137A21E30002E03D /* UIApplication_TLCommon.m */; };
@@ -75,6 +73,8 @@
 		A679302A13D7CE2D0000ECD7 /* ar_icon_black_34x34.png in Resources */ = {isa = PBXBuildFile; fileRef = A679302813D7CE2D0000ECD7 /* ar_icon_black_34x34.png */; };
 		A679302B13D7CE2D0000ECD7 /* ar_icon_white_34x34.png in Resources */ = {isa = PBXBuildFile; fileRef = A679302913D7CE2D0000ECD7 /* ar_icon_white_34x34.png */; };
 		A679306C13D7D4B80000ECD7 /* lib3DAR_v0_9_6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A679306B13D7D4B80000ECD7 /* lib3DAR_v0_9_6.a */; };
+		A69CBA7113DA3E3700E718D1 /* SimpleGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A69CBA6F13DA3E3700E718D1 /* SimpleGeo.framework */; };
+		A69CBA7213DA3E3700E718D1 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A69CBA7013DA3E3700E718D1 /* YAJL.framework */; };
 		A6BE263913811F0F000A4A4F /* BirdseyeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BE263813811F0F000A4A4F /* BirdseyeView.m */; };
 		A6BFE087130B7484007D8CA3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE081130B7484007D8CA3 /* Default.png */; };
 		A6BFE088130B7484007D8CA3 /* focus1.aif in Resources */ = {isa = PBXBuildFile; fileRef = A6BFE082130B7484007D8CA3 /* focus1.aif */; };
@@ -107,8 +107,6 @@
 		A645426212A4E3B40014F23C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A645426412A4E3B40014F23C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A645426612A4E3B40014F23C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A64E69BA137C9B32003A06B5 /* SimpleGeo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleGeo.framework; sourceTree = "<group>"; };
-		A64E69BC137C9B32003A06B5 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
 		A64E6BFD137CB5C5003A06B5 /* refresh_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_button.png; sourceTree = "<group>"; };
 		A64E6BFE137CB5C6003A06B5 /* refresh_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_button@2x.png"; sourceTree = "<group>"; };
 		A6622BA5137A21E30002E03D /* UIApplication_TLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIApplication_TLCommon.h; sourceTree = "<group>"; };
@@ -210,6 +208,8 @@
 		A679302813D7CE2D0000ECD7 /* ar_icon_black_34x34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_icon_black_34x34.png; sourceTree = "<group>"; };
 		A679302913D7CE2D0000ECD7 /* ar_icon_white_34x34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_icon_white_34x34.png; sourceTree = "<group>"; };
 		A679306B13D7D4B80000ECD7 /* lib3DAR_v0_9_6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v0_9_6.a; sourceTree = "<group>"; };
+		A69CBA6F13DA3E3700E718D1 /* SimpleGeo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleGeo.framework; sourceTree = "<group>"; };
+		A69CBA7013DA3E3700E718D1 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
 		A6BE263713811F0E000A4A4F /* BirdseyeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdseyeView.h; sourceTree = "<group>"; };
 		A6BE263813811F0F000A4A4F /* BirdseyeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdseyeView.m; sourceTree = "<group>"; };
 		A6BFE081130B7484007D8CA3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -247,9 +247,9 @@
 				A6D68FBE137A69B400402D63 /* MobileCoreServices.framework in Frameworks */,
 				A6D68FC0137A69B400402D63 /* SystemConfiguration.framework in Frameworks */,
 				A6D68FC4137A69C800402D63 /* libz.dylib in Frameworks */,
-				A64E69BB137C9B32003A06B5 /* SimpleGeo.framework in Frameworks */,
-				A64E69BD137C9B32003A06B5 /* YAJL.framework in Frameworks */,
 				A679306C13D7D4B80000ECD7 /* lib3DAR_v0_9_6.a in Frameworks */,
+				A69CBA7113DA3E3700E718D1 /* SimpleGeo.framework in Frameworks */,
+				A69CBA7213DA3E3700E718D1 /* YAJL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +271,6 @@
 				A6D68FAE137A692A00402D63 /* Build Configuration */,
 				A6334ACC130B7416004AFB13 /* Assets */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				A64E69B9137C9B20003A06B5 /* ext */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				A6622BA3137A21E30002E03D /* Source */,
 				A6622BB7137A21E30002E03D /* Vendor */,
@@ -333,15 +332,6 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		A64E69B9137C9B20003A06B5 /* ext */ = {
-			isa = PBXGroup;
-			children = (
-				A64E69BA137C9B32003A06B5 /* SimpleGeo.framework */,
-				A64E69BC137C9B32003A06B5 /* YAJL.framework */,
-			);
-			path = ext;
-			sourceTree = "<group>";
-		};
 		A6622BA3137A21E30002E03D /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +370,7 @@
 		A6622BB7137A21E30002E03D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A69CBA6E13DA3E3700E718D1 /* ext */,
 				A6622BB8137A21E30002E03D /* BSJSONAdditions */,
 				A6622BC3137A21E30002E03D /* HTTPRiot */,
 			);
@@ -584,6 +575,15 @@
 			path = Lib;
 			sourceTree = "<group>";
 		};
+		A69CBA6E13DA3E3700E718D1 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				A69CBA6F13DA3E3700E718D1 /* SimpleGeo.framework */,
+				A69CBA7013DA3E3700E718D1 /* YAJL.framework */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
 		A6D68FAE137A692A00402D63 /* Build Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,7 +737,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ext\"",
+					"\"$(SRCROOT)/Vendor/ext\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -747,9 +747,6 @@
 				INFOPLIST_FILE = "Yorient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ext/YAJL.framework/Versions/A\"",
-					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
-					"\"$(SRCROOT)/3DAR/lib\"",
 					"\"$(SRCROOT)/3DAR/Lib\"",
 				);
 				OTHER_LDFLAGS = (
@@ -770,7 +767,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ext\"",
+					"\"$(SRCROOT)/Vendor/ext\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Yorient_Prefix.pch;
@@ -778,9 +775,6 @@
 				INFOPLIST_FILE = "Yorient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ext/YAJL.framework/Versions/A\"",
-					"\"$(SRCROOT)/../../Library/iOS/build/Debug-iphoneos\"",
-					"\"$(SRCROOT)/3DAR/lib\"",
 					"\"$(SRCROOT)/3DAR/Lib\"",
 				);
 				OTHER_LDFLAGS = (
